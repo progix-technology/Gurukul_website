@@ -2,6 +2,7 @@ import React from 'react';
 import { Phone, Mail } from 'lucide-react';
 import { INSTITUTION_INFO } from '../../data/institutionalData';
 import LanguageToggle from '../common/LanguageToggle';
+import { useLanguage } from '../../context/LanguageContext';
 
 const FacebookIcon = () => (
   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -23,13 +24,16 @@ const LinkedinIcon = () => (
 
 export const HeaderTopBar = () => {
   const { contact, socials } = INSTITUTION_INFO;
+  const { t } = useLanguage();
 
   return (
     <div className="bg-[#FFCD33] text-gray-900 text-xs py-1.5 px-3 sm:px-4 border-b border-amber-400 font-medium">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
         {/* Left Side: Social Media Icons */}
         <div className="flex items-center gap-3">
-          <span className="text-[11px] font-bold text-gray-800 hidden md:inline">अनुसरण करें:</span>
+          <span className="text-[11px] font-bold text-gray-800 hidden md:inline">
+            {t('topbar.followUs', 'अनुसरण करें:')}
+          </span>
           <a
             href={socials.facebook}
             target="_blank"

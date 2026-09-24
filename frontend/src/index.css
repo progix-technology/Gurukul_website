@@ -73,37 +73,3 @@
   animation-play-state: paused;
 }
 
-/* ==========================================================================
-   Google Translate Styling & Suppression
-   ========================================================================== */
-.goog-te-banner-frame.skiptranslate,
-.goog-te-banner-frame {
-  display: none !important;
-}
-
-body {
-  top: 0px !important;
-  position: static !important;
-}
-
-#google_translate_element {
-  display: none !important;
-}
-
-.goog-tooltip,
-.goog-tooltip:hover,
-#goog-gt-tt,
-.goog-te-balloon-frame {
-  display: none !important;
-}
-
-.goog-text-highlight {
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-font[style] {
-  background: transparent !important;
-  box-shadow: none !important;
-}

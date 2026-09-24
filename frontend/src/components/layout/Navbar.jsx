@@ -2,22 +2,24 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import LanguageToggle from '../common/LanguageToggle'
-
-const navLinks = [
-  { label: 'मुख्य पृष्ठ', path: '/' },
-  { label: 'गुरुकुल परिचय', path: '/about' },
-  { label: 'पाठ्यक्रम', path: '/courses' },
-  { label: 'प्रवेश प्रक्रिया', path: '/admission' },
-  { label: 'Adani Computer Lab', path: '/adani-computer-lab' },
-  { label: 'कार्यक्रम', path: '/events' },
-  { label: 'छायाचित्र', path: '/gallery' },
-  { label: 'संपर्क', path: '/contact' },
-]
+import { useLanguage } from '../../context/LanguageContext'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const location = useLocation()
+  const { t, language } = useLanguage()
+
+  const navLinks = [
+    { label: t('nav.home', 'मुख्य पृष्ठ'), path: '/' },
+    { label: t('nav.about', 'गुरुकुल परिचय'), path: '/about' },
+    { label: t('nav.courses', 'पाठ्यक्रम'), path: '/courses' },
+    { label: t('nav.admission', 'प्रवेश प्रक्रिया'), path: '/admission' },
+    { label: 'Adani Computer Lab', path: '/adani-computer-lab' },
+    { label: t('nav.events', 'कार्यक्रम'), path: '/events' },
+    { label: t('nav.gallery', 'छायाचित्र'), path: '/gallery' },
+    { label: t('nav.contact', 'संपर्क'), path: '/contact' },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -62,13 +64,13 @@ export default function Navbar() {
                   color: solidBg ? '#241B15' : '#F8F4EA',
                 }}
               >
-                श्री निःशुल्क गुरुकुल
+                {language === 'en' ? 'Shri Nishulk Gurukul' : 'श्री निःशुल्क गुरुकुल'}
               </div>
               <div
                 className="text-[10px] sm:text-xs leading-tight"
                 style={{ color: solidBg ? '#8B4513' : '#D4C4A0' }}
               >
-                महाविद्यालय, अयोध्या
+                {language === 'en' ? 'Mahavidyalaya, Ayodhya' : 'महाविद्यालय, अयोध्या'}
               </div>
             </div>
           </Link>
@@ -113,13 +115,13 @@ export default function Navbar() {
                 fontFamily: "'Noto Sans Devanagari', sans-serif",
               }}
             >
-              प्रवेश संबंधी जानकारी
+              {t('btn.admissionInfo', 'प्रवेश संबंधी जानकारी')}
             </Link>
 
             <button
               className="lg:hidden p-2 rounded-lg touch-manipulation focus:outline-none"
               onClick={() => setDrawerOpen(true)}
-              aria-label="मेनू खोलें"
+              aria-label={t('nav.openMenu', 'मेनू खोलें')}
             >
               <Menu size={24} color={solidBg ? '#241B15' : '#F8F4EA'} />
             </button>
@@ -148,12 +150,12 @@ export default function Navbar() {
                     color: '#C68A32',
                   }}
                 >
-                  गुरुकुल महाविद्यालय
+                  {t('nav.gurukulName', 'गुरुकुल महाविद्यालय')}
                 </span>
               </div>
               <button
                 onClick={() => setDrawerOpen(false)}
-                aria-label="बंद करें"
+                aria-label={t('nav.closeMenu', 'बंद करें')}
                 className="p-1.5 rounded-lg hover:bg-white/10 text-[#C68A32] touch-manipulation"
               >
                 <X size={24} />
@@ -162,7 +164,7 @@ export default function Navbar() {
 
             {/* Mobile Language Switcher */}
             <div className="px-4 py-2.5 bg-[#1D1510] border-b border-[#8B4513]/40 flex items-center justify-between">
-              <span className="text-xs font-medium text-[#C68A32]">भाषा / Language:</span>
+              <span className="text-xs font-medium text-[#C68A32]">{t('nav.langLabel', 'भाषा / Language:')}</span>
               <LanguageToggle variant="topbar" />
             </div>
 
@@ -197,7 +199,7 @@ export default function Navbar() {
                   fontFamily: "'Noto Sans Devanagari', sans-serif",
                 }}
               >
-                प्रवेश संबंधी जानकारी
+                {t('btn.admissionInfo', 'प्रवेश संबंधी जानकारी')}
               </Link>
             </div>
           </div>
