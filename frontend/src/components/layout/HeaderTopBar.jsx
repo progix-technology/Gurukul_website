@@ -1,6 +1,7 @@
 import React from 'react';
 import { Phone, Mail } from 'lucide-react';
 import { INSTITUTION_INFO } from '../../data/institutionalData';
+import LanguageToggle from '../common/LanguageToggle';
 
 const FacebookIcon = () => (
   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -24,7 +25,7 @@ export const HeaderTopBar = () => {
   const { contact, socials } = INSTITUTION_INFO;
 
   return (
-    <div className="bg-[#FFCD33] text-gray-900 text-xs py-2 px-4 border-b border-amber-400 font-medium">
+    <div className="bg-[#FFCD33] text-gray-900 text-xs py-1.5 px-3 sm:px-4 border-b border-amber-400 font-medium">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
         {/* Left Side: Social Media Icons */}
         <div className="flex items-center gap-3">
@@ -33,7 +34,7 @@ export const HeaderTopBar = () => {
             href={socials.facebook}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-7 h-7 rounded-full bg-white/60 hover:bg-white text-gray-900 flex items-center justify-center transition-all shadow-sm"
+            className="w-6 h-6 rounded-full bg-white/60 hover:bg-white text-gray-900 flex items-center justify-center transition-all shadow-sm"
             aria-label="फेसबुक"
           >
             <FacebookIcon />
@@ -42,7 +43,7 @@ export const HeaderTopBar = () => {
             href={socials.youtube}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-7 h-7 rounded-full bg-white/60 hover:bg-white text-gray-900 flex items-center justify-center transition-all shadow-sm"
+            className="w-6 h-6 rounded-full bg-white/60 hover:bg-white text-gray-900 flex items-center justify-center transition-all shadow-sm"
             aria-label="यूट्यूब"
           >
             <YoutubeIcon />
@@ -51,15 +52,15 @@ export const HeaderTopBar = () => {
             href={socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-7 h-7 rounded-full bg-white/60 hover:bg-white text-gray-900 flex items-center justify-center transition-all shadow-sm"
+            className="w-6 h-6 rounded-full bg-white/60 hover:bg-white text-gray-900 flex items-center justify-center transition-all shadow-sm"
             aria-label="लिंक्डइन"
           >
             <LinkedinIcon />
           </a>
         </div>
 
-        {/* Right Side: Contact Numbers & Email */}
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+        {/* Right Side: Contact Numbers, Email & Language Switcher */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
           <a
             href={`tel:${contact.primaryPhone}`}
             className="inline-flex items-center gap-1.5 font-bold text-gray-900 hover:text-black transition-colors"
@@ -70,7 +71,7 @@ export const HeaderTopBar = () => {
 
           <a
             href={`tel:${contact.whatsappPhone}`}
-            className="hidden md:inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-black transition-colors"
+            className="hidden lg:inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-black transition-colors"
           >
             <Phone className="w-3.5 h-3.5 text-gray-800" />
             <span>{contact.phones[1]}</span>
@@ -78,11 +79,14 @@ export const HeaderTopBar = () => {
 
           <a
             href={`mailto:${contact.email}`}
-            className="inline-flex items-center gap-1.5 font-bold text-gray-900 hover:text-black transition-colors"
+            className="hidden sm:inline-flex items-center gap-1.5 font-bold text-gray-900 hover:text-black transition-colors"
           >
             <Mail className="w-3.5 h-3.5 text-gray-800" />
             <span>{contact.email}</span>
           </a>
+
+          {/* Language Switcher Pill */}
+          <LanguageToggle variant="topbar" />
         </div>
       </div>
     </div>

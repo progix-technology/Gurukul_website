@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import LanguageToggle from '../common/LanguageToggle'
 
 const navLinks = [
   { label: 'मुख्य पृष्ठ', path: '/' },
@@ -99,8 +100,10 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* CTA + Hamburger */}
+          {/* CTA + Language + Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
+            <LanguageToggle className="hidden sm:inline-block" />
+
             <Link
               to="/admission"
               className="hidden sm:inline-flex items-center px-3.5 sm:px-4 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all duration-200 hover:opacity-90 shadow-sm"
@@ -112,6 +115,7 @@ export default function Navbar() {
             >
               प्रवेश संबंधी जानकारी
             </Link>
+
             <button
               className="lg:hidden p-2 rounded-lg touch-manipulation focus:outline-none"
               onClick={() => setDrawerOpen(true)}
@@ -155,6 +159,13 @@ export default function Navbar() {
                 <X size={24} />
               </button>
             </div>
+
+            {/* Mobile Language Switcher */}
+            <div className="px-4 py-2.5 bg-[#1D1510] border-b border-[#8B4513]/40 flex items-center justify-between">
+              <span className="text-xs font-medium text-[#C68A32]">भाषा / Language:</span>
+              <LanguageToggle variant="topbar" />
+            </div>
+
             <ul className="flex-1 overflow-y-auto py-4 flex flex-col gap-1 px-3">
               {navLinks.map((link) => (
                 <li key={link.path}>
