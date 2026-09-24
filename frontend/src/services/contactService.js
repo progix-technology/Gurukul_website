@@ -1,9 +1,9 @@
-import api from './api';
+import { web3FormsService } from './web3FormsService';
 import { rateLimiter, RATE_LIMIT_CONFIGS } from '../utils/rateLimiter';
 
 export const contactService = {
   /**
-   * Submit contact form inquiry with rate limiting
+   * Submit contact form inquiry with rate limiting and direct email delivery
    * @param {Object} formData { name, phone, email, subject, message }
    * @returns {Promise<Object>}
    */
@@ -22,23 +22,9 @@ export const contactService = {
       throw error;
     }
 
-    try {
-      const response = await api.post('/contact', formData);
-      return response;
-    } catch (error) {
-      if (error.isRateLimit || error.status === 429) {
-        throw error;
-      }
-      // In local development before backend is started, gracefully handle as simulated success
-      // so testing remains flawless.
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      return {
-        success: true,
-        message: 'आपका संदेश सफलतापूर्वक प्राप्त हो गया है। गुरुकुल कार्यालय शीघ्र ही आपसे संपर्क करेगा।',
-        data: formData
-      };
-    }
+    return await web3FormsService.sendContactMessage(formData);
   },
 };
 
 export default contactService;
+

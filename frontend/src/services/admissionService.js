@@ -1,9 +1,9 @@
-import api from './api';
+import { web3FormsService } from './web3FormsService';
 import { rateLimiter, RATE_LIMIT_CONFIGS } from '../utils/rateLimiter';
 
 export const admissionService = {
   /**
-   * Submit admission registration or inquiry with rate limiting
+   * Submit admission registration or inquiry with rate limiting and direct email delivery
    * @param {Object} formData
    * @returns {Promise<Object>}
    */
@@ -22,21 +22,9 @@ export const admissionService = {
       throw error;
     }
 
-    try {
-      const response = await api.post('/admission/inquiry', formData);
-      return response;
-    } catch (error) {
-      if (error.isRateLimit || error.status === 429) {
-        throw error;
-      }
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      return {
-        success: true,
-        message: 'प्रवेश पूछताछ सफलतापूर्वक दर्ज कर ली गई है। प्रवेश समिति आपसे शीघ्र संपर्क करेगी।',
-        data: formData
-      };
-    }
+    return await web3FormsService.sendAdmissionInquiry(formData);
   },
 };
 
 export default admissionService;
+
