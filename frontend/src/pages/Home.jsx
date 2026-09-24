@@ -16,6 +16,7 @@ import {
 } from "lucide-react"
 import SEO from "../components/common/SEO"
 import HeroSlider from "../components/home/HeroSlider"
+import { useLanguage } from "../context/LanguageContext"
 
 import heroBgImage from "../assets/img_1.png"
 import schoolImage_1 from "../assets/IMG_1968.jpg"
@@ -54,12 +55,20 @@ function SectionTitle({ children, light = false }) {
 }
 
 export default function Home() {
+  const { language, t } = useLanguage()
+  const isEn = language === 'en'
+
   return (
     <div>
       <SEO
-        title="मुख्य पृष्ठ"
-        description="श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या - सन् 1925 से वेद, संस्कृत एवं आधुनिक शिक्षा का अद्वितीय केंद्र।"
+        title={isEn ? "Home" : "मुख्य पृष्ठ"}
+        description={
+          isEn
+            ? "Shri Nishulk Gurukul Mahavidyalaya, Ayodhya - A unique center for Vedic, Sanskrit & Modern education since 1925."
+            : "श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या - सन् 1925 से वेद, संस्कृत एवं आधुनिक शिक्षा का अद्वितीय केंद्र।"
+        }
       />
+
 
       {/* 1. HERO SLIDER (Left-to-Right Carousel with Dots Navigation) */}
       <HeroSlider />
@@ -77,15 +86,19 @@ export default function Home() {
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="flex items-center gap-6 text-sm sm:text-base font-bold text-[#241B15]" style={serifFont}>
               <span className="tracking-wide">
-                श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या आपका हार्दिक स्वागत करता है।
+                {isEn 
+                  ? "Shri Nishulk Gurukul Mahavidyalaya Ayodhya warmly welcomes you." 
+                  : "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या आपका हार्दिक स्वागत करता है।"}
               </span>
               <span className="text-[#F8F4EA] text-xs">✦</span>
               <span style={sansFont} className="text-[#241B15]/90 font-medium text-xs sm:text-sm">
-                परंपरा, संस्कार और ज्ञान की समन्वित शिक्षा
+                {isEn 
+                  ? "Harmonious blend of Tradition, Moral Values & Modern Knowledge" 
+                  : "परंपरा, संस्कार और ज्ञान की समन्वित शिक्षा"}
               </span>
               <span className="text-[#F8F4EA] text-xs">✦</span>
               <span style={sansFont} className="text-[#F8F4EA] font-bold bg-[#241B15] px-2.5 py-0.5 text-xs rounded">
-                सत्र 2026-27 प्रवेश प्रारम्भ
+                {isEn ? "Admissions Open 2026-27" : "सत्र 2026-27 प्रवेश प्रारम्भ"}
               </span>
               <span className="text-[#F8F4EA] text-xs">✦</span>
             </div>
@@ -101,22 +114,22 @@ export default function Home() {
               {
                 icon: <Star size={28} color="#C96B25" />,
                 stat: "1925",
-                label: "स्थापना वर्ष",
+                label: isEn ? "Established Year" : "स्थापना वर्ष",
               },
               {
                 icon: <HomeIcon size={28} color="#C96B25" />,
-                stat: "आवासीय",
-                label: "गुरुकुलीय शिक्षा",
+                stat: isEn ? "Residential" : "आवासीय",
+                label: isEn ? "Gurukul System" : "गुरुकुलीय शिक्षा",
               },
               {
                 icon: <BookOpen size={28} color="#C96B25" />,
-                stat: "संस्कृत",
-                label: "प्रमुख शिक्षा",
+                stat: isEn ? "Sanskrit" : "संस्कृत",
+                label: isEn ? "Vedic Heritage" : "प्रमुख शिक्षा",
               },
               {
                 icon: <Award size={28} color="#C96B25" />,
-                stat: "आधुनिक",
-                label: "समन्वित अध्ययन",
+                stat: isEn ? "Modern" : "आधुनिक",
+                label: isEn ? "Integrated Studies" : "समन्वित अध्ययन",
               },
             ].map(({ icon, stat, label }) => (
               <div
@@ -161,7 +174,7 @@ export default function Home() {
               >
                 <img
                   src={schoolImage_1}
-                  alt="स्वामी त्यागानन्द सरस्वती - संस्थापक"
+                  alt={isEn ? "Swami Tyaganand Saraswati - Founder" : "स्वामी त्यागानन्द सरस्वती - संस्थापक"}
                   className="w-full h-full object-cover object-top block"
                   loading="lazy"
                 />
@@ -174,7 +187,7 @@ export default function Home() {
                   className="text-xs sm:text-sm font-bold"
                   style={{ color: "#F8F4EA", ...sansFont }}
                 >
-                  सन् 1925 से संचालित
+                  {isEn ? "Serving Since 1925" : "सन् 1925 से संचालित"}
                 </span>
               </div>
             </div>
@@ -184,13 +197,13 @@ export default function Home() {
               className="text-sm font-semibold uppercase tracking-widest mb-3"
               style={{ color: "#C96B25", ...sansFont }}
             >
-              गुरुकुल परिचय
+              {isEn ? "Gurukul Introduction" : "गुरुकुल परिचय"}
             </p>
             <h2
               className="text-3xl md:text-4xl font-bold mb-5"
               style={{ ...serifFont, color: "#241B15" }}
             >
-              गुरुकुल की गौरवशाली परंपरा
+              {isEn ? "Glorious Heritage of Gurukul" : "गुरुकुल की गौरवशाली परंपरा"}
             </h2>
             <div
               className="h-px mb-6"
@@ -200,16 +213,17 @@ export default function Home() {
               className="mb-4 leading-relaxed"
               style={{ ...sansFont, color: "#3D2B1F" }}
             >
-              सन् 1925 में स्वामी त्यागानन्द सरस्वती जी द्वारा स्थापित इस गुरुकुल महाविद्यालय
-              ने शताब्दी से अधिक समय से वैदिक परंपरा में आधारित शिक्षा प्रदान की है।
+              {isEn
+                ? "Founded in 1925 by Swami Tyaganand Saraswati Ji, this Gurukul Mahavidyalaya has been imparting authentic Vedic education for over a century."
+                : "सन् 1925 में स्वामी त्यागानन्द सरस्वती जी द्वारा स्थापित इस गुरुकुल महाविद्यालय ने शताब्दी से अधिक समय से वैदिक परंपरा में आधारित शिक्षा प्रदान की है।"}
             </p>
             <p
               className="mb-8 leading-relaxed"
               style={{ ...sansFont, color: "#3D2B1F" }}
             >
-              यहाँ वेद, संस्कृत, धर्मशास्त्र के साथ-साथ आधुनिक विषयों का समावेश कर छात्रों को
-              एक संपूर्ण शिक्षा दी जाती है। सम्पूर्णानन्द संस्कृत विश्वविद्यालय, वाराणसी से
-              मान्यता प्राप्त यह संस्था उत्तर प्रदेश में गुरुकुलीय शिक्षा का अग्रणी केंद्र है।
+              {isEn
+                ? "Here, holistic education is provided by integrating Vedas, Sanskrit, and Dharmashastras with modern subjects and computer sciences. Affiliated with Sampurnanand Sanskrit University, Varanasi, this institution is a premier center for Gurukul education in Uttar Pradesh."
+                : "यहाँ वेद, संस्कृत, धर्मशास्त्र के साथ-साथ आधुनिक विषयों का समावेश कर छात्रों को एक संपूर्ण शिक्षा दी जाती है। सम्पूर्णानन्द संस्कृत विश्वविद्यालय, वाराणसी से मान्यता प्राप्त यह संस्था उत्तर प्रदेश में गुरुकुलीय शिक्षा का अग्रणी केंद्र है।"}
             </p>
             <Link
               to="/about"
@@ -220,7 +234,7 @@ export default function Home() {
                 ...sansFont,
               }}
             >
-              विस्तार से पढ़ें <ChevronRight size={18} />
+              {isEn ? "Read More" : "विस्तार से पढ़ें"} <ChevronRight size={18} />
             </Link>
           </div>
         </div>
@@ -229,24 +243,26 @@ export default function Home() {
       {/* 4. FOUNDERS & HERITAGE */}
       <section className="py-20 px-6" style={{ backgroundColor: "#EDE7D4" }}>
         <div className="max-w-5xl mx-auto">
-          <SectionTitle>हमारे आदरणीय संस्थापक</SectionTitle>
+          <SectionTitle>{isEn ? "Our Revered Visionaries & Founders" : "हमारे आदरणीय संस्थापक"}</SectionTitle>
 
-          {/* Open Historical Narrative (Fluid, non-block presentation) */}
+          {/* Open Historical Narrative */}
           <div className="max-w-3xl mx-auto text-center mb-12 px-4">
             <p
               className="text-base sm:text-lg leading-relaxed mb-4 italic"
               style={{ ...serifFont, color: "#3D2B1F" }}
             >
-              "श्री निःशुल्क गुरुकुल महाविद्यालय की स्थापना स्वामी त्यागानन्द सरस्वती जी द्वारा श्रावण पूर्णिमा संवत् 1982 विक्रमी तद्नुसार सन् 1925 ई० को की गयी। यह महाविद्यालय प्राच्य शिक्षा पद्धति (आवासीय व्यवस्था) के अन्तर्गत संस्कृत के साथ आधुनिक विषयों के अध्ययन अध्यापन की व्यवस्था संचालित करता है।"
+              {isEn
+                ? '"Shri Nishulk Gurukul Mahavidyalaya was established on Shravana Purnima, Vikram Samvat 1982 (1925 CE) by Swami Tyaganand Saraswati Ji. The college conducts residential Vedic and modern academic education without charging any tuition or accommodation fees."'
+                : '"श्री निःशुल्क गुरुकुल महाविद्यालय की स्थापना स्वामी त्यागानन्द सरस्वती जी द्वारा श्रावण पूर्णिमा संवत् 1982 विक्रमी तद्नुसार सन् 1925 ई० को की गयी। यह महाविद्यालय प्राच्य शिक्षा पद्धति (आवासीय व्यवस्था) के अन्तर्गत संस्कृत के साथ आधुनिक विषयों के अध्ययन अध्यापन की व्यवस्था संचालित करता है।"'}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-semibold pt-2" style={{ ...sansFont, color: "#8B4513" }}>
               <span className="inline-flex items-center gap-1.5 bg-[#F8F4EA] px-3 py-1 rounded-full border border-[#C68A32]/40">
                 <span className="w-2 h-2 rounded-full bg-[#C96B25]" />
-                स्थापना: श्रावण पूर्णिमा संवत् 1982 (सन् 1925)
+                {isEn ? "Established: Shravana Purnima 1925" : "स्थापना: श्रावण पूर्णिमा संवत् 1982 (सन् 1925)"}
               </span>
               <span className="inline-flex items-center gap-1.5 bg-[#F8F4EA] px-3 py-1 rounded-full border border-[#C68A32]/40">
                 <span className="w-2 h-2 rounded-full bg-[#C96B25]" />
-                पद्धति: निःशुल्क आवासीय प्राच्य व आधुनिक शिक्षा
+                {isEn ? "System: 100% Free Residential Vedic & Modern Education" : "पद्धति: निःशुल्क आवासीय प्राच्य व आधुनिक शिक्षा"}
               </span>
             </div>
           </div>
@@ -265,7 +281,7 @@ export default function Home() {
               <div className="relative h-72 w-full overflow-hidden bg-[#F8F4EA]">
                 <img
                   src={schoolImage_2}
-                  alt="स्वामी दयानन्द सरस्वती"
+                  alt={isEn ? "Maharshi Swami Dayanand Saraswati" : "स्वामी दयानन्द सरस्वती"}
                   className="w-full h-full object-cover object-top"
                   loading="lazy"
                 />
@@ -281,7 +297,7 @@ export default function Home() {
                     className="text-xs font-semibold uppercase tracking-widest mb-1"
                     style={{ color: "#C68A32", ...sansFont }}
                   >
-                    प्रेरणा स्रोत
+                    {isEn ? "Source of Inspiration" : "प्रेरणा स्रोत"}
                   </div>
                 </div>
               </div>
@@ -291,13 +307,15 @@ export default function Home() {
                     className="text-xl font-bold mb-2"
                     style={{ ...serifFont, color: "#241B15" }}
                   >
-                    स्वामी दयानन्द सरस्वती
+                    {isEn ? "Maharshi Swami Dayanand Saraswati" : "स्वामी दयानन्द सरस्वती"}
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
                     style={{ ...sansFont, color: "#5C3D2E" }}
                   >
-                    आर्य समाज के संस्थापक एवं वैदिक परंपरा के महान पुनरुद्धारक। उनके विचारों एवं वेदोपदेश से प्रेरित होकर इस गुरुकुल की स्थापना हुई।
+                    {isEn
+                      ? "Founder of Arya Samaj and the greatest reformer of the Vedic heritage. The Gurukul was established directly inspired by his teachings and revivalist vision."
+                      : "आर्य समाज के संस्थापक एवं वैदिक परंपरा के महान पुनरुद्धारक। उनके विचारों एवं वेदोपदेश से प्रेरित होकर इस गुरुकुल की स्थापना हुई।"}
                   </p>
                 </div>
               </div>
@@ -315,7 +333,7 @@ export default function Home() {
               <div className="relative h-72 w-full overflow-hidden bg-[#F8F4EA]">
                 <img
                   src={schoolImage_1}
-                  alt="स्वामी त्यागानन्द सरस्वती"
+                  alt={isEn ? "Swami Tyaganand Saraswati" : "स्वामी त्यागानन्द सरस्वती"}
                   className="w-full h-full object-cover object-top"
                   loading="lazy"
                 />
@@ -331,7 +349,7 @@ export default function Home() {
                     className="text-xs font-semibold uppercase tracking-widest mb-1"
                     style={{ color: "#C68A32", ...sansFont }}
                   >
-                    संस्थापक एवं प्रथम कुलपति
+                    {isEn ? "Founder & First Chancellor" : "संस्थापक एवं प्रथम कुलपति"}
                   </div>
                 </div>
               </div>
@@ -341,13 +359,15 @@ export default function Home() {
                     className="text-xl font-bold mb-2"
                     style={{ ...serifFont, color: "#241B15" }}
                   >
-                    स्वामी त्यागानन्द सरस्वती
+                    {isEn ? "Swami Tyaganand Saraswati" : "स्वामी त्यागानन्द सरस्वती"}
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
                     style={{ ...sansFont, color: "#5C3D2E" }}
                   >
-                    सन् 1925 में अयोध्या में इस गुरुकुल की स्थापना की और वेद एवं आधुनिक शिक्षा के समन्वय का अनूठा प्रयोग किया।
+                    {isEn
+                      ? "Established this Gurukul in Ayodhya in 1925, creating an unprecedented harmonious system of Vedic Sanskrit and modern scientific education."
+                      : "सन् 1925 में अयोध्या में इस गुरुकुल की स्थापना की और वेद एवं आधुनिक शिक्षा के समन्वय का अनूठा प्रयोग किया।"}
                   </p>
                 </div>
               </div>
@@ -359,26 +379,32 @@ export default function Home() {
       {/* 5. COURSES */}
       <section className="py-20 px-6" style={{ backgroundColor: "#F8F4EA" }}>
         <div className="max-w-6xl mx-auto">
-          <SectionTitle>हमारे पाठ्यक्रम</SectionTitle>
+          <SectionTitle>{isEn ? "Our Academic Programs" : "हमारे पाठ्यक्रम"}</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 icon: <BookOpen size={36} color="#C96B25" />,
-                title: "माध्यमिक विद्यालय",
-                sub: "कक्षा 1 से 12",
-                desc: "वैदिक एवं आधुनिक शिक्षा का अनूठा सम्मिश्रण। संस्कृत, हिंदी, गणित, विज्ञान तथा सामाजिक विज्ञान का अध्ययन।",
+                title: isEn ? "School Education (Prathama to Madhyama)" : "माध्यमिक विद्यालय",
+                sub: isEn ? "Class 6 to 12" : "कक्षा 1 से 12",
+                desc: isEn
+                  ? "Unique fusion of Vedic recitations, Sanskrit grammar, Mathematics, General Science, Hindi and English languages."
+                  : "वैदिक एवं आधुनिक शिक्षा का अनूठा सम्मिश्रण। संस्कृत, हिंदी, गणित, विज्ञान तथा सामाजिक विज्ञान का अध्ययन।",
               },
               {
                 icon: <Award size={36} color="#C96B25" />,
-                title: "महाविद्यालय",
-                sub: "पाँच वर्षीय पाठ्यक्रम",
-                desc: "उच्च स्तरीय संस्कृत, वेद, दर्शन एवं व्याकरण का गहन अध्ययन। सम्पूर्णानन्द संस्कृत विश्वविद्यालय से मान्यता प्राप्त।",
+                title: isEn ? "Higher College (Shastri & Acharya)" : "महाविद्यालय",
+                sub: isEn ? "Graduation & Post Graduation" : "पाँच वर्षीय पाठ्यक्रम",
+                desc: isEn
+                  ? "Advanced degrees in Vedic Literature, Darshan, Vyakarana, and Sahitya recognized by Sampurnanand Sanskrit University."
+                  : "उच्च स्तरीय संस्कृत, वेद, दर्शन एवं व्याकरण का गहन अध्ययन। सम्पूर्णानन्द संस्कृत विश्वविद्यालय से मान्यता प्राप्त।",
               },
               {
                 icon: <Users size={36} color="#C96B25" />,
-                title: "उपदेशक विद्यालय",
-                sub: "पाँच वर्षीय पाठ्यक्रम",
-                desc: "धर्म प्रचार एवं उपदेश की कला का प्रशिक्षण। वेद, उपनिषद् तथा धर्मशास्त्र का विशेष अध्ययन।",
+                title: isEn ? "Preacher Training (Updeshak)" : "उपदेशक विद्यालय",
+                sub: isEn ? "5-Year Special Certification" : "पाँच वर्षीय पाठ्यक्रम",
+                desc: isEn
+                  ? "Rigorous training in Vedic public oratory, comparative philosophy, Upanishads, and community leadership."
+                  : "धर्म प्रचार एवं उपदेश की कला का प्रशिक्षण। वेद, उपनिषद् तथा धर्मशास्त्र का विशेष अध्ययन।",
               },
             ].map(({ icon, title, sub, desc }) => (
               <div
@@ -414,7 +440,7 @@ export default function Home() {
                   className="inline-flex items-center gap-1 text-sm font-semibold transition-colors duration-200 hover:gap-2"
                   style={{ color: "#C96B25", ...sansFont }}
                 >
-                  विस्तृत जानकारी <ChevronRight size={16} />
+                  {isEn ? "Course Details" : "विस्तृत जानकारी"} <ChevronRight size={16} />
                 </Link>
               </div>
             ))}
@@ -425,48 +451,48 @@ export default function Home() {
       {/* 6. FEATURES */}
       <section className="py-20 px-6" style={{ backgroundColor: "#241B15" }}>
         <div className="max-w-6xl mx-auto">
-          <SectionTitle light>गुरुकुल की विशेषताएँ</SectionTitle>
+          <SectionTitle light>{isEn ? "Distinctive Features of Gurukul" : "गुरुकुल की विशेषताएँ"}</SectionTitle>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: <HomeIcon size={28} color="#C68A32" />,
-                label: "आवासीय शिक्षा",
-                desc: "छात्र गुरुकुल परिसर में रहकर अध्ययन करते हैं।",
+                label: isEn ? "Residential Campus" : "आवासीय शिक्षा",
+                desc: isEn ? "Students live in a pure, peaceful campus atmosphere." : "छात्र गुरुकुल परिसर में रहकर अध्ययन करते हैं।",
               },
               {
                 icon: <BookOpen size={28} color="#C68A32" />,
-                label: "संस्कृत शिक्षा",
-                desc: "संस्कृत भाषा एवं साहित्य का गहन अध्ययन।",
+                label: isEn ? "Sanskrit Immersion" : "संस्कृत शिक्षा",
+                desc: isEn ? "In-depth mastery of Sanskrit language & literature." : "संस्कृत भाषा एवं साहित्य का गहन अध्ययन।",
               },
               {
                 icon: <Award size={28} color="#C68A32" />,
-                label: "आधुनिक विषय",
-                desc: "गणित, विज्ञान, हिंदी, अंग्रेजी का शिक्षण।",
+                label: isEn ? "Modern Curriculum" : "आधुनिक विषय",
+                desc: isEn ? "Mathematics, Science, Computers and English." : "गणित, विज्ञान, हिंदी, अंग्रेजी का शिक्षण।",
               },
               {
                 icon: <Heart size={28} color="#C68A32" />,
-                label: "धर्म एवं संस्कार",
-                desc: "नैतिक मूल्यों व संस्कारों की शिक्षा।",
+                label: isEn ? "Values & Character" : "धर्म एवं संस्कार",
+                desc: isEn ? "Moral character building and Vedic rituals." : "नैतिक मूल्यों व संस्कारों की शिक्षा।",
               },
               {
                 icon: <Star size={28} color="#C68A32" />,
-                label: "अनुशासन",
-                desc: "नियमित दिनचर्या और अनुशासित जीवन।",
+                label: isEn ? "Discipline" : "अनुशासन",
+                desc: isEn ? "Structured daily routine and focused living." : "नियमित दिनचर्या और अनुशासित जीवन।",
               },
               {
                 icon: <Sun size={28} color="#C68A32" />,
-                label: "भारतीय शिक्षा",
-                desc: "वेद, उपनिषद् की प्राचीन शिक्षा पद्धति।",
+                label: isEn ? "Vedic Wisdom" : "भारतीय शिक्षा",
+                desc: isEn ? "Authentic teaching methodology of Vedas & Upanishads." : "वेद, उपनिषद् की प्राचीन शिक्षा पद्धति।",
               },
               {
                 icon: <Leaf size={28} color="#C68A32" />,
-                label: "प्राकृतिक जीवनशैली",
-                desc: "प्रकृति के निकट स्वास्थ्यप्रद जीवन।",
+                label: isEn ? "Natural Lifestyle" : "प्राकृतिक जीवनशैली",
+                desc: isEn ? "Sattvic vegetarian diet and healthy routine." : "प्रकृति के निकट स्वास्थ्यप्रद जीवन।",
               },
               {
                 icon: <Users size={28} color="#C68A32" />,
-                label: "गुरु-शिष्य परंपरा",
-                desc: "प्राचीन गुरु-शिष्य परंपरा का पालन।",
+                label: isEn ? "Guru-Shishya Bond" : "गुरु-शिष्य परंपरा",
+                desc: isEn ? "Personal mentorship from learned Acharyas." : "प्राचीन गुरु-शिष्य परंपरा का पालन।",
               },
             ].map(({ icon, label, desc }) => (
               <div
@@ -499,7 +525,7 @@ export default function Home() {
       {/* 7. TIMELINE */}
       <section className="py-20 px-6" style={{ backgroundColor: "#F8F4EA" }}>
         <div className="max-w-3xl mx-auto">
-          <SectionTitle>गुरुकुल की यात्रा</SectionTitle>
+          <SectionTitle>{isEn ? "Historic Journey of Gurukul" : "गुरुकुल की यात्रा"}</SectionTitle>
           <div className="relative">
             <div
               className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
@@ -508,37 +534,42 @@ export default function Home() {
             {[
               {
                 year: "1925",
-                event: "गुरुकुल की स्थापना",
-                detail:
-                  "स्वामी त्यागानन्द सरस्वती जी ने अयोध्या में श्री निःशुल्क गुरुकुल महाविद्यालय की स्थापना की।",
+                event: isEn ? "Founding of Gurukul" : "गुरुकुल की स्थापना",
+                detail: isEn
+                  ? "Swami Tyaganand Saraswati Ji established Shri Nishulk Gurukul Mahavidyalaya in holy Ayodhya."
+                  : "स्वामी त्यागानन्द सरस्वती जी ने अयोध्या में श्री निःशुल्क गुरुकुल महाविद्यालय की स्थापना की।",
                 side: "left",
               },
               {
                 year: "1950",
-                event: "माध्यमिक विद्यालय की मान्यता",
-                detail:
-                  "उत्तर प्रदेश सरकार द्वारा माध्यमिक विद्यालय के रूप में औपचारिक मान्यता प्रदान की गई।",
+                event: isEn ? "Secondary Board Recognition" : "माध्यमिक विद्यालय की मान्यता",
+                detail: isEn
+                  ? "Formal recognition granted by the Uttar Pradesh Government as a secondary educational institution."
+                  : "उत्तर प्रदेश सरकार द्वारा माध्यमिक विद्यालय के रूप में औपचारिक मान्यता प्रदान की गई।",
                 side: "right",
               },
               {
                 year: "1972",
-                event: "सम्पूर्णानन्द विश्वविद्यालय से सम्बद्धता",
-                detail:
-                  "सम्पूर्णानन्द संस्कृत विश्वविद्यालय, वाराणसी से महाविद्यालय की सम्बद्धता प्राप्त हुई।",
+                event: isEn ? "University Affiliation" : "सम्पूर्णानन्द विश्वविद्यालय से सम्बद्धता",
+                detail: isEn
+                  ? "Permanent affiliation received from Sampurnanand Sanskrit University, Varanasi for higher degrees."
+                  : "सम्पूर्णानन्द संस्कृत विश्वविद्यालय, वाराणसी से महाविद्यालय की सम्बद्धता प्राप्त हुई।",
                 side: "left",
               },
               {
                 year: "1995",
-                event: "उपदेशक विद्यालय की स्थापना",
-                detail:
-                  "धर्म प्रचार एवं उपदेश विभाग का विस्तार करते हुए उपदेशक विद्यालय आरम्भ किया गया।",
+                event: isEn ? "Establishment of Preacher Wing" : "उपदेशक विद्यालय की स्थापना",
+                detail: isEn
+                  ? "Dedicated Updeshak Vidyalaya established for training Vedic preachers and social leaders."
+                  : "धर्म प्रचार एवं उपदेश विभाग का विस्तार करते हुए उपदेशक विद्यालय आरम्भ किया गया।",
                 side: "right",
               },
               {
                 year: "2025",
-                event: "शताब्दी वर्ष",
-                detail:
-                  "गुरुकुल के स्थापना शताब्दी वर्ष का भव्य आयोजन। ज्ञान परंपरा का निरंतर प्रवाह।",
+                event: isEn ? "Centenary Celebration (100 Years)" : "शताब्दी वर्ष",
+                detail: isEn
+                  ? "Grand centennial celebration marking 100 continuous years of free Vedic and modern education."
+                  : "गुरुकुल के स्थापना शताब्दी वर्ष का भव्य आयोजन। ज्ञान परंपरा का निरंतर प्रवाह।",
                 side: "left",
               },
             ].map(({ year, event, detail, side }) => (
@@ -591,29 +622,35 @@ export default function Home() {
       {/* 8. EVENTS PREVIEW */}
       <section className="py-14 sm:py-20 px-3 sm:px-6" style={{ backgroundColor: "#EDE7D4" }}>
         <div className="max-w-6xl mx-auto">
-          <SectionTitle>आगामी कार्यक्रम</SectionTitle>
+          <SectionTitle>{isEn ? "Upcoming Events & News" : "आगामी कार्यक्रम"}</SectionTitle>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 lg:gap-8 mb-10">
             {[
               {
                 img: img_7,
-                month: "अगस्त",
+                month: isEn ? "August" : "अगस्त",
                 day: "15",
-                title: "51वाँ वार्षिकोत्सव",
-                desc: "गुरुकुल का 51वाँ वार्षिक उत्सव एवं चतुर्वेद महायज्ञ जिसमें छात्रों की वेद पाठ, दीक्षांत अलंकरण एवं सांस्कृतिक प्रस्तुतियाँ होती हैं।",
+                title: isEn ? "51st Annual Day Celebration" : "51वाँ वार्षिकोत्सव",
+                desc: isEn
+                  ? "Grand 51st Annual Day and Chaturveda Mahayajna with student Vedic recitations and cultural performances."
+                  : "गुरुकुल का 51वाँ वार्षिक उत्सव एवं चतुर्वेद महायज्ञ जिसमें छात्रों की वेद पाठ, दीक्षांत अलंकरण एवं सांस्कृतिक प्रस्तुतियाँ होती हैं।",
               },
               {
                 img: img_3,
-                month: "जुलाई",
+                month: isEn ? "July" : "जुलाई",
                 day: "10",
-                title: "वेद प्रचार एवं संस्कृत सप्ताह",
-                desc: "सप्ताहभर संस्कृत भाषा को समर्पित कार्यक्रम — श्लोक पाठ, वाद-विवाद, निबंध लेखन एवं वैदिक स्वाध्याय।",
+                title: isEn ? "Veda Prachar & Sanskrit Week" : "वेद प्रचार एवं संस्कृत सप्ताह",
+                desc: isEn
+                  ? "Week-long celebration dedicated to Sanskrit - recitation contests, debates, essay competitions and Vedic seminars."
+                  : "सप्ताहभर संस्कृत भाषा को समर्पित कार्यक्रम — श्लोक पाठ, वाद-विवाद, निबंध लेखन एवं वैदिक स्वाध्याय।",
               },
               {
                 img: img_4,
-                month: "अप्रैल",
+                month: isEn ? "April" : "अप्रैल",
                 day: "2026",
-                title: "Adani Computer Lab लोकार्पण",
-                desc: "अडानी फाउंडेशन के सहयोग से स्थापित अत्याधुनिक कंप्यूटर लैब एवं छात्रों का डिजिटल कौशल प्रशिक्षण।",
+                title: isEn ? "Adani Computer Lab Dedication" : "Adani Computer Lab लोकार्पण",
+                desc: isEn
+                  ? "State-of-the-art computer laboratory established with Adani Foundation to deliver modern digital skills."
+                  : "अडानी फाउंडेशन के सहयोग से स्थापित अत्याधुनिक कंप्यूटर लैब एवं छात्रों का डिजिटल कौशल प्रशिक्षण।",
               },
             ].map(({ img, month, day, title, desc }) => (
               <div
@@ -670,7 +707,7 @@ export default function Home() {
                     className="text-xs sm:text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all mt-auto"
                     style={{ color: "#C96B25", ...sansFont }}
                   >
-                    और देखें <ChevronRight size={14} />
+                    {isEn ? "View Details" : "और देखें"} <ChevronRight size={14} />
                   </Link>
                 </div>
               </div>
@@ -686,7 +723,7 @@ export default function Home() {
                 ...sansFont,
               }}
             >
-              सभी कार्यक्रम देखें <ChevronRight size={18} />
+              {isEn ? "View All Events" : "सभी कार्यक्रम देखें"} <ChevronRight size={18} />
             </Link>
           </div>
         </div>
@@ -695,7 +732,7 @@ export default function Home() {
       {/* 9. GALLERY STRIP */}
       <section className="py-20 px-6" style={{ backgroundColor: "#F8F4EA" }}>
         <div className="max-w-6xl mx-auto">
-          <SectionTitle>छायाचित्र</SectionTitle>
+          <SectionTitle>{isEn ? "Campus Gallery" : "छायाचित्र"}</SectionTitle>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
             {[img_2, img_7, img_4, img_1, img_6, img_3].map((src, i) => (
               <div
@@ -705,7 +742,7 @@ export default function Home() {
               >
                 <img
                   src={src}
-                  alt={`गुरुकुल छायाचित्र ${i + 1}`}
+                  alt={isEn ? `Gurukul Campus Photo ${i + 1}` : `गुरुकुल छायाचित्र ${i + 1}`}
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -722,7 +759,7 @@ export default function Home() {
                 ...sansFont,
               }}
             >
-              और छायाचित्र देखें (Explore More) <ChevronRight size={18} />
+              {isEn ? "Explore Photo & Video Gallery" : "और छायाचित्र देखें (Explore More)"} <ChevronRight size={18} />
             </Link>
           </div>
         </div>
@@ -746,7 +783,7 @@ export default function Home() {
             className="text-4xl md:text-5xl font-bold mb-5"
             style={{ ...serifFont, color: "#F8F4EA" }}
           >
-            गुरुकुल में प्रवेश
+            {isEn ? "Admissions at Gurukul" : "गुरुकुल में प्रवेश"}
           </h2>
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="h-px w-16" style={{ backgroundColor: "#C68A32" }} />
@@ -757,8 +794,9 @@ export default function Home() {
             className="text-lg mb-8 leading-relaxed"
             style={{ ...sansFont, color: "#EDE7D4" }}
           >
-            अपने बच्चे को प्राचीन वैदिक परंपरा में आधारित और आधुनिक शिक्षा से समृद्ध वातावरण
-            प्रदान करें। प्रवेश अप्रैल-जून माह में आयोजित होते हैं।
+            {isEn
+              ? "Provide your child with a sacred environment rooted in ancient Vedic tradition and enriched with modern education. Admissions conducted in April-July."
+              : "अपने बच्चे को प्राचीन वैदिक परंपरा में आधारित और आधुनिक शिक्षा से समृद्ध वातावरण प्रदान करें। प्रवेश अप्रैल-जून माह में आयोजित होते हैं।"}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -770,7 +808,7 @@ export default function Home() {
                 ...sansFont,
               }}
             >
-              प्रवेश प्रक्रिया जानें
+              {isEn ? "Admission Process" : "प्रवेश प्रक्रिया जानें"}
             </Link>
             <Link
               to="/contact"
@@ -781,7 +819,7 @@ export default function Home() {
                 ...sansFont,
               }}
             >
-              संपर्क करें
+              {isEn ? "Contact Us" : "संपर्क करें"}
             </Link>
           </div>
         </div>
@@ -790,13 +828,17 @@ export default function Home() {
       {/* 11. CONTACT PREVIEW */}
       <section className="py-20 px-6" style={{ backgroundColor: "#EDE7D4" }}>
         <div className="max-w-6xl mx-auto">
-          <SectionTitle>संपर्क करें</SectionTitle>
+          <SectionTitle>{isEn ? "Get in Touch" : "संपर्क करें"}</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 icon: <MapPin size={28} color="#C96B25" />,
-                title: "पता",
-                lines: [
+                title: isEn ? "Address" : "पता",
+                lines: isEn ? [
+                  "5/5/13 Jalpa Lala,",
+                  "Opposite Jalpa Temple,",
+                  "Ayodhya, Faizabad - 224123 (U.P.)",
+                ] : [
                   "5/5/13 जालपा लाला,",
                   "जालपा मंदिर के सामने,",
                   "अयोध्या, फैज़ाबाद - 224123",
@@ -804,12 +846,12 @@ export default function Home() {
               },
               {
                 icon: <Phone size={28} color="#C96B25" />,
-                title: "दूरभाष",
+                title: isEn ? "Phone" : "दूरभाष",
                 lines: ["+91 9071235505", "+91 9648409250"],
               },
               {
                 icon: <Mail size={28} color="#C96B25" />,
-                title: "ईमेल",
+                title: isEn ? "Email" : "ईमेल",
                 lines: ["gurukulayodhya@gmail.com"],
               },
             ].map(({ icon, title, lines }) => (
@@ -851,7 +893,7 @@ export default function Home() {
                 ...sansFont,
               }}
             >
-              संपर्क पृष्ठ देखें <ChevronRight size={18} />
+              {isEn ? "View Contact Page" : "संपर्क पृष्ठ देखें"} <ChevronRight size={18} />
             </Link>
           </div>
         </div>

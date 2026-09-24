@@ -25,7 +25,7 @@ export const translations = {
 
     // Common Buttons & Labels
     'btn.admissionInfo': 'प्रवेश संबंधी जानकारी',
-    'btn.aboutGurukul': 'गुरुकुल के बारे में',
+    'btn.aboutGurukul': 'गुरुकुल परिचय',
     'btn.viewCourses': 'सभी पाठ्यक्रम देखें',
     'btn.contactUs': 'संपर्क करें',
     'btn.submit': 'संदेश भेजें',
@@ -72,14 +72,14 @@ export const translations = {
   en: {
     // Navigation
     'nav.home': 'Home',
-    'nav.about': 'About Gurukul',
+    'nav.about': 'About Us',
     'nav.courses': 'Courses',
-    'nav.admission': 'Admission Process',
-    'nav.adaniLab': 'Adani Computer Lab',
-    'nav.events': 'Events & Utsav',
-    'nav.gallery': 'Photo Gallery',
-    'nav.contact': 'Contact Us',
-    'nav.admissionCta': 'Admission Inquiry',
+    'nav.admission': 'Admissions',
+    'nav.adaniLab': 'Adani Lab',
+    'nav.events': 'Events',
+    'nav.gallery': 'Gallery',
+    'nav.contact': 'Contact',
+    'nav.admissionCta': 'Admission Info',
     'nav.gurukulName': 'Gurukul Mahavidyalaya',
     'nav.brandSub': 'Ayodhya Dham (U.P.)',
     'nav.openMenu': 'Open Menu',
@@ -90,7 +90,7 @@ export const translations = {
     'topbar.followUs': 'Follow Us:',
 
     // Common Buttons & Labels
-    'btn.admissionInfo': 'Admission Information',
+    'btn.admissionInfo': 'Admission Info',
     'btn.aboutGurukul': 'About Gurukul',
     'btn.viewCourses': 'View All Courses',
     'btn.contactUs': 'Contact Us',

@@ -3,6 +3,7 @@ import { Flame, BookOpen, Laptop, Home, Heart, Activity } from 'lucide-react';
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
 import { ABOUT_DATA } from '../../data/aboutData';
+import { useLanguage } from '../../context/LanguageContext';
 
 const ICON_MAP = {
   Flame,
@@ -14,20 +15,24 @@ const ICON_MAP = {
 };
 
 export const CampusFacilities = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
   const { facilities } = ABOUT_DATA;
 
   return (
     <section className="py-16 sm:py-20 bg-white border-t border-orange-100">
       <Container>
         <SectionHeading
-          badge="परिसर एवं व्यवस्थाएँ"
-          title="गुरुकुल परिसर एवं आधुनिक सुविधाएँ"
-          subtitle="विद्यार्थियों के सर्वांगीण विकास हेतु आवश्यक समस्त भौतिक व आध्यात्मिक व्यवस्थाएँ"
+          badge={isEn ? "CAMPUS INFRASTRUCTURE" : "परिसर एवं व्यवस्थाएँ"}
+          title={isEn ? "Gurukul Campus & Modern Amenities" : "गुरुकुल परिसर एवं आधुनिक सुविधाएँ"}
+          subtitle={isEn ? "Comprehensive holistic facilities for intellectual, physical and spiritual growth" : "विद्यार्थियों के सर्वांगीण विकास हेतु आवश्यक समस्त भौतिक व आध्यात्मिक व्यवस्थाएँ"}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {facilities.map((fac, idx) => {
             const IconComponent = ICON_MAP[fac.icon] || Home;
+            const title = isEn ? (fac.title_en || fac.title) : fac.title;
+            const desc = isEn ? (fac.desc_en || fac.desc) : fac.desc;
 
             return (
               <div
@@ -39,11 +44,11 @@ export const CampusFacilities = () => {
                 </div>
 
                 <h3 className="font-serif font-bold text-lg text-gray-900 mb-2 group-hover:text-gurukul-saffron transition-colors">
-                  {fac.title}
+                  {title}
                 </h3>
 
                 <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                  {fac.desc}
+                  {desc}
                 </p>
               </div>
             );
@@ -55,3 +60,4 @@ export const CampusFacilities = () => {
 };
 
 export default CampusFacilities;
+

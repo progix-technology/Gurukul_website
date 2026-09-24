@@ -3,6 +3,7 @@ import { FileText, UserCheck, Award, Home } from 'lucide-react';
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
 import { ADMISSION_DATA } from '../../data/admissionData';
+import { useLanguage } from '../../context/LanguageContext';
 
 const ICON_MAP = {
   FileText,
@@ -12,7 +13,14 @@ const ICON_MAP = {
 };
 
 export const AdmissionProcess = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
   const { steps, timeline } = ADMISSION_DATA;
+
+  const sessionText = isEn ? (timeline.session_en || timeline.session) : timeline.session;
+  const startText = isEn ? (timeline.startDate_en || timeline.startDate) : timeline.startDate;
+  const endText = isEn ? (timeline.endDate_en || timeline.endDate) : timeline.endDate;
+  const noteText = isEn ? (timeline.specialNote_en || timeline.specialNote) : timeline.specialNote;
 
   return (
     <section className="py-16 sm:py-20 bg-white">
@@ -20,25 +28,30 @@ export const AdmissionProcess = () => {
         {/* Timeline Highlight Bar */}
         <div className="bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50 border border-orange-200 rounded-2xl p-6 sm:p-8 mb-16 shadow-sm text-center max-w-3xl mx-auto">
           <span className="px-3.5 py-1 rounded-full bg-gurukul-saffron text-white text-xs font-bold uppercase tracking-wider inline-block mb-3">
-            वार्षिक प्रवेश अवधि
+            {isEn ? "ANNUAL ADMISSION PERIOD" : "वार्षिक प्रवेश अवधि"}
           </span>
           <h3 className="font-serif font-bold text-2xl sm:text-3xl text-gray-900 mb-2">
-            प्रवेश सत्र {timeline.session}: {timeline.startDate} से {timeline.endDate}
+            {isEn 
+              ? `Admission Session ${sessionText}: ${startText} to ${endText}` 
+              : `प्रवेश सत्र ${sessionText}: ${startText} से ${endText}`
+            }
           </h3>
           <p className="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-xl mx-auto">
-            {timeline.specialNote}
+            {noteText}
           </p>
         </div>
 
         <SectionHeading
-          badge="प्रवेश विधि"
-          title="चरणबद्ध प्रवेश प्रक्रिया (Step-by-Step Process)"
-          subtitle="गुरुकुल में प्रवेश हेतु सरल एवं पारदर्शी 4-चरणीय व्यवस्था"
+          badge={isEn ? "ADMISSION PROCEDURE" : "प्रवेश विधि"}
+          title={isEn ? "Step-by-Step Admission Process" : "चरणबद्ध प्रवेश प्रक्रिया (Step-by-Step Process)"}
+          subtitle={isEn ? "Simple, transparent 4-stage admission procedure for aspiring students" : "गुरुकुल में प्रवेश हेतु सरल एवं पारदर्शी 4-चरणीय व्यवस्था"}
         />
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 relative">
           {steps.map((step) => {
             const IconComponent = ICON_MAP[step.icon] || FileText;
+            const title = isEn ? (step.title_en || step.title) : step.title;
+            const description = isEn ? (step.description_en || step.description) : step.description;
 
             return (
               <div
@@ -56,16 +69,16 @@ export const AdmissionProcess = () => {
                   </div>
 
                   <h4 className="font-serif font-bold text-xs sm:text-base text-gray-900 mb-1 sm:mb-2 group-hover:text-gurukul-saffron transition-colors line-clamp-2 sm:line-clamp-none">
-                    {step.title}
+                    {title}
                   </h4>
 
                   <p className="text-[11px] sm:text-sm text-gray-600 leading-snug sm:leading-relaxed line-clamp-3 sm:line-clamp-none font-sans">
-                    {step.description}
+                    {description}
                   </p>
                 </div>
 
                 <div className="mt-3 sm:mt-6 pt-2 sm:pt-3 border-t border-orange-100/80 text-[10px] sm:text-[11px] font-bold text-gurukul-maroon">
-                  चरण {step.stepNumber} पूर्ण करें
+                  {isEn ? `Step ${step.stepNumber}` : `चरण ${step.stepNumber} पूर्ण करें`}
                 </div>
               </div>
             );
@@ -77,3 +90,4 @@ export const AdmissionProcess = () => {
 };
 
 export default AdmissionProcess;
+

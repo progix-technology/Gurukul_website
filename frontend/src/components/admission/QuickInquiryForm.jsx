@@ -5,8 +5,11 @@ import { validateAdmissionForm } from '../../utils/validation';
 import { admissionService } from '../../services/admissionService';
 import { useToast } from '../../hooks/useToast';
 import { COURSES_DATA } from '../../data/coursesData';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const QuickInquiryForm = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
   const { showSuccess, showError } = useToast();
 
   const [formData, setFormData] = useState({
@@ -38,7 +41,7 @@ export const QuickInquiryForm = () => {
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      showError('कृपया फॉर्म में आवश्यक जानकारियाँ सही ढंग से भरें।');
+      showError(isEn ? 'Please fill in all mandatory fields correctly.' : 'कृपया फॉर्म में आवश्यक जानकारियाँ सही ढंग से भरें।');
       return;
     }
 
@@ -46,7 +49,7 @@ export const QuickInquiryForm = () => {
     try {
       const res = await admissionService.submitInquiry(formData);
       setIsSuccess(true);
-      showSuccess(res.message || 'आपकी प्रवेश पूछताछ सफलतापूर्वक प्राप्त हो गई है।');
+      showSuccess(res.message || (isEn ? 'Your admission inquiry has been submitted successfully.' : 'आपकी प्रवेश पूछताछ सफलतापूर्वक प्राप्त हो गई है।'));
       setFormData({
         studentName: '',
         guardianName: '',
@@ -60,9 +63,9 @@ export const QuickInquiryForm = () => {
     } catch (err) {
       if (err.isRateLimit || err.status === 429) {
         setRateLimitNotice(err.message);
-        showError(err.message || 'अनुरोध सीमा पार हो गई है। कृपया कुछ देर प्रतीक्षा करें।');
+        showError(err.message || (isEn ? 'Request limit exceeded. Please wait a moment.' : 'अनुरोध सीमा पार हो गई है। कृपया कुछ देर प्रतीक्षा करें।'));
       } else {
-        showError(err.message || 'पूछताछ दर्ज करने में कुछ बाधा आई। कृपया पुनः प्रयास करें।');
+        showError(err.message || (isEn ? 'Error submitting inquiry. Please try again.' : 'पूछताछ दर्ज करने में कुछ बाधा आई। कृपया पुनः प्रयास करें।'));
       }
     } finally {
       setIsSubmitting(false);
@@ -75,13 +78,16 @@ export const QuickInquiryForm = () => {
         <div className="bg-white rounded-none border border-[#C68A32]/40 p-5 sm:p-8 lg:p-10 shadow-sm">
           <div className="text-center mb-8">
             <span className="px-3.5 py-1 rounded-none bg-[#241B15] text-[#C68A32] text-xs font-bold uppercase tracking-wider inline-block mb-2">
-              ऑनलाइन पंजीकरण / पूछताछ
+              {isEn ? "ONLINE ADMISSION INQUIRY" : "ऑनलाइन पंजीकरण / पूछताछ"}
             </span>
             <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#241B15]">
-              प्रवेश पूछताछ फॉर्म (Admission Inquiry)
+              {isEn ? "Admission Inquiry Form" : "प्रवेश पूछताछ फॉर्म (Admission Inquiry)"}
             </h3>
             <p className="text-xs sm:text-sm text-[#241B15]/80 mt-2">
-              कृपया नीचे दिया गया विवरण भरें, गुरुकुल प्रवेश समिति आपसे यथाशीघ्र संपर्क करेगी।
+              {isEn 
+                ? "Please fill out the details below. Our admission coordinator will contact you promptly."
+                : "कृपया नीचे दिया गया विवरण भरें, गुरुकुल प्रवेश समिति आपसे यथाशीघ्र संपर्क करेगी।"
+              }
             </p>
           </div>
 
@@ -95,7 +101,12 @@ export const QuickInquiryForm = () => {
           {isSuccess && (
             <div className="p-4 rounded-none bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs sm:text-sm flex items-center gap-3 mb-6 animate-fadeIn">
               <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-              <span>आपकी प्रवेश पूछताछ सफलतापूर्वक भेज दी गई है। प्रवेश समिति शीघ्र संपर्क करेगी।</span>
+              <span>
+                {isEn 
+                  ? "Your admission inquiry has been sent successfully. The committee will contact you soon."
+                  : "आपकी प्रवेश पूछताछ सफलतापूर्वक भेज दी गई है। प्रवेश समिति शीघ्र संपर्क करेगी।"
+                }
+              </span>
             </div>
           )}
 
@@ -104,14 +115,14 @@ export const QuickInquiryForm = () => {
               {/* Student Name */}
               <div>
                 <label className="block text-xs font-bold text-[#241B15] mb-1">
-                  छात्र का नाम <span className="text-red-500">*</span>
+                  {isEn ? "Student's Full Name" : "छात्र का नाम"} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   name="studentName"
                   value={formData.studentName}
                   onChange={handleChange}
-                  placeholder="उदा. अमित कुमार"
+                  placeholder={isEn ? "e.g. Amit Sharma" : "उदा. अमित कुमार"}
                   className={`w-full px-4 py-2.5 rounded-none border text-sm focus:outline-none focus:ring-1 bg-[#F8F4EA]/50 ${
                     errors.studentName
                       ? 'border-red-400 focus:ring-red-400'
@@ -126,14 +137,14 @@ export const QuickInquiryForm = () => {
               {/* Guardian Name */}
               <div>
                 <label className="block text-xs font-bold text-[#241B15] mb-1">
-                  अभिभावक / पिता का नाम <span className="text-red-500">*</span>
+                  {isEn ? "Father's / Guardian's Name" : "अभिभावक / पिता का नाम"} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   name="guardianName"
                   value={formData.guardianName}
                   onChange={handleChange}
-                  placeholder="उदा. श्री राजेश शर्मा"
+                  placeholder={isEn ? "e.g. Shri Rajesh Sharma" : "उदा. श्री राजेश शर्मा"}
                   className={`w-full px-4 py-2.5 rounded-none border text-sm focus:outline-none focus:ring-1 bg-[#F8F4EA]/50 ${
                     errors.guardianName
                       ? 'border-red-400 focus:ring-red-400'
@@ -150,14 +161,14 @@ export const QuickInquiryForm = () => {
               {/* Phone */}
               <div>
                 <label className="block text-xs font-bold text-[#241B15] mb-1">
-                  मोबाइल नंबर (10 अंक) <span className="text-red-500">*</span>
+                  {isEn ? "Mobile Number (10 Digits)" : "मोबाइल नंबर (10 अंक)"} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="उदा. 9876543210"
+                  placeholder={isEn ? "e.g. 9876543210" : "उदा. 9876543210"}
                   maxLength={10}
                   className={`w-full px-4 py-2.5 rounded-none border text-sm focus:outline-none focus:ring-1 bg-[#F8F4EA]/50 ${
                     errors.phone
@@ -173,7 +184,7 @@ export const QuickInquiryForm = () => {
               {/* Course Selection */}
               <div>
                 <label className="block text-xs font-bold text-[#241B15] mb-1">
-                  वांछित पाठ्यक्रम / कक्षा <span className="text-red-500">*</span>
+                  {isEn ? "Desired Course / Class" : "वांछित पाठ्यक्रम / कक्षा"} <span className="text-red-500">*</span>
                 </label>
                 <select
                   name="course"
@@ -185,10 +196,10 @@ export const QuickInquiryForm = () => {
                       : 'border-[#C68A32]/40 focus:ring-[#C96B25]'
                   }`}
                 >
-                  <option value="">-- पाठ्यक्रम चुनें --</option>
+                  <option value="">{isEn ? "-- Select Course --" : "-- पाठ्यक्रम चुनें --"}</option>
                   {COURSES_DATA.map((c) => (
                     <option key={c.id} value={c.title}>
-                      {c.title} ({c.level})
+                      {isEn ? (c.title_en || c.title) : c.title} ({isEn ? (c.level_en || c.level) : c.level})
                     </option>
                   ))}
                 </select>
@@ -201,14 +212,14 @@ export const QuickInquiryForm = () => {
             {/* City / State */}
             <div>
               <label className="block text-xs font-bold text-[#241B15] mb-1">
-                गृह जनपद / राज्य
+                {isEn ? "Home City / State" : "गृह जनपद / राज्य"}
               </label>
               <input
                 type="text"
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                placeholder="उदा. अयोध्या, उत्तर प्रदेश"
+                placeholder={isEn ? "e.g. Ayodhya, Uttar Pradesh" : "उदा. अयोध्या, उत्तर प्रदेश"}
                 className="w-full px-4 py-2.5 rounded-none border border-[#C68A32]/40 text-sm focus:outline-none focus:ring-1 focus:ring-[#C96B25] bg-[#F8F4EA]/50"
               />
             </div>
@@ -216,14 +227,14 @@ export const QuickInquiryForm = () => {
             {/* Message / Remarks */}
             <div>
               <label className="block text-xs font-bold text-[#241B15] mb-1">
-                अतिरिक्त टिप्पणी / कोई प्रश्न
+                {isEn ? "Additional Query / Remarks" : "अतिरिक्त टिप्पणी / कोई प्रश्न"}
               </label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 rows={3}
-                placeholder="यदि कोई विशिष्ट प्रश्न हो तो यहाँ लिखें..."
+                placeholder={isEn ? "Write your query here..." : "यदि कोई विशिष्ट प्रश्न हो तो यहाँ लिखें..."}
                 className="w-full px-4 py-2.5 rounded-none border border-[#C68A32]/40 text-sm focus:outline-none focus:ring-1 focus:ring-[#C96B25] bg-[#F8F4EA]/50"
               />
             </div>
@@ -235,10 +246,10 @@ export const QuickInquiryForm = () => {
                 size="lg"
                 className="w-full text-base font-bold shadow-sm rounded-none"
                 isLoading={isSubmitting}
-                loadingText="पूछताछ भेजी जा रही है..."
+                loadingText={isEn ? "Submitting Inquiry..." : "पूछताछ भेजी जा रही है..."}
                 icon={Send}
               >
-                प्रवेश पूछताछ प्रेषित करें
+                {isEn ? "Submit Admission Inquiry" : "प्रवेश पूछताछ प्रेषित करें"}
               </Button>
             </div>
           </form>
@@ -249,3 +260,4 @@ export const QuickInquiryForm = () => {
 };
 
 export default QuickInquiryForm;
+

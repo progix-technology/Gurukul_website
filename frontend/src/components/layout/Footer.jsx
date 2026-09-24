@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { MapPin, Phone, Mail } from 'lucide-react'
 import { INSTITUTION_INFO } from '../../data/institutionalData'
+import { useLanguage } from '../../context/LanguageContext'
 
 const FacebookIcon = () => (
   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -21,18 +22,20 @@ const LinkedinIcon = () => (
   </svg>
 )
 
-const navLinks = [
-  { label: 'मुख्य पृष्ठ', path: '/' },
-  { label: 'गुरुकुल परिचय', path: '/about' },
-  { label: 'पाठ्यक्रम', path: '/courses' },
-  { label: 'प्रवेश प्रक्रिया', path: '/admission' },
-  { label: 'Adani Computer Lab', path: '/adani-computer-lab' },
-  { label: 'कार्यक्रम', path: '/events' },
-  { label: 'छायाचित्र', path: '/gallery' },
-  { label: 'संपर्क', path: '/contact' },
-]
-
 export default function Footer() {
+  const { t, language } = useLanguage()
+
+  const navLinks = [
+    { label: t('nav.home', 'मुख्य पृष्ठ'), path: '/' },
+    { label: t('nav.about', 'गुरुकुल परिचय'), path: '/about' },
+    { label: t('nav.courses', 'पाठ्यक्रम'), path: '/courses' },
+    { label: t('nav.admission', 'प्रवेश प्रक्रिया'), path: '/admission' },
+    { label: 'Adani Computer Lab', path: '/adani-computer-lab' },
+    { label: t('nav.events', 'कार्यक्रम'), path: '/events' },
+    { label: t('nav.gallery', 'छायाचित्र'), path: '/gallery' },
+    { label: t('nav.contact', 'संपर्क'), path: '/contact' },
+  ]
+
   return (
     <footer style={{ backgroundColor: '#241B15', color: '#F8F4EA' }}>
       {/* Gold top border */}
@@ -54,15 +57,17 @@ export default function Footer() {
                   className="font-bold text-base leading-tight"
                   style={{ fontFamily: "'Noto Serif Devanagari', serif", color: '#C68A32' }}
                 >
-                  श्री निःशुल्क गुरुकुल
+                  {language === 'en' ? 'Shri Nishulk Gurukul' : 'श्री निःशुल्क गुरुकुल'}
                 </div>
                 <div className="text-sm" style={{ color: '#D4C4A0' }}>
-                  महाविद्यालय, अयोध्या
+                  {language === 'en' ? 'Mahavidyalaya, Ayodhya' : 'महाविद्यालय, अयोध्या'}
                 </div>
               </div>
             </div>
             <p className="text-sm leading-relaxed" style={{ color: '#D4C4A0', fontFamily: "'Noto Sans Devanagari', sans-serif" }}>
-              सन् 1925 से परंपरागत गुरुकुलीय शिक्षा प्रदान करते हुए, यह महाविद्यालय वेद, संस्कृत एवं आधुनिक ज्ञान के समन्वय का केंद्र है।
+              {language === 'en'
+                ? 'Imparting traditional Vedic education since 1925, this institution is a unique center for Sanskrit, Vedic heritage, and modern digital education.'
+                : 'सन् 1925 से परंपरागत गुरुकुलीय शिक्षा प्रदान करते हुए, यह महाविद्यालय वेद, संस्कृत एवं आधुनिक ज्ञान के समन्वय का केंद्र है।'}
             </p>
             <div className="mt-5 h-px" style={{ backgroundColor: '#8B4513' }} />
             <p className="mt-4 text-xs italic" style={{ color: '#C68A32', fontFamily: "'Noto Serif Devanagari', serif" }}>
@@ -80,7 +85,7 @@ export default function Footer() {
                 borderColor: '#8B4513',
               }}
             >
-              त्वरित लिंक
+              {t('footer.quickLinks', 'त्वरित लिंक')}
             </h3>
             <ul className="space-y-2">
               {navLinks.map((link) => (
@@ -108,14 +113,15 @@ export default function Footer() {
                 borderColor: '#8B4513',
               }}
             >
-              संपर्क
+              {t('footer.contactTitle', 'संपर्क')}
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={16} color="#C96B25" className="mt-1 shrink-0" />
                 <span className="text-sm" style={{ color: '#D4C4A0', fontFamily: "'Noto Sans Devanagari', sans-serif" }}>
-                  5/5/13 जालपा लाला, जालपा मंदिर के सामने,<br />
-                  अयोध्या, फैज़ाबाद - 224123
+                  {language === 'en'
+                    ? '5/5/13 Jalpa Lala, Opp. Jalpa Temple, Ayodhya, Faizabad - 224123'
+                    : '5/5/13 जालपा लाला, जालपा मंदिर के सामने, अयोध्या, फैज़ाबाद - 224123'}
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -144,17 +150,19 @@ export default function Footer() {
                 borderColor: '#8B4513',
               }}
             >
-              हमसे जुड़ें
+              {language === 'en' ? 'Connect With Us' : 'हमसे जुड़ें'}
             </h3>
             <p className="text-sm mb-5" style={{ color: '#D4C4A0', fontFamily: "'Noto Sans Devanagari', sans-serif" }}>
-              हमारे सोशल मीडिया पर हमें अनुसरण करें और गुरुकुल की गतिविधियों से जुड़े रहें।
+              {language === 'en'
+                ? 'Follow our social media channels to stay connected with Gurukul activities.'
+                : 'हमारे सोशल मीडिया पर हमें अनुसरण करें और गुरुकुल की गतिविधियों से जुड़े रहें।'}
             </p>
             <div className="flex items-center gap-3.5">
               <a
                 href={INSTITUTION_INFO.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="फेसबुक (Facebook)"
+                aria-label="Facebook"
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-[#C68A32] text-[#C68A32] hover:text-[#241B15] shadow-sm"
                 style={{ backgroundColor: 'rgba(198,138,50,0.15)', border: '1px solid #C68A32' }}
               >
@@ -164,7 +172,7 @@ export default function Footer() {
                 href={INSTITUTION_INFO.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="यूट्यूब (YouTube)"
+                aria-label="YouTube"
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-[#C68A32] text-[#C68A32] hover:text-[#241B15] shadow-sm"
                 style={{ backgroundColor: 'rgba(198,138,50,0.15)', border: '1px solid #C68A32' }}
               >
@@ -174,7 +182,7 @@ export default function Footer() {
                 href={INSTITUTION_INFO.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="लिंक्डइन (LinkedIn)"
+                aria-label="LinkedIn"
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:bg-[#C68A32] text-[#C68A32] hover:text-[#241B15] shadow-sm"
                 style={{ backgroundColor: 'rgba(198,138,50,0.15)', border: '1px solid #C68A32' }}
               >
@@ -183,8 +191,10 @@ export default function Footer() {
             </div>
             <div className="mt-6 p-4 rounded" style={{ backgroundColor: 'rgba(201,107,37,0.12)', border: '1px solid rgba(198,138,50,0.3)' }}>
               <p className="text-xs" style={{ color: '#D4C4A0', fontFamily: "'Noto Sans Devanagari', sans-serif" }}>
-                <span style={{ color: '#C68A32', fontWeight: 600 }}>मान्यता:</span><br />
-                सम्पूर्णानन्द संस्कृत विश्वविद्यालय,<br />वाराणसी से सम्बद्ध
+                <span style={{ color: '#C68A32', fontWeight: 600 }}>
+                  {language === 'en' ? 'Affiliation:' : 'मान्यता:'}
+                </span><br />
+                {language === 'en' ? 'Affiliated to Sampurnanand Sanskrit University, Varanasi' : 'सम्पूर्णानन्द संस्कृत विश्वविद्यालय, वाराणसी से सम्बद्ध'}
               </p>
             </div>
           </div>
@@ -196,11 +206,12 @@ export default function Footer() {
         className="border-t py-5 px-6 text-center text-sm"
         style={{ borderColor: '#8B4513', color: '#D4C4A0', fontFamily: "'Noto Sans Devanagari', sans-serif" }}
       >
-        © 2026 श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या। सर्वाधिकार सुरक्षित।
+        {t('footer.copyright', '© 2026 श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या। सर्वाधिकार सुरक्षित।')}
         <span className="ml-2" style={{ color: '#C68A32' }}>
-          | सन् 1925 से ज्ञान का प्रकाश
+          | {language === 'en' ? 'Light of Wisdom Since 1925' : 'सन् 1925 से ज्ञान का प्रकाश'}
         </span>
       </div>
     </footer>
   )
 }
+

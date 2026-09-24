@@ -4,8 +4,11 @@ import Button from '../common/Button';
 import { validateContactForm } from '../../utils/validation';
 import { contactService } from '../../services/contactService';
 import { useToast } from '../../hooks/useToast';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const ContactForm = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
   const { showSuccess, showError } = useToast();
 
   const [formData, setFormData] = useState({
@@ -37,7 +40,7 @@ export const ContactForm = () => {
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      showError('कृपया फॉर्म में दी गई त्रुटियों को सुधारें।');
+      showError(isEn ? 'Please correct the errors in the form.' : 'कृपया फॉर्म में दी गई त्रुटियों को सुधारें।');
       return;
     }
 
@@ -45,7 +48,7 @@ export const ContactForm = () => {
     try {
       const response = await contactService.submitMessage(formData);
       setIsSuccess(true);
-      showSuccess(response.message || 'आपका संदेश सफलतापूर्वक भेज दिया गया है।');
+      showSuccess(response.message || (isEn ? 'Your message has been sent successfully.' : 'आपका संदेश सफलतापूर्वक भेज दिया गया है।'));
       setFormData({
         name: '',
         phone: '',
@@ -58,9 +61,9 @@ export const ContactForm = () => {
     } catch (err) {
       if (err.isRateLimit || err.status === 429) {
         setRateLimitNotice(err.message);
-        showError(err.message || 'अनुरोध सीमा पार हो गई है। कृपया कुछ देर प्रतीक्षा करें।');
+        showError(err.message || (isEn ? 'Request limit exceeded. Please wait a moment.' : 'अनुरोध सीमा पार हो गई है। कृपया कुछ देर प्रतीक्षा करें।'));
       } else {
-        showError(err.message || 'संदेश भेजने में कुछ समस्या हुई। कृपया पुनः प्रयास करें।');
+        showError(err.message || (isEn ? 'Error sending message. Please try again.' : 'संदेश भेजने में कुछ समस्या हुई। कृपया पुनः प्रयास करें।'));
       }
     } finally {
       setIsSubmitting(false);
@@ -71,10 +74,13 @@ export const ContactForm = () => {
     <div className="bg-white rounded-none border border-[#C68A32]/40 p-5 sm:p-8 lg:p-10 shadow-sm">
       <div className="mb-6">
         <h3 className="font-serif font-bold text-2xl text-[#241B15] mb-1">
-          हमें संदेश भेजें (Write to Us)
+          {isEn ? "Send Us a Message" : "हमें संदेश भेजें (Write to Us)"}
         </h3>
         <p className="text-xs sm:text-sm text-[#241B15]/80">
-          प्रवेश, पाठ्यक्रम या सामान्य जानकारी हेतु नीचे दिया गया फॉर्म भरें।
+          {isEn 
+            ? "Fill out the form below for admissions, academic inquiries, or general communication."
+            : "प्रवेश, पाठ्यक्रम या सामान्य जानकारी हेतु नीचे दिया गया फॉर्म भरें।"
+          }
         </p>
       </div>
 
@@ -88,7 +94,12 @@ export const ContactForm = () => {
       {isSuccess && (
         <div className="p-4 rounded-none bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs sm:text-sm flex items-center gap-3 mb-6 animate-fadeIn">
           <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-          <span>सफलतापूर्वक भेजा गया! गुरुकुल कार्यालय शीघ्र ही आपसे संपर्क करेगा।</span>
+          <span>
+            {isEn 
+              ? "Message sent successfully! Our office will get back to you shortly."
+              : "सफलतापूर्वक भेजा गया! गुरुकुल कार्यालय शीघ्र ही आपसे संपर्क करेगा।"
+            }
+          </span>
         </div>
       )}
 
@@ -96,14 +107,14 @@ export const ContactForm = () => {
         {/* Name */}
         <div>
           <label className="block text-xs font-bold text-[#241B15] mb-1">
-            आपका पूरा नाम <span className="text-red-500">*</span>
+            {isEn ? "Full Name" : "आपका पूरा नाम"} <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="उदा. राहुल शर्मा"
+            placeholder={isEn ? "e.g. Rahul Sharma" : "उदा. राहुल शर्मा"}
             className={`w-full px-4 py-2.5 rounded-none border text-sm focus:outline-none focus:ring-1 bg-[#F8F4EA]/50 ${
               errors.name
                 ? 'border-red-400 focus:ring-red-400'
@@ -119,14 +130,14 @@ export const ContactForm = () => {
           {/* Phone */}
           <div>
             <label className="block text-xs font-bold text-[#241B15] mb-1">
-              मोबाइल नंबर <span className="text-red-500">*</span>
+              {isEn ? "Mobile Number" : "मोबाइल नंबर"} <span className="text-red-500">*</span>
             </label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="उदा. 9876543210"
+              placeholder={isEn ? "e.g. 9876543210" : "उदा. 9876543210"}
               maxLength={10}
               className={`w-full px-4 py-2.5 rounded-none border text-sm focus:outline-none focus:ring-1 bg-[#F8F4EA]/50 ${
                 errors.phone
@@ -142,14 +153,14 @@ export const ContactForm = () => {
           {/* Email */}
           <div>
             <label className="block text-xs font-bold text-[#241B15] mb-1">
-              ईमेल पता (वैकल्पिक)
+              {isEn ? "Email Address (Optional)" : "ईमेल पता (वैकल्पिक)"}
             </label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="उदा. example@gmail.com"
+              placeholder={isEn ? "e.g. example@gmail.com" : "उदा. example@gmail.com"}
               className={`w-full px-4 py-2.5 rounded-none border text-sm focus:outline-none focus:ring-1 bg-[#F8F4EA]/50 ${
                 errors.email
                   ? 'border-red-400 focus:ring-red-400'
@@ -165,14 +176,14 @@ export const ContactForm = () => {
         {/* Subject */}
         <div>
           <label className="block text-xs font-bold text-[#241B15] mb-1">
-            विषय (Subject)
+            {isEn ? "Subject" : "विषय (Subject)"}
           </label>
           <input
             type="text"
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            placeholder="उदा. प्रवेश जानकारी / दान सहयोग"
+            placeholder={isEn ? "e.g. Admission Inquiry / Collaboration" : "उदा. प्रवेश जानकारी / दान सहयोग"}
             className="w-full px-4 py-2.5 rounded-none border border-[#C68A32]/40 text-sm focus:outline-none focus:ring-1 focus:ring-[#C96B25] bg-[#F8F4EA]/50"
           />
         </div>
@@ -180,14 +191,14 @@ export const ContactForm = () => {
         {/* Message */}
         <div>
           <label className="block text-xs font-bold text-[#241B15] mb-1">
-            संदेश (Message) <span className="text-red-500">*</span>
+            {isEn ? "Message" : "संदेश (Message)"} <span className="text-red-500">*</span>
           </label>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
             rows={4}
-            placeholder="अपना संदेश या प्रश्न यहाँ लिखें..."
+            placeholder={isEn ? "Write your message or inquiry here..." : "अपना संदेश या प्रश्न यहाँ लिखें..."}
             className={`w-full px-4 py-2.5 rounded-none border text-sm focus:outline-none focus:ring-1 bg-[#F8F4EA]/50 ${
               errors.message
                 ? 'border-red-400 focus:ring-red-400'
@@ -206,10 +217,13 @@ export const ContactForm = () => {
             size="lg"
             className="w-full text-base font-bold shadow-sm rounded-none"
             isLoading={isSubmitting}
-            loadingText="भेजा जा रहा है..."
+            loadingText={isEn ? "Sending Message..." : "भेजा जा रहा है..."}
             icon={Send}
           >
-            {isSuccess ? 'सफलतापूर्वक भेजा गया' : 'संदेश भेजें'}
+            {isSuccess 
+              ? (isEn ? "Sent Successfully" : "सफलतापूर्वक भेजा गया") 
+              : (isEn ? "Send Message" : "संदेश भेजें")
+            }
           </Button>
         </div>
       </form>
@@ -218,3 +232,4 @@ export const ContactForm = () => {
 };
 
 export default ContactForm;
+

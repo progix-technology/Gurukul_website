@@ -2,69 +2,97 @@ import React from 'react';
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
 import {
-  CheckCircle,
-  HelpCircle,
-  Info,
   ShieldCheck,
   Utensils,
   GraduationCap,
-  Sparkles,
   Building,
-  BookOpen
+  BookOpen,
+  Info
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const FeeStructure = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
+
   const feeItems = [
     {
-      title: 'शिक्षण शुल्क (Tuition Fee)',
-      amount: 'निःशुल्क (₹0)',
-      frequency: 'संपूर्ण सत्र',
-      desc: 'कक्षा 6 (प्रथमा) से आचार्य (M.A.) तक किसी भी प्रकार का शिक्षण शुल्क नहीं लिया जाता।',
+      title: isEn ? 'Tuition Fee (Shikshan Shulk)' : 'शिक्षण शुल्क (Tuition Fee)',
+      amount: isEn ? 'Free (₹0)' : 'निःशुल्क (₹0)',
+      frequency: isEn ? 'Entire Academic Session' : 'संपूर्ण सत्र',
+      desc: isEn 
+        ? 'Zero tuition fees charged from Class 6 (Prathama) to Acharya (M.A.).'
+        : 'कक्षा 6 (प्रथमा) से आचार्य (M.A.) तक किसी भी प्रकार का शिक्षण शुल्क नहीं लिया जाता।',
       icon: GraduationCap,
       isFree: true,
-      badge: 'पूर्णतः निःशुल्क'
+      badge: isEn ? '100% Free' : 'पूर्णतः निःशुल्क'
     },
     {
-      title: 'प्रवेश / नामांकन शुल्क (Admission Fee)',
+      title: isEn ? 'Admission / Registration Fee' : 'प्रवेश / नामांकन शुल्क (Admission Fee)',
       amount: '₹500',
-      frequency: 'एकमुश्त (One-time)',
-      desc: 'प्रवेश के समय पंजीकरण एवं प्रशासनिक व्यवस्था हेतु अप्रतिदेय (Non-refundable) शुल्क।',
+      frequency: isEn ? 'One-time' : 'एकमुश्त (One-time)',
+      desc: isEn 
+        ? 'Non-refundable administrative and registration contribution payable once at admission.'
+        : 'प्रवेश के समय पंजीकरण एवं प्रशासनिक व्यवस्था हेतु अप्रतिदेय (Non-refundable) शुल्क।',
       icon: ShieldCheck,
       isFree: false
     },
     {
-      title: 'मासिक भोजन व्यवस्था शुल्क (Monthly Meal Charge)',
+      title: isEn ? 'Monthly Meal Contribution (Mess)' : 'मासिक भोजन व्यवस्था शुल्क (Monthly Meal Charge)',
       amount: '₹500',
-      frequency: 'प्रति माह (Per Month)',
-      desc: 'गुरुकुल गौशाला के शुद्ध दुग्ध एवं त्रिकाल सात्विक, पौष्टिक भोजन व्यवस्था हेतु नाममात्र सहयोग।',
+      frequency: isEn ? 'Per Month' : 'प्रति माह (Per Month)',
+      desc: isEn 
+        ? 'Nominal contribution for pure cow milk from Gaushala & 3 daily wholesome Satvik meals.'
+        : 'गुरुकुल गौशाला के शुद्ध दुग्ध एवं त्रिकाल सात्विक, पौष्टिक भोजन व्यवस्था हेतु नाममात्र सहयोग।',
       icon: Utensils,
       isFree: false
     },
     {
-      title: 'वार्षिक विकास शुल्क (Annual Development Fee)',
+      title: isEn ? 'Annual Campus Development Fund' : 'वार्षिक विकास शुल्क (Annual Development Fee)',
       amount: '₹60',
-      frequency: 'प्रति वर्ष (Per Year)',
-      desc: 'गुरुकुल परिसर के रखरखाव एवं आवश्यक भौतिक संसाधन विकास हेतु।',
+      frequency: isEn ? 'Per Year' : 'प्रति वर्ष (Per Year)',
+      desc: isEn 
+        ? 'For the ongoing maintenance and infrastructure development of the Gurukul campus.'
+        : 'गुरुकुल परिसर के रखरखाव एवं आवश्यक भौतिक संसाधन विकास हेतु।',
       icon: Building,
       isFree: false
     },
     {
-      title: 'वार्षिक शिक्षण संवर्धन शुल्क (Annual Teaching Fee)',
+      title: isEn ? 'Annual Teaching Enrichment Fee' : 'वार्षिक शिक्षण संवर्धन शुल्क (Annual Teaching Fee)',
       amount: '₹24',
-      frequency: 'प्रति वर्ष (Per Year)',
-      desc: 'परीक्षा सामग्री, प्रश्न-पत्र एवं शैक्षणिक गतिविधियों हेतु वार्षिक शुल्क।',
+      frequency: isEn ? 'Per Year' : 'प्रति वर्ष (Per Year)',
+      desc: isEn 
+        ? 'Annual nominal fee for examination stationery, answer sheets, and educational activities.'
+        : 'परीक्षा सामग्री, प्रश्न-पत्र एवं शैक्षणिक गतिविधियों हेतु वार्षिक शुल्क।',
       icon: BookOpen,
       isFree: false
     }
+  ];
+
+  const parentItems = isEn ? [
+    'Dining utensils (Thali, bowl, glass, spoon)',
+    'Bedding (Mattress, bedsheet, pillow, blanket/quilt)',
+    'Daily hygiene supplies (Soap, hair oil, toothpaste)',
+    'Traditional Gurukul attire (Dhoti-kurta / prescribed attire)',
+    'Study textbooks, notebooks, and writing materials'
+  ] : [
+    'भोजन के बर्तन (थाली, कटोरी, गिलास, चम्मच)',
+    'बिछौना व बिस्तर (गद्दा, चादर, तकिया, कम्बल/रजाई)',
+    'दैनिक स्वच्छता सामग्री (साबुन, तेल, दंतमंजन आदि)',
+    'गुरुकुलीय वेशभूषा (धोती-कुर्ता / निर्धारित वस्त्र)',
+    'पाठ्य पुस्तकें, कॉपियां व लेखन सामग्री'
   ];
 
   return (
     <section className="py-16 sm:py-20 bg-[#FAF8F5] border-t border-[#C68A32]/20">
       <Container>
         <SectionHeading
-          badge="पारदर्शी शुल्क व्यवस्था"
-          title="शुल्क संरचना एवं आवासीय व्यवस्था विवरण"
-          subtitle="श्री निःशुल्क गुरुकुल महाविद्यालय में पारंपरिक शिक्षण पूर्णतः निःशुल्क है। नाममात्र सहयोग शुल्क विवरण नीचे दिया गया है:"
+          badge={isEn ? "TRANSPARENT FEE STRUCTURE" : "पारदर्शी शुल्क व्यवस्था"}
+          title={isEn ? "Fee Structure & Residential Details" : "शुल्क संरचना एवं आवासीय व्यवस्था विवरण"}
+          subtitle={isEn 
+            ? "Academic education is 100% free at Shri Nishulk Gurukul Mahavidyalaya. Nominal supportive contributions are outlined below:"
+            : "श्री निःशुल्क गुरुकुल महाविद्यालय में पारंपरिक शिक्षण पूर्णतः निःशुल्क है। नाममात्र सहयोग शुल्क विवरण नीचे दिया गया है:"
+          }
         />
 
         {/* Fee Breakdown Cards Grid */}
@@ -154,20 +182,17 @@ export const FeeStructure = () => {
 
             <div className="space-y-2 flex-1">
               <h4 className="font-serif font-bold text-base sm:text-lg text-[#241B15]">
-                अभिभावकों हेतु आवश्यक निर्देश (Note for Parents)
+                {isEn ? "Note for Parents (Personal Items)" : "अभिभावकों हेतु आवश्यक निर्देश (Note for Parents)"}
               </h4>
               <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-sans">
-                गुरुकुल में रहने वाले प्रत्येक विद्यार्थी की व्यक्तिगत दैनिक उपयोग की सामग्री की व्यवस्था अभिभावकों द्वारा की जाती है:
+                {isEn 
+                  ? "Parents are requested to provide personal daily utility articles for the student as listed below:"
+                  : "गुरुकुल में रहने वाले प्रत्येक विद्यार्थी की व्यक्तिगत दैनिक उपयोग की सामग्री की व्यवस्था अभिभावकों द्वारा की जाती है:"
+                }
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-2">
-                {[
-                  'भोजन के बर्तन (थाली, कटोरी, गिलास, चम्मच)',
-                  'बिछौना व बिस्तर (गद्दा, चादर, तकिया, कम्बल/रजाई)',
-                  'दैनिक स्वच्छता सामग्री (साबुन, तेल, दंतमंजन आदि)',
-                  'गुरुकुलीय वेशभूषा (धोती-कुर्ता / निर्धारित वस्त्र)',
-                  'पाठ्य पुस्तकें, कॉपियां व लेखन सामग्री'
-                ].map((item, i) => (
+                {parentItems.map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-xs sm:text-sm text-gray-800 font-medium">
                     <span className="text-[#C96B25] font-bold">•</span>
                     <span>{item}</span>
@@ -183,10 +208,13 @@ export const FeeStructure = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="space-y-1 text-center sm:text-left">
               <span className="text-xs font-serif font-bold text-[#C68A32] uppercase tracking-wider">
-                निःशुल्क गुरुकुलीय सेवा संकल्प
+                {isEn ? "FREE VEDIC SERVICE MISSION" : "निःशुल्क गुरुकुलीय सेवा संकल्प"}
               </span>
               <p className="text-xs sm:text-sm text-[#EDE7D4] leading-relaxed font-sans max-w-3xl">
-                जहाँ आधुनिक निजी विद्यालयों में वार्षिक शिक्षण व्यय ₹30,000 से ₹1,00,000 तक होता है, वहीं श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या में लगभग 100 वर्षों से नाममात्र सहयोग पर राष्ट्र निर्माण हेतु समर्पित ऋषि परम्परा की शिक्षा प्रदान की जा रही है।
+                {isEn
+                  ? "While private modern schools charge ₹30,000 to ₹1,00,000 annually, Shri Nishulk Gurukul Mahavidyalaya Ayodhya has upheld a selfless century-long tradition of providing authentic Vedic character education at near-zero nominal cost."
+                  : "जहाँ आधुनिक निजी विद्यालयों में वार्षिक शिक्षण व्यय ₹30,000 से ₹1,00,000 तक होता है, वहीं श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या में लगभग 100 वर्षों से नाममात्र सहयोग पर राष्ट्र निर्माण हेतु समर्पित ऋषि परम्परा की शिक्षा प्रदान की जा रही है।"
+                }
               </p>
             </div>
           </div>
@@ -197,3 +225,4 @@ export const FeeStructure = () => {
 };
 
 export default FeeStructure;
+

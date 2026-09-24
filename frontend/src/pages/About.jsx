@@ -3,24 +3,35 @@ import SEO from '../components/common/SEO';
 import Container from '../components/common/Container';
 import HistorySection from '../components/about/HistorySection';
 import LeadershipTeam from '../components/about/LeadershipTeam';
-import CampusFacilities from '../components/about/CampusFacilities';
+ import CampusFacilities from '../components/about/CampusFacilities';
 import MediaCoverageSection from '../components/common/MediaCoverageSection';
 import MissionVision from '../components/about/MissionVision';
 import CallToAction from '../components/home/CallToAction';
 import { ABOUT_DATA } from '../data/aboutData';
-import { Quote, Award, Sparkles } from 'lucide-react';
+import { Award } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 import formerPrincipalImg from '../assets/IMG_1968.jpg';
 import bannerBgImg from '../assets/img_2.jpeg';
 
 export const About = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
   const { principalMessage } = ABOUT_DATA;
+
+  const currentMsg = isEn ? (principalMessage.message_en || principalMessage.message) : principalMessage.message;
+  const currentTitle = isEn ? (principalMessage.title_en || principalMessage.title) : principalMessage.title;
+  const currentPrincipalName = isEn ? (principalMessage.principalName_en || principalMessage.principalName) : principalMessage.principalName;
+  const currentQual = isEn ? (principalMessage.qualification_en || principalMessage.qualification) : principalMessage.qualification;
 
   return (
     <>
       <SEO
-        title="गुरुकुल परिचय"
-        description="श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या का इतिहास, संस्थापक स्वामी त्यागानन्द सरस्वती जी, प्राचार्य का संदेश एवं प्रबंध समिति।"
+        title={isEn ? "About Gurukul - Heritage & Leadership" : "गुरुकुल परिचय"}
+        description={isEn 
+          ? "History, Swami Tyaganand Saraswati Ji, Principal's Message, and Academic Facilities of Shri Nishulk Gurukul Mahavidyalaya Ayodhya."
+          : "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या का इतिहास, संस्थापक स्वामी त्यागानन्द सरस्वती जी, प्राचार्य का संदेश एवं प्रबंध समिति।"
+        }
       />
 
       {/* Page Header Banner */}
@@ -47,13 +58,16 @@ export const About = () => {
             ॐ
           </div>
           <div className="inline-flex items-center px-4 py-1 rounded-none text-xs sm:text-sm font-serif font-bold uppercase tracking-wider mb-4 bg-transparent text-[#F8F4EA] border border-[#C68A32] shadow-sm">
-            <span>सन् 1925 से स्थापित</span>
+            <span>{isEn ? "ESTABLISHED IN 1925" : "सन् 1925 से स्थापित"}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-3 drop-shadow-md">
-            गुरुकुल परिचय
+            {isEn ? "About Gurukul Mahavidyalaya" : "गुरुकुल परिचय"}
           </h1>
           <p className="text-sm sm:text-base text-[#F8F4EA]/90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm font-medium">
-            प्राचीन प्राच्य शिक्षा पद्धति एवं आधुनिक ज्ञान के समन्वय से राष्ट्र निर्माता ब्रह्मचारियों का निर्माण
+            {isEn 
+              ? "Synthesizing ancient Vedic wisdom and modern sciences to nurture future nation-builders"
+              : "प्राचीन प्राच्य शिक्षा पद्धति एवं आधुनिक ज्ञान के समन्वय से राष्ट्र निर्माता ब्रह्मचारियों का निर्माण"
+            }
           </p>
         </Container>
       </section>
@@ -68,10 +82,10 @@ export const About = () => {
           <div className="text-center mb-8">
             <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-none text-xs font-serif font-bold uppercase tracking-wider mb-3.5 border bg-[#F2EBDA] text-[#C96B25] border-[#C68A32]/30 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-none bg-[#C96B25]"></span>
-              {principalMessage.title}
+              {currentTitle}
             </span>
             <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#241B15]">
-              गुरुकुल की विकास यात्रा एवं मंगल कामना
+              {isEn ? "Gurukul's Growth Journey & Auspicious Blessings" : "गुरुकुल की विकास यात्रा एवं मंगल कामना"}
             </h2>
             <div className="flex items-center justify-center gap-3 mt-3">
               <div className="h-px w-12 bg-[#C68A32]" />
@@ -86,26 +100,26 @@ export const About = () => {
               <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-[#C68A32] shadow-lg p-1 bg-[#F8F4EA] mb-3 transition-transform duration-300 hover:scale-105">
                 <img
                   src={formerPrincipalImg}
-                  alt="पूर्व प्रधानाचार्य स्वामी त्यागानन्द सरस्वती"
+                  alt={isEn ? "Former Principal Swami Tyaganand Saraswati" : "पूर्व प्रधानाचार्य स्वामी त्यागानन्द सरस्वती"}
                   className="w-full h-full object-cover rounded-full object-top"
                   loading="lazy"
                 />
               </div>
               <span className="px-3 py-0.5 rounded-full bg-[#241B15] text-[#C68A32] text-xs font-bold mb-1 shadow-sm">
-                पूर्व प्रधानाचार्य
+                {isEn ? "Founder Principal" : "पूर्व प्रधानाचार्य"}
               </span>
               <h3 className="font-serif font-bold text-base sm:text-lg text-[#241B15]">
-                स्वामी त्यागानन्द सरस्वती जी
+                {isEn ? "Swami Tyaganand Saraswati Ji" : "स्वामी त्यागानन्द सरस्वती जी"}
               </h3>
               <p className="text-xs text-[#8B4513] font-semibold mt-0.5">
-                संस्थापक एवं प्रथम कुलपति (1925)
+                {isEn ? "Founder & 1st Chancellor (1925)" : "संस्थापक एवं प्रथम कुलपति (1925)"}
               </p>
             </div>
 
             {/* 2. Center: Principal Message Text */}
             <div className="lg:col-span-6 space-y-3 text-center order-1 lg:order-2 px-2 sm:px-3">
               <div className="space-y-3 text-sm sm:text-base text-[#3D2B1F] leading-relaxed font-serif text-justify sm:text-center">
-                {principalMessage.message.split('\n\n').map((para, idx) => (
+                {currentMsg.split('\n\n').map((para, idx) => (
                   <p key={idx}>{para}</p>
                 ))}
               </div>
@@ -122,20 +136,20 @@ export const About = () => {
               <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-[#C68A32] shadow-lg p-1 bg-[#F8F4EA] mb-3 transition-transform duration-300 hover:scale-105">
                 <img
                   src={formerPrincipalImg}
-                  alt="वर्तमान प्रधानाचार्य"
+                  alt={isEn ? "Current Principal" : "वर्तमान प्रधानाचार्य"}
                   className="w-full h-full object-cover rounded-full object-top"
                   loading="lazy"
                 />
               </div>
               <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#C96B25] text-[#F8F4EA] text-xs font-bold mb-1 shadow-sm">
                 <Award className="w-3.5 h-3.5 text-white" />
-                वर्तमान प्रधानाचार्य
+                {isEn ? "Current Principal" : "वर्तमान प्रधानाचार्य"}
               </span>
               <h3 className="font-serif font-bold text-base sm:text-lg text-[#241B15]">
-                {principalMessage.principalName}
+                {currentPrincipalName}
               </h3>
               <p className="text-xs text-[#8B4513] font-semibold mt-0.5">
-                {principalMessage.qualification}
+                {currentQual}
               </p>
             </div>
           </div>
@@ -161,3 +175,4 @@ export const About = () => {
 };
 
 export default About;
+

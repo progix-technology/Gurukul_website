@@ -3,13 +3,17 @@ import SEO from '../components/common/SEO';
 import Container from '../components/common/Container';
 import Button from '../components/common/Button';
 import { Home, BookOpen, AlertTriangle } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const NotFound = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
+
   return (
     <>
       <SEO
-        title="पृष्ठ नहीं मिला (404)"
-        description="क्षमा करें, आपके द्वारा खोजा गया पृष्ठ उपलब्ध नहीं है।"
+        title={isEn ? "Page Not Found (404)" : "पृष्ठ नहीं मिला (404)"}
+        description={isEn ? "Sorry, the page you are looking for does not exist." : "क्षमा करें, आपके द्वारा खोजा गया पृष्ठ उपलब्ध नहीं है।"}
       />
 
       <section className="min-h-[70vh] flex items-center justify-center py-20 bg-gurukul-cream-100">
@@ -21,15 +25,17 @@ export const NotFound = () => {
             </div>
 
             <span className="px-3.5 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold uppercase tracking-wider inline-block mb-3">
-              त्रुटि 404
+              {isEn ? "Error 404" : "त्रुटि 404"}
             </span>
 
             <h1 className="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mb-3">
-              पृष्ठ नहीं मिला
+              {isEn ? "Page Not Found" : "पृष्ठ नहीं मिला"}
             </h1>
 
             <p className="text-sm sm:text-base text-gray-600 mb-8 leading-relaxed max-w-md mx-auto">
-              क्षमा करें, जिस पृष्ठ को आप खोज रहे हैं वह उपलब्ध नहीं है या इसका पता बदल दिया गया है।
+              {isEn
+                ? "Sorry, the page you are looking for is either removed or its URL address has been changed."
+                : "क्षमा करें, जिस पृष्ठ को आप खोज रहे हैं वह उपलब्ध नहीं है या इसका पता बदल दिया गया है।"}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -40,7 +46,7 @@ export const NotFound = () => {
                 icon={Home}
                 className="w-full sm:w-auto"
               >
-                मुख्य पृष्ठ पर जाएँ
+                {isEn ? "Go to Home Page" : "मुख्य पृष्ठ पर जाएँ"}
               </Button>
 
               <Button
@@ -50,7 +56,7 @@ export const NotFound = () => {
                 icon={BookOpen}
                 className="w-full sm:w-auto"
               >
-                पाठ्यक्रम देखें
+                {isEn ? "Explore Courses" : "पाठ्यक्रम देखें"}
               </Button>
             </div>
           </div>

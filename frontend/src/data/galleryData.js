@@ -29,52 +29,61 @@ import labImg12 from '../assets/Images/WhatsApp Image 2026-09-24 at 11.11.04 AM.
 import labImg13 from '../assets/Images/WhatsApp Image 2026-09-24 at 11.11.06 AM.jpeg';
 
 export const GALLERY_CATEGORIES = [
-  { id: 'all', label: 'सभी' },
-  { id: 'videos', label: 'वीडियो (Videos)' },
-  { id: 'campus', label: 'गुरुकुल परिसर' },
-  { id: 'adani_lab', label: 'अडानी कंप्यूटर लैब' },
-  { id: 'events', label: 'उत्सव एवं कार्यक्रम' },
+  { id: 'all', label: 'सभी', label_en: 'All Photos & Videos' },
+  { id: 'videos', label: 'वीडियो (Videos)', label_en: 'Videos & Media' },
+  { id: 'campus', label: 'गुरुकुल परिसर', label_en: 'Gurukul Campus' },
+  { id: 'adani_lab', label: 'अडानी कंप्यूटर लैब', label_en: 'Adani Computer Lab' },
+  { id: 'events', label: 'उत्सव एवं कार्यक्रम', label_en: 'Events & Yajna' },
 ];
 
 export const GALLERY_VIDEOS = [
   {
     id: 'vid-1',
     title: "FROM GURUKUL TO COMPUTER LABS | अयोध्या गुरुकुल",
+    title_en: "FROM GURUKUL TO COMPUTER LABS | Ayodhya Gurukul",
     category: "videos",
     isVideo: true,
     platform: "facebook",
     platformName: "Facebook",
     views: "1.9 लाख Views",
+    views_en: "190K+ Views",
     videoUrl: "https://www.facebook.com/watch/?v=901193219360518",
     thumbnail: videoThumbFb1,
     fullImage: videoThumbFb1,
-    caption: "Icons of India: अयोध्या गुरुकुल में स्थापित अत्याधुनिक कंप्यूटर लैब एवं तकनीकी शिक्षा पर विशेष रिपोर्ट।"
+    caption: "Icons of India: अयोध्या गुरुकुल में स्थापित अत्याधुनिक कंप्यूटर लैब एवं तकनीकी शिक्षा पर विशेष रिपोर्ट।",
+    caption_en: "Icons of India: Special report on the high-tech Adani Computer Lab and digital transformation at Ayodhya Gurukul."
   },
   {
     id: 'vid-2',
     title: "डिजिटल शिक्षा एवं गुरुकुल परंपरा | The CSR Journal",
+    title_en: "Digital Education & Gurukul Heritage | The CSR Journal",
     category: "videos",
     isVideo: true,
     platform: "facebook",
     platformName: "Facebook",
     views: "61 हजार Views",
+    views_en: "61K+ Views",
     videoUrl: "https://www.facebook.com/watch/?v=2162044871007812",
     thumbnail: videoThumbFb2,
     fullImage: videoThumbFb2,
-    caption: "The CSR Journal: श्री निःशुल्क गुरुकुल महाविद्यालय के विद्यार्थी वैदिक संस्कृति के साथ कंप्यूटर तकनीक सीखते हुए।"
+    caption: "The CSR Journal: श्री निःशुल्क गुरुकुल महाविद्यालय के विद्यार्थी वैदिक संस्कृति के साथ कंप्यूटर तकनीक सीखते हुए।",
+    caption_en: "The CSR Journal: Gurukul Brahmacharis mastering computer science alongside sacred Vedic traditions."
   },
   {
     id: 'vid-3',
     title: "गुरुकुल में आधुनिक कंप्यूटर शिक्षा पहल | X वीडियो",
+    title_en: "Modern Computer Education in Gurukul | X Video",
     category: "videos",
     isVideo: true,
     platform: "x",
     platformName: "X (Twitter)",
     views: "12.4K Views",
+    views_en: "12.4K Views",
     videoUrl: "https://x.com/VlKAS_PR0NAM0/status/2093287850519478283",
     thumbnail: videoThumbX1,
     fullImage: videoThumbX1,
-    caption: "श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या में प्राचीन संस्कृति और आधुनिक डिजिटल ज्ञान का अद्भुत संगम।"
+    caption: "श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या में प्राचीन संस्कृति और आधुनिक डिजिटल ज्ञान का अद्भुत संगम।",
+    caption_en: "Glimpse into the harmonious blend of ancient Vedic wisdom and digital literacy at Ayodhya Gurukul."
   }
 ];
 
@@ -85,82 +94,100 @@ export const GALLERY_ITEMS = [
   {
     id: 'events-51-annual',
     title: "51वाँ भव्य वार्षिकोत्सव एवं चतुर्वेद महायज्ञ",
+    title_en: "51st Grand Annual Celebration & 4-Veda Maha Yajna",
     category: "events",
     categories: ["events", "campus"],
     thumbnail: img7,
     fullImage: img7,
-    caption: "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या का 51वाँ भव्य वार्षिकोत्सव एवं चतुर्वेद महायज्ञ में आहुति देते यज्ञाचार्य एवं ब्रह्मचारी।"
+    caption: "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या का 51वाँ भव्य वार्षिकोत्सव एवं चतुर्वेद महायज्ञ में आहुति देते यज्ञाचार्य एवं ब्रह्मचारी।",
+    caption_en: "Acharyas and Brahmacharis performing sacred Vedic oblations during the 51st Annual Mahotsav."
   },
   {
     id: 'campus-1',
     title: "गुरुकुल मुख्य भवन एवं पावन प्रांगण",
+    title_en: "Main Gurukul Campus & Historic Building",
     category: "campus",
     thumbnail: img2,
     fullImage: img2,
-    caption: "श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या का ऐतिहासिक मुख्य भवन एवं हरा-भरा परिसर।"
+    caption: "श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या का ऐतिहासिक मुख्य भवन एवं हरा-भरा परिसर।",
+    caption_en: "Historic main academic building and lush green campus of Shri Nishulk Gurukul Mahavidyalaya, Ayodhya."
   },
   {
     id: 'campus-2',
     title: "गुरुकुल परिसर में ब्रह्मचारी विद्यार्थी",
+    title_en: "Disciplined Brahmachari Students",
     category: "campus",
     thumbnail: img6,
     fullImage: img6,
-    caption: "गुरुकुल प्रांगण में अनुशासित ब्रह्मचारी छात्र वैदिक मर्यादा एवं संस्कारों का पालन करते हुए।"
+    caption: "गुरुकुल प्रांगण में अनुशासित ब्रह्मचारी छात्र वैदिक मर्यादा एवं संस्कारों का पालन करते हुए।",
+    caption_en: "Young students embracing traditional values, self-discipline, and Vedic living in the campus courtyard."
   },
   {
     id: 'campus-3',
     title: "गुरुकुल सभा एवं वार्षिकोत्सव मंडप",
+    title_en: "Gurukul Congregation & Celebration Pavilion",
     category: "events",
     categories: ["events", "campus"],
     thumbnail: img11,
     fullImage: img11,
-    caption: "गुरुकुल परिसर में आयोजित सांस्कृतिक उत्सव, सभा एवं वैदिक प्रवचन कार्यक्रम।"
+    caption: "गुरुकुल परिसर में आयोजित सांस्कृतिक उत्सव, सभा एवं वैदिक प्रवचन कार्यक्रम।",
+    caption_en: "Spiritual gatherings, Vedic discourses, and cultural programs at the Gurukul pavilion."
   },
 
   // Adani Computer Lab Images (100% Authentic Photos)
   {
     id: 'lab-1',
     title: "Adani Computer Lab — आधुनिक कंप्यूटर लैब",
+    title_en: "Adani Computer Lab — Modern IT Facility",
     category: "adani_lab",
     thumbnail: labImg13,
     fullImage: labImg13,
-    caption: "अडानी फाउंडेशन के सहयोग से स्थापित आधुनिक कंप्यूटर लैब का विहंगम दृश्य।"
+    caption: "अडानी फाउंडेशन के सहयोग से स्थापित आधुनिक कंप्यूटर लैब का विहंगम दृश्य।",
+    caption_en: "Panoramic view of the state-of-the-art computer lab supported by the Adani Foundation."
   },
   {
     id: 'lab-2',
     title: "कंप्यूटर लैब में अध्ययनरत विद्यार्थी",
+    title_en: "Students Learning at Adani Computer Lab",
     category: "campus",
     categories: ["campus", "adani_lab"],
     thumbnail: img4,
     fullImage: img4,
-    caption: "वैदिक परिधान में ब्रह्मचारी छात्र कंप्यूटर पर टाइपिंग, प्रोग्रामिंग व शोध कार्य करते हुए।"
+    caption: "वैदिक परिधान में ब्रह्मचारी छात्र कंप्यूटर पर टाइपिंग, प्रोग्रामिंग व शोध कार्य करते हुए।",
+    caption_en: "Students in traditional Vedic attire mastering computer typing, software, and research."
   },
   {
     id: 'lab-3',
     title: "अत्याधुनिक कंप्यूटर वर्कस्टेशन एवं ट्रेनिंग",
+    title_en: "High-Tech Workstations & Practical Training",
     category: "campus",
     categories: ["campus", "adani_lab"],
     thumbnail: img1,
     fullImage: img1,
-    caption: "हाई-स्पीड सिस्टम्स और आधुनिक सॉफ्टवेयर से सुसज्जित कंप्यूटर लैब।"
+    caption: "हाई-स्पीड सिस्टम्स और आधुनिक सॉफ्टवेयर से सुसज्जित कंप्यूटर लैब।",
+    caption_en: "Computer workstations equipped with high-speed internet and modern learning tools."
   },
   {
     id: 'lab-4',
     title: "ब्रह्मचारियों का डिजिटल व कोडिंग प्रशिक्षण",
+    title_en: "Digital Literacy & Coding for Brahmacharis",
     category: "campus",
     categories: ["campus", "adani_lab"],
     thumbnail: img3,
     fullImage: img3,
-    caption: "संस्कृत ग्रंथों के डिजिटल अध्ययन के साथ 21वीं सदी के तकनीकी कौशल सीखते छात्र।"
+    caption: "संस्कृत ग्रंथों के डिजिटल अध्ययन के साथ 21वीं सदी के तकनीकी कौशल सीखते छात्र।",
+    caption_en: "Equipping youth with modern digital skills alongside ancient philosophical wisdom."
   },
   {
     id: 'lab-5',
     title: "डिजिटल क्लासरूम एवं ई-लर्निंग सत्र",
+    title_en: "Digital Classroom & E-Learning Sessions",
     category: "campus",
     categories: ["campus", "adani_lab"],
     thumbnail: img5,
     fullImage: img5,
-    caption: "कंप्यूटर लैब में आयोजित विशेष डिजिटल साक्षरता एवं कंप्यूटर बुनियादी ज्ञान कक्षाएं।"
+    caption: "कंप्यूटर लैब में आयोजित विशेष डिजिटल साक्षरता एवं कंप्यूटर बुनियादी ज्ञान कक्षाएं।",
+    caption_en: "Dedicated digital literacy and basic computing workshops held inside the lab."
   },
   {
     id: 'lab-6',

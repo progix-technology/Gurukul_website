@@ -15,7 +15,7 @@ export default function Navbar() {
     { label: t('nav.about', 'गुरुकुल परिचय'), path: '/about' },
     { label: t('nav.courses', 'पाठ्यक्रम'), path: '/courses' },
     { label: t('nav.admission', 'प्रवेश प्रक्रिया'), path: '/admission' },
-    { label: 'Adani Computer Lab', path: '/adani-computer-lab' },
+    { label: t('nav.adaniLab', 'अडानी लैब'), path: '/adani-computer-lab' },
     { label: t('nav.events', 'कार्यक्रम'), path: '/events' },
     { label: t('nav.gallery', 'छायाचित्र'), path: '/gallery' },
     { label: t('nav.contact', 'संपर्क'), path: '/contact' },
@@ -39,51 +39,59 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
           solidBg
-            ? 'bg-[#F8F4EA] shadow-[0_4px_25px_rgba(36,27,21,0.12)] border-b border-[#C68A32]/30 py-0.5 transform translate-y-0'
-            : 'bg-gradient-to-b from-[#241B15]/80 via-[#241B15]/30 to-transparent py-1.5 sm:py-2'
+            ? 'bg-[#F8F4EA] shadow-[0_4px_25px_rgba(36,27,21,0.12)] border-b border-[#C68A32]/30 py-1 transform translate-y-0'
+            : 'bg-gradient-to-b from-[#241B15]/85 via-[#241B15]/35 to-transparent py-1.5 sm:py-2.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 flex items-center justify-between h-13 sm:h-14 lg:h-15 transition-all duration-300">
+        <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between h-13 sm:h-14 lg:h-15 relative transition-all duration-300">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <span
-              className="text-2xl sm:text-3xl font-bold"
-              style={{
-                fontFamily: "'Noto Serif Devanagari', serif",
-                color: '#C96B25',
-                lineHeight: 1,
-              }}
-            >
-              ॐ
-            </span>
-            <div>
-              <div
-                className="text-xs sm:text-sm font-bold leading-tight"
+          <div className="flex items-center shrink-0 z-10">
+            <Link to="/" className="flex items-center gap-2.5 sm:gap-3">
+              <span
+                className="text-3xl sm:text-4xl font-bold"
                 style={{
                   fontFamily: "'Noto Serif Devanagari', serif",
-                  color: solidBg ? '#241B15' : '#F8F4EA',
+                  color: '#C96B25',
+                  lineHeight: 1,
                 }}
               >
-                {language === 'en' ? 'Shri Nishulk Gurukul' : 'श्री निःशुल्क गुरुकुल'}
+                ॐ
+              </span>
+              <div>
+                <div
+                  className={`${
+                    language === 'en' ? 'text-xs sm:text-sm font-bold' : 'text-sm sm:text-base lg:text-[17px] font-bold tracking-tight'
+                  } leading-tight whitespace-nowrap`}
+                  style={{
+                    fontFamily: "'Noto Serif Devanagari', serif",
+                    color: solidBg ? '#241B15' : '#F8F4EA',
+                  }}
+                >
+                  {language === 'en' ? 'Shri Nishulk Gurukul' : 'श्री निःशुल्क गुरुकुल'}
+                </div>
+                <div
+                  className={`${
+                    language === 'en' ? 'text-[10px] sm:text-xs' : 'text-[11px] sm:text-[13px] font-medium'
+                  } leading-tight whitespace-nowrap`}
+                  style={{ color: solidBg ? '#8B4513' : '#D4C4A0' }}
+                >
+                  {language === 'en' ? 'Mahavidyalaya, Ayodhya' : 'महाविद्यालय, अयोध्या'}
+                </div>
               </div>
-              <div
-                className="text-[10px] sm:text-xs leading-tight"
-                style={{ color: solidBg ? '#8B4513' : '#D4C4A0' }}
-              >
-                {language === 'en' ? 'Mahavidyalaya, Ayodhya' : 'महाविद्यालय, अयोध्या'}
-              </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
 
-          {/* Desktop nav */}
-          <ul className="hidden lg:flex items-center gap-0.5 xl:gap-1">
+          {/* Desktop nav - Mathematically Centered */}
+          <ul className="hidden lg:flex items-center justify-center gap-1 xl:gap-2.5 2xl:gap-3.5 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
             {navLinks.map((link) => {
               const active = location.pathname === link.path
               return (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="px-2 xl:px-2.5 py-1 text-[13px] xl:text-sm rounded whitespace-nowrap transition-colors duration-200"
+                    className={`px-2.5 xl:px-3 py-1 ${
+                      language === 'en' ? 'text-xs xl:text-sm' : 'text-[13px] xl:text-[15px]'
+                    } rounded whitespace-nowrap transition-colors duration-200`}
                     style={{
                       fontFamily: "'Noto Sans Devanagari', sans-serif",
                       color: active
@@ -103,12 +111,12 @@ export default function Navbar() {
           </ul>
 
           {/* CTA + Language + Hamburger */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <LanguageToggle className="hidden sm:inline-block" />
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 ml-auto z-10">
+            <LanguageToggle className="hidden sm:inline-flex" />
 
             <Link
               to="/admission"
-              className="hidden sm:inline-flex items-center px-3.5 sm:px-4 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all duration-200 hover:opacity-90 shadow-sm"
+              className="hidden sm:inline-flex items-center justify-center px-3.5 xl:px-4 h-8 sm:h-9 rounded text-xs xl:text-sm font-semibold transition-all duration-200 hover:opacity-90 shadow-sm whitespace-nowrap shrink-0"
               style={{
                 backgroundColor: '#C96B25',
                 color: '#F8F4EA',

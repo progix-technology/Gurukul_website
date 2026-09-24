@@ -1,8 +1,12 @@
 import React from 'react';
 import { Target, Compass, Sparkles } from 'lucide-react';
 import Container from '../common/Container';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const MissionVision = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
+
   return (
     <section className="py-16 sm:py-20 bg-[#241B15] text-[#F8F4EA] relative overflow-hidden border-t border-[#C68A32]/30">
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#C68A32]/10 rounded-full blur-3xl pointer-events-none" />
@@ -12,10 +16,10 @@ export const MissionVision = () => {
         <div className="text-center mb-12">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none text-xs font-serif font-bold uppercase tracking-wider mb-3.5 bg-[#C96B25] text-white border border-amber-300/30 shadow-md">
             <Sparkles className="w-3.5 h-3.5 text-amber-200" />
-            लक्ष्य एवं संकल्प
+            {isEn ? "MISSION & VISION" : "लक्ष्य एवं संकल्प"}
           </span>
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#F8F4EA]">
-            हमारा पावन ध्येय एवं दूरदृष्टि
+            {isEn ? "Our Sacred Purpose & Vision" : "हमारा पावन ध्येय एवं दूरदृष्टि"}
           </h2>
           <div className="flex items-center justify-center gap-3 mt-3">
             <div className="h-px w-12 bg-[#C68A32]" />
@@ -39,10 +43,13 @@ export const MissionVision = () => {
                 <Target className="w-7 h-7" />
               </div>
               <h3 className="font-serif font-bold text-2xl text-[#C68A32]">
-                हमारा पावन ध्येय (Mission)
+                {isEn ? "Our Mission" : "हमारा पावन ध्येय (Mission)"}
               </h3>
               <p className="text-sm sm:text-base text-[#EDE7D4] leading-relaxed font-sans">
-                प्रत्येक बालक को बिना किसी आर्थिक भेदभाव के निःशुल्क उच्च गुणवत्तायुक्त संस्कृत एवं आधुनिक शिक्षा प्रदान करना, ताकि वे वैदिक मर्यादा, राष्ट्रभक्ति एवं चारित्रिक शुचिता के साथ समाज का नेतृत्व कर सकें।
+                {isEn 
+                  ? "To provide 100% free, high-quality Sanskrit and modern education to every deserving student without any economic disparity, shaping morally grounded, patriotic leaders rooted in Vedic culture."
+                  : "प्रत्येक बालक को बिना किसी आर्थिक भेदभाव के निःशुल्क उच्च गुणवत्तायुक्त संस्कृत एवं आधुनिक शिक्षा प्रदान करना, ताकि वे वैदिक मर्यादा, राष्ट्रभक्ति एवं चारित्रिक शुचिता के साथ समाज का नेतृत्व कर सकें।"
+                }
               </p>
             </div>
           </div>
@@ -61,10 +68,13 @@ export const MissionVision = () => {
                 <Compass className="w-7 h-7" />
               </div>
               <h3 className="font-serif font-bold text-2xl text-[#C68A32]">
-                हमारी दूरदृष्टि (Vision)
+                {isEn ? "Our Vision" : "हमारी दूरदृष्टि (Vision)"}
               </h3>
               <p className="text-sm sm:text-base text-[#EDE7D4] leading-relaxed font-sans">
-                भारत की प्राचीन ऋषिकुल शिक्षा परंपरा को पुनर्जीवित करते हुए ऐसा आदर्श केंद्र बनना, जहाँ से निकले विद्वान प्राचीन वेदों के अमर संदेश और 21वीं सदी के विज्ञान का समन्वय कर विश्व बंधुत्व (कृण्वन्तो विश्वमार्यम्) का आलोक फैलाएँ।
+                {isEn
+                  ? "To revitalize India's ancient Rishikul pedagogical tradition into a benchmark model of wisdom, where scholars harmonize timeless Vedic ideals with 21st-century science to radiate universal harmony (Krinvanto Vishwam Aryam)."
+                  : "भारत की प्राचीन ऋषिकुल शिक्षा परंपरा को पुनर्जीवित करते हुए ऐसा आदर्श केंद्र बनना, जहाँ से निकले विद्वान प्राचीन वेदों के अमर संदेश और 21वीं सदी के विज्ञान का समन्वय कर विश्व बंधुत्व (कृण्वन्तो विश्वमार्यम्) का आलोक फैलाएँ।"
+                }
               </p>
             </div>
           </div>
@@ -75,3 +85,4 @@ export const MissionVision = () => {
 };
 
 export default MissionVision;
+

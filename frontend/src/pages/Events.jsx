@@ -8,21 +8,24 @@ import CallToAction from '../components/home/CallToAction';
 import { EVENTS_DATA } from '../data/eventsData';
 import { Sparkles } from 'lucide-react';
 import bannerBgImg from '../assets/img_2.jpeg';
-
-const CATEGORIES = [
-  { id: 'all', label: 'सभी कार्यक्रम' },
-  { id: 'adani-lab', label: 'अडानी कंप्यूटर लैब' },
-  { id: 'annual-day', label: '51वाँ वार्षिकोत्सव' },
-  { id: 'independence-day', label: 'स्वतंत्रता दिवस (15 अगस्त)' },
-  { id: 'guru-purnima', label: 'गुरु पूर्णिमा महोत्सव' },
-  { id: 'veda-prachar', label: 'वेद प्रचार शिविर' },
-  { id: 'rishi-bodhotsav', label: 'ऋषि बोधोत्सव' },
-  { id: 'shastrartha', label: 'शास्त्रार्थ प्रतियोगिता' },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export const Events = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const { language } = useLanguage();
+  const isEn = language === 'en';
+
+  const categories = [
+    { id: 'all', label: isEn ? 'All Events' : 'सभी कार्यक्रम' },
+    { id: 'adani-lab', label: isEn ? 'Adani Computer Lab' : 'अडानी कंप्यूटर लैब' },
+    { id: 'annual-day', label: isEn ? '51st Annual Day' : '51वाँ वार्षिकोत्सव' },
+    { id: 'independence-day', label: isEn ? 'Independence Day' : 'स्वतंत्रता दिवस (15 अगस्त)' },
+    { id: 'guru-purnima', label: isEn ? 'Guru Purnima' : 'गुरु पूर्णिमा महोत्सव' },
+    { id: 'veda-prachar', label: isEn ? 'Veda Prachar Camp' : 'वेद प्रचार शिविर' },
+    { id: 'rishi-bodhotsav', label: isEn ? 'Rishi Bodhotsav' : 'ऋषि बोधोत्सव' },
+    { id: 'shastrartha', label: isEn ? 'Shastrartha Contest' : 'शास्त्रार्थ प्रतियोगिता' },
+  ];
 
   const filteredEvents = activeCategory === 'all'
     ? EVENTS_DATA
@@ -31,8 +34,10 @@ export const Events = () => {
   return (
     <>
       <SEO
-        title="कार्यक्रम एवं समाचार"
-        description="श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या के वार्षिक उत्सव, वेद प्रचार शिविर, महायज्ञ एवं सांस्कृतिक कार्यक्रम।"
+        title={isEn ? "Events & News" : "कार्यक्रम एवं समाचार"}
+        description={isEn
+          ? "Annual festivals, Veda propagation camps, Mahayajnas and cultural events of Shri Nishulk Gurukul Mahavidyalaya Ayodhya."
+          : "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या के वार्षिक उत्सव, वेद प्रचार शिविर, महायज्ञ एवं सांस्कृतिक कार्यक्रम।"}
       />
 
       {/* Header Banner */}
@@ -40,7 +45,7 @@ export const Events = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={bannerBgImg}
-            alt="श्री निःशुल्क गुरुकुल महाविद्यालय कार्यक्रम"
+            alt={isEn ? "Shri Nishulk Gurukul Mahavidyalaya Events" : "श्री निःशुल्क गुरुकुल महाविद्यालय कार्यक्रम"}
             className="w-full h-full object-cover object-center"
             loading="lazy"
           />
@@ -59,13 +64,15 @@ export const Events = () => {
             ॐ
           </div>
           <div className="inline-flex items-center px-4 py-1 rounded-none text-xs sm:text-sm font-serif font-bold uppercase tracking-wider mb-4 bg-transparent text-[#F8F4EA] border border-[#C68A32] shadow-sm">
-            <span>वैदिक उत्सव एवं समारोह</span>
+            <span>{isEn ? "Vedic Celebrations & Academic Ceremonies" : "वैदिक उत्सव एवं समारोह"}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-3 drop-shadow-md">
-            कार्यक्रम एवं समाचार (Events)
+            {isEn ? "Events & Campus News" : "कार्यक्रम एवं समाचार (Events)"}
           </h1>
           <p className="text-sm sm:text-base text-[#F8F4EA]/90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm font-medium">
-            गुरुकुल में आयोजित होने वाले 51वें वार्षिकोत्सव, देवयज्ञ, वेद प्रचार सप्ताह एवं राष्ट्रीय पर्वों की रूपरेखा
+            {isEn
+              ? "Detailed schedule of the 51st Annual Day, Devayajna, Vedic Mission Week, and National Celebrations hosted at the Gurukul."
+              : "गुरुकुल में आयोजित होने वाले 51वें वार्षिकोत्सव, देवयज्ञ, वेद प्रचार सप्ताह एवं राष्ट्रीय पर्वों की रूपरेखा"}
           </p>
         </Container>
       </section>
@@ -75,7 +82,7 @@ export const Events = () => {
         <Container>
           {/* Category Tabs */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
-            {CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat.id}
                 type="button"

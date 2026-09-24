@@ -7,15 +7,21 @@ import FeeStructure from '../components/admission/FeeStructure';
 import AdmissionRules from '../components/admission/AdmissionRules';
 import QuickInquiryForm from '../components/admission/QuickInquiryForm';
 import AdmissionFAQ from '../components/admission/AdmissionFAQ';
-import { GraduationCap, Sparkles } from 'lucide-react';
 import bannerBgImg from '../assets/img_2.jpeg';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Admission = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
+
   return (
     <>
       <SEO
-        title="प्रवेश प्रक्रिया एवं शुल्क संरचना"
-        description="श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या में प्रवेश प्रक्रिया, शुल्क संरचना, पात्रता, आवश्यक दस्तावेज़, नियम एवं ऑनलाइन पूछताछ फॉर्म।"
+        title={isEn ? "Admission Process & Fee Structure" : "प्रवेश प्रक्रिया एवं शुल्क संरचना"}
+        description={isEn 
+          ? "Admission process, zero tuition fee structure, eligibility criteria, required documents, rules and online inquiry form for Shri Nishulk Gurukul Mahavidyalaya Ayodhya."
+          : "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या में प्रवेश प्रक्रिया, शुल्क संरचना, पात्रता, आवश्यक दस्तावेज़, नियम एवं ऑनलाइन पूछताछ फॉर्म।"
+        }
       />
 
       {/* Header Banner */}
@@ -23,7 +29,7 @@ export const Admission = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={bannerBgImg}
-            alt="श्री निःशुल्क गुरुकुल महाविद्यालय प्रवेश"
+            alt={isEn ? "Gurukul Admission Ayodhya" : "श्री निःशुल्क गुरुकुल महाविद्यालय प्रवेश"}
             className="w-full h-full object-cover object-center"
             loading="lazy"
           />
@@ -42,13 +48,16 @@ export const Admission = () => {
             ॐ
           </div>
           <div className="inline-flex items-center px-4 py-1 rounded-none text-xs sm:text-sm font-serif font-bold uppercase tracking-wider mb-4 bg-transparent text-[#F8F4EA] border border-[#C68A32] shadow-sm">
-            <span>सत्र 2026-27 प्रवेश खुला है</span>
+            <span>{isEn ? "SESSION 2026-27 ADMISSION OPEN" : "सत्र 2026-27 प्रवेश खुला है"}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-3 drop-shadow-md">
-            प्रवेश प्रक्रिया एवं शुल्क संरचना
+            {isEn ? "Admission Process & Fee Structure" : "प्रवेश प्रक्रिया एवं शुल्क संरचना"}
           </h1>
           <p className="text-sm sm:text-base text-[#F8F4EA]/90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm font-medium">
-            निःशुल्क शिक्षा, आवास, भोजन, वस्त्र एवं पुस्तकों के साथ गौरवशाली ऋषिकुल जीवन में प्रवेश प्राप्त करें
+            {isEn 
+              ? "Embrace sacred Rishikul education with free tuition, residential boarding, Satvik meals, books, and uniforms"
+              : "निःशुल्क शिक्षा, आवास, भोजन, वस्त्र एवं पुस्तकों के साथ गौरवशाली ऋषिकुल जीवन में प्रवेश प्राप्त करें"
+            }
           </p>
         </Container>
       </section>
@@ -75,3 +84,4 @@ export const Admission = () => {
 };
 
 export default Admission;
+

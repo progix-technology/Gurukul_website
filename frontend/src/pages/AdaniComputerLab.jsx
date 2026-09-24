@@ -5,6 +5,7 @@ import Container from '../components/common/Container';
 import SectionHeading from '../components/common/SectionHeading';
 import Lightbox from '../components/common/Lightbox';
 import CallToAction from '../components/home/CallToAction';
+import { useLanguage } from '../context/LanguageContext';
 
 import bannerLabImage from '../assets/Images/WhatsApp Image 2026-09-24 at 11.11.06 AM.jpeg';
 import showcaseImg from '../assets/img_4.jpeg';
@@ -26,7 +27,6 @@ import {
   Monitor,
   Cpu,
   Wifi,
-  BookOpen,
   ShieldCheck,
   Sparkles,
   Code,
@@ -37,13 +37,14 @@ import {
   Zap,
   GraduationCap,
   Camera,
-  Layers,
   Download,
-  FileText,
   ExternalLink
 } from 'lucide-react';
 
 export const AdaniComputerLab = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
+
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -53,92 +54,118 @@ export const AdaniComputerLab = () => {
       id: 1,
       thumbnail: bannerLabImage,
       fullImage: bannerLabImage,
-      title: 'Adani Computer Lab - मुख्य हेरिटेज म्यूरल',
-      caption: 'प्राचीन वैदिक ज्ञान, धनुर्विद्या व आधुनिक कंप्यूटर विज्ञान एवं रोबोटिक्स का समन्वय दर्शाता भव्य कलात्मक म्यूरल।'
+      title: isEn ? 'Adani Computer Lab - Main Heritage Mural' : 'Adani Computer Lab - मुख्य हेरिटेज म्यूरल',
+      caption: isEn 
+        ? 'Grand artistic mural harmonizing ancient Vedic wisdom, archery, modern computer science, and robotics.'
+        : 'प्राचीन वैदिक ज्ञान, धनुर्विद्या व आधुनिक कंप्यूटर विज्ञान एवं रोबोटिक्स का समन्वय दर्शाता भव्य कलात्मक म्यूरल।'
     },
     {
       id: 2,
       thumbnail: img1,
       fullImage: img1,
-      title: 'हेडसेट के साथ डिजिटल अध्ययन',
-      caption: 'कंप्यूटर वर्कस्टेशन पर हेडफोन लगाकर डिजिटल ऑडियो-विजुअल पाठ का अध्ययन करता उत्साहित छात्र।'
+      title: isEn ? 'Digital Learning with Headset' : 'हेडसेट के साथ डिजिटल अध्ययन',
+      caption: isEn 
+        ? 'Enthusiastic Brahmachari student mastering audio-visual digital modules on dedicated workstations.'
+        : 'कंप्यूटर वर्कस्टेशन पर हेडफोन लगाकर डिजिटल ऑडियो-विजुअल पाठ का अध्ययन करता उत्साहित छात्र।'
     },
     {
       id: 3,
       thumbnail: img2,
       fullImage: img2,
-      title: 'परस्पर सहयोगात्मक अध्ययन',
-      caption: 'कंप्यूटर लैब में हेडफोन लगाए एक साथ डिजिटल शिक्षण व कंप्यूटर प्रैक्टिकल करते दो विद्यार्थी।'
+      title: isEn ? 'Collaborative Digital Study' : 'परस्पर सहयोगात्मक अध्ययन',
+      caption: isEn 
+        ? 'Students collaborating on digital assignments and computer practical exercises in the lab.'
+        : 'कंप्यूटर लैब में हेडफोन लगाए एक साथ डिजिटल शिक्षण व कंप्यूटर प्रैक्टिकल करते दो विद्यार्थी।'
     },
     {
       id: 4,
       thumbnail: img3,
       fullImage: img3,
-      title: 'अत्याधुनिक वर्कस्टेशन व पुस्तकालय',
-      caption: 'वातानुकूलित कंप्यूटर लैब का आंतरिक दृश्य, सुसज्जित कंप्यूटर टेबल, वॉल बुकशेल्फ एवं हार्डवेयर चार्ट।'
+      title: isEn ? 'Modern Workstations & Reference Shelves' : 'अत्याधुनिक वर्कस्टेशन व पुस्तकालय',
+      caption: isEn 
+        ? 'Air-conditioned lab interior featuring ergonomic computer desks, reference bookshelves, and charts.'
+        : 'वातानुकूलित कंप्यूटर लैब का आंतरिक दृश्य, सुसज्जित कंप्यूटर टेबल, वॉल बुकशेल्फ एवं हार्डवेयर चार्ट।'
     },
     {
       id: 5,
       thumbnail: img4,
       fullImage: img4,
-      title: 'भव्य स्वागत कक्ष एवं पुष्प सज्जा',
-      caption: 'अडानी कंप्यूटर लैब का सुसज्जित रिसेप्शन काउंटर, ताजे फूलों की मालाएँ एवं सुनहरी वॉल पेंटिंग।'
+      title: isEn ? 'Reception & Floral Welcome Decor' : 'भव्य स्वागत कक्ष एवं पुष्प सज्जा',
+      caption: isEn 
+        ? 'Well-appointed reception counter of Adani Computer Lab adorned with auspicious floral decorations.'
+        : 'अडानी कंप्यूटर लैब का सुसज्जित रिसेप्शन काउंटर, ताजे फूलों की मालाएँ एवं सुनहरी वॉल पेंटिंग।'
     },
     {
       id: 6,
       thumbnail: img5,
       fullImage: img5,
-      title: 'Adani Computer Lab का बाह्य स्वरूप',
-      caption: 'गुरुकुल परिसर में नवनिर्मित वातानुकूलित कंप्यूटर लैब भवन का भव्य प्रवेश द्वार व हरियाली।'
+      title: isEn ? 'Exterior View of Adani Computer Lab' : 'Adani Computer Lab का बाह्य स्वरूप',
+      caption: isEn 
+        ? 'Grand entrance facade and verdant surroundings of the newly established Computer Lab facility.'
+        : 'गुरुकुल परिसर में नवनिर्मित वातानुकूलित कंप्यूटर लैब भवन का भव्य प्रवेश द्वार व हरियाली।'
     },
     {
       id: 7,
       thumbnail: img6,
       fullImage: img6,
-      title: 'वैदिक उद्घाटन एवं श्रीफल पूजन',
-      caption: 'कंप्यूटर लैब के लोकार्पण पर वैदिक मंत्रोच्चार के बीच मुख्य द्वार पर श्रीफल (नारियल) फोड़कर पूजा-अर्चना।'
+      title: isEn ? 'Vedic Inaugural Coconut Ceremony' : 'वैदिक उद्घाटन एवं श्रीफल पूजन',
+      caption: isEn 
+        ? 'Auspicious coconut breaking and Vedic Hawan rites during the sacred inauguration of the lab.'
+        : 'कंप्यूटर लैब के लोकार्पण पर वैदिक मंत्रोच्चार के बीच मुख्य द्वार पर श्रीफल (नारियल) फोड़कर पूजा-अर्चना।'
     },
     {
       id: 8,
       thumbnail: img7,
       fullImage: img7,
-      title: 'आचार्य जी द्वारा व्यक्तिगत मार्गदर्शन',
-      caption: 'कंप्यूटर शिक्षक/आचार्य जी द्वारा विद्यार्थियों को कंप्यूटर स्क्रीन पर कोडिंग एवं टाइपिंग का व्यावहारिक मार्गदर्शन।'
+      title: isEn ? 'Personal Guidance by Acharya' : 'आचार्य जी द्वारा व्यक्तिगत मार्गदर्शन',
+      caption: isEn 
+        ? 'Computer instructor providing one-on-one practical guidance in coding and digital typing.'
+        : 'कंप्यूटर शिक्षक/आचार्य जी द्वारा विद्यार्थियों को कंप्यूटर स्क्रीन पर कोडिंग एवं टाइपिंग का व्यावहारिक मार्गदर्शन।'
     },
     {
       id: 9,
       thumbnail: img8,
       fullImage: img8,
-      title: 'लोकार्पण अवसर पर सामूहिक छायाचित्र',
-      caption: 'कंप्यूटर लैब के उद्घाटन पर गुरुकुल के ब्रह्मचारी, आचार्यगण, न्यासी एवं सम्मानित अतिथियों का सामूहिक चित्र।'
+      title: isEn ? 'Commemorative Inaugural Group Photo' : 'लोकार्पण अवसर पर सामूहिक छायाचित्र',
+      caption: isEn 
+        ? 'Group photograph of Brahmacharis, Acharyas, trustees, and guests on the landmark inauguration day.'
+        : 'कंप्यूटर लैब के उद्घाटन पर गुरुकुल के ब्रह्मचारी, आचार्यगण, न्यासी एवं सम्मानित अतिथियों का सामूहिक चित्र।'
     },
     {
       id: 10,
       thumbnail: img9,
       fullImage: img9,
-      title: 'सीनियर एवं जूनियर ब्रह्मचारियों का साथ',
-      caption: 'सीनियर छात्र द्वारा कीबोर्ड पर टाइपिंग अभ्यास एवं कनिष्ठ छात्र द्वारा स्क्रीन पर उत्सुकता से सीखना।'
+      title: isEn ? 'Senior & Junior Peer Mentorship' : 'सीनियर एवं जूनियर ब्रह्मचारियों का साथ',
+      caption: isEn 
+        ? 'Senior students guiding juniors through typing techniques and software exploration.'
+        : 'सीनियर छात्र द्वारा कीबोर्ड पर टाइपिंग अभ्यास एवं कनिष्ठ छात्र द्वारा स्क्रीन पर उत्सुकता से सीखना।'
     },
     {
       id: 11,
       thumbnail: img10,
       fullImage: img10,
-      title: 'कतारबद्ध वर्कस्टेशन्स पर अध्ययन',
-      caption: 'आधुनिक वातानुकूलित वातावरण में कतारबद्ध वर्कस्टेशन्स पर तल्लीन होकर कंप्यूटर सीखते छात्र।'
+      title: isEn ? 'Focused Practical Sessions' : 'कतारबद्ध वर्कस्टेशन्स पर अध्ययन',
+      caption: isEn 
+        ? 'Students deeply immersed in computational exercises across individual dual-core workstations.'
+        : 'आधुनिक वातानुकूलित वातावरण में कतारबद्ध वर्कस्टेशन्स पर तल्लीन होकर कंप्यूटर सीखते छात्र।'
     },
     {
       id: 12,
       thumbnail: img11,
       fullImage: img11,
-      title: 'कक्षा में डिजिटल अभ्यास',
-      caption: 'स्कूल बैग के साथ कंप्यूटर लैब में साथी छात्र को डिजिटल स्क्रीन पर अभ्यास करते देखता विद्यार्थी।'
+      title: isEn ? 'Classroom Interactive Exercises' : 'कक्षा में डिजिटल अभ्यास',
+      caption: isEn 
+        ? 'Interactive digital exercises complementing regular classroom curriculum.'
+        : 'स्कूल बैग के साथ कंप्यूटर लैब में साथी छात्र को डिजिटल स्क्रीन पर अभ्यास करते देखता विद्यार्थी।'
     },
     {
       id: 13,
       thumbnail: img12,
       fullImage: img12,
-      title: 'लैब में अनुशासित शिक्षण सत्र',
-      caption: 'सभी वर्कस्टेशन्स पर हेडफोन लगाकर पूरे अनुशासन एवं एकाग्रता के साथ डिजिटल अध्ययन करते छात्र।'
+      title: isEn ? 'Disciplined Learning Atmosphere' : 'लैब में अनुशासित शिक्षण सत्र',
+      caption: isEn 
+        ? 'High concentration and exemplary discipline displayed by students during daily practical lab sessions.'
+        : 'सभी वर्कस्टेशन्स पर हेडफोन लगाकर पूरे अनुशासन एवं एकाग्रता के साथ डिजिटल अध्ययन करते छात्र।'
     }
   ];
 
@@ -158,10 +185,17 @@ export const AdaniComputerLab = () => {
   const modules = [
     {
       icon: Monitor,
-      title: 'कंप्यूटर आधारभूत शिक्षा (Fundamentals)',
-      englishTitle: 'Basic Computer Operations & MS Office',
-      desc: 'ऑपरेटिंग सिस्टम, एमएस ऑफिस सुइट (Word, Excel, PowerPoint), इंटरनेट सुरक्षा तथा हिंदी/संस्कृत यूनिकोड टाइपिंग का संपूर्ण व्यावहारिक अभ्यास।',
-      points: [
+      title: isEn ? 'Computer Fundamentals & MS Office' : 'कंप्यूटर आधारभूत शिक्षा (Fundamentals)',
+      englishTitle: isEn ? 'Basic Operations, Windows & Office Tools' : 'Basic Computer Operations & MS Office',
+      desc: isEn 
+        ? 'Operating system management, MS Office suite (Word, Excel, PowerPoint), cyber security awareness, and Devanagari Unicode typing.'
+        : 'ऑपरेटिंग सिस्टम, एमएस ऑफिस सुइट (Word, Excel, PowerPoint), इंटरनेट सुरक्षा तथा हिंदी/संस्कृत यूनिकोड टाइपिंग का संपूर्ण व्यावहारिक अभ्यास।',
+      points: isEn ? [
+        'Windows OS & File Management',
+        'Proficiency in Sanskrit & Devanagari Unicode Typing',
+        'Web Browsing, Emailing & Cyber Safety Protocols',
+        'Academic Documentation & Presentation Skills'
+      ] : [
         'विंडोज़ व बेसिक ऑपरेटिंग सिस्टम प्रबंधन',
         'यूनिकोड देवनागरी एवं संस्कृत टाइपिंग में दक्षता',
         'इंटरनेट ब्राउजिंग, ईमेल व साइबर सुरक्षा जागरूकता',
@@ -171,10 +205,17 @@ export const AdaniComputerLab = () => {
     },
     {
       icon: Code,
-      title: 'संस्कृत एवं कम्प्यूटेशनल भाषाविज्ञान',
-      englishTitle: 'Sanskrit & Computational Linguistics',
-      desc: 'पाणिनीय व्याकरण के नियमों को कंप्यूटर एल्गोरिदम से जोड़कर संस्कृत ग्रंथों का डिजिटलीकरण, ओसीआर (OCR) एवं डिजिटल शोध तकनीकों का प्रशिक्षण।',
-      points: [
+      title: isEn ? 'Sanskrit & Computational Linguistics' : 'संस्कृत एवं कम्प्यूटेशनल भाषाविज्ञान',
+      englishTitle: isEn ? 'NLP, Paninian Logic & Digitization' : 'Sanskrit & Computational Linguistics',
+      desc: isEn 
+        ? 'Bridging Paninian grammatical sutras with computational algorithms, OCR tools, Sanskrit text tagging, and digital manuscript preservation.'
+        : 'पाणिनीय व्याकरण के नियमों को कंप्यूटर एल्गोरिदम से जोड़कर संस्कृत ग्रंथों का डिजिटलीकरण, ओसीआर (OCR) एवं डिजिटल शोध तकनीकों का प्रशिक्षण।',
+      points: isEn ? [
+        'Digitization of Ancient Palm-Leaf & Paper Manuscripts',
+        'Utilizing Sanskrit Dictionaries & Search Engines',
+        'Harmonizing Paninian Grammar Structure with Computer Logic',
+        'Editing Sanskrit E-Books & Scholarly Research Journals'
+      ] : [
         'प्राचीन पांडुलिपियों व ग्रंथों का डिजिटलीकरण',
         'संस्कृत सर्च इंजन व डिजिटल शब्दकोश का उपयोग',
         'पाणिनीय सूत्र संरचना व कंप्यूटर लॉजिक का समन्वय',
@@ -184,10 +225,17 @@ export const AdaniComputerLab = () => {
     },
     {
       icon: Globe,
-      title: 'आधुनिक प्रोग्रामिंग एवं कोडिंग',
-      englishTitle: 'Programming, Python & Web Basics',
-      desc: 'विद्यार्थियों में तार्किक सोच और समस्या समाधान क्षमता विकसित करने हेतु आधुनिक प्रोग्रामिंग भाषाएं (Python Basics, HTML/CSS) और लॉजिक बिल्डिंग।',
-      points: [
+      title: isEn ? 'Modern Programming & Coding Fundamentals' : 'आधुनिक प्रोग्रामिंग एवं कोडिंग',
+      englishTitle: isEn ? 'Python Basics, Web Design & Logic Building' : 'Programming, Python & Web Basics',
+      desc: isEn 
+        ? 'Cultivating algorithmic problem-solving and computational thinking through Python basics, HTML/CSS, and structured logic.'
+        : 'विद्यार्थियों में तार्किक सोच और समस्या समाधान क्षमता विकसित करने हेतु आधुनिक प्रोग्रामिंग भाषाएं (Python Basics, HTML/CSS) और लॉजिक बिल्डिंग।',
+      points: isEn ? [
+        'Core Foundations of Python Programming',
+        'Website Structuring (HTML5, CSS3 & Web Basics)',
+        'Algorithmic Thinking & Flowchart Design',
+        'Practical Software Projects & Coding Assignments'
+      ] : [
         'पायथन प्रोग्रामिंग की बुनियादी अवधारणाएं',
         'वेबसाइट निर्माण (HTML/CSS/Web Basics)',
         'कंप्यूटेशनल थिंकिंग एवं एल्गोरिदम लॉजिक',
@@ -197,10 +245,17 @@ export const AdaniComputerLab = () => {
     },
     {
       icon: Database,
-      title: 'डिजिटल ई-लाइब्रेरी एवं ऑनलाइन शोध',
-      englishTitle: 'Digital E-Library & Online Research',
-      desc: 'राष्ट्रीय डिजिटल लाइब्रेरी (NDL), सम्पूर्णानन्द संस्कृत विश्वविद्यालय के डिजिटल रिपॉजिटरी तथा वैश्विक शोध पत्रिकाओं तक छात्रों की निःशुल्क पहुँच।',
-      points: [
+      title: isEn ? 'Digital E-Library & Scholarly Research' : 'डिजिटल ई-लाइब्रेरी एवं ऑनलाइन शोध',
+      englishTitle: isEn ? 'National Digital Library & E-Repositories' : 'Digital E-Library & Online Research',
+      desc: isEn 
+        ? 'Free digital access to the National Digital Library (NDL), Sampurnanand Sanskrit University e-portal, and international academic journals.'
+        : 'राष्ट्रीय डिजिटल लाइब्रेरी (NDL), सम्पूर्णानन्द संस्कृत विश्वविद्यालय के डिजिटल रिपॉजिटरी तथा वैश्विक शोध पत्रिकाओं तक छात्रों की निःशुल्क पहुँच।',
+      points: isEn ? [
+        'Comprehensive Digital Repository of Vedic & Philosophical Texts',
+        'Access to National Online Research Portals',
+        'Audio-Visual Vedic Discourses & Lecture Recordings',
+        'Digital Notes & Assignment Submission System'
+      ] : [
         'वैदिक एवं दार्शनिक ग्रंथों की डिजिटल लाइब्रेरी',
         'ऑनलाइन शोध पोर्टल व शोध-पत्रों का अध्ययन',
         'ऑडियो-विजुअल वैदिक व्याख्यान एवं लेक्चर्स',
@@ -213,51 +268,65 @@ export const AdaniComputerLab = () => {
   const labFeatures = [
     {
       icon: Cpu,
-      title: 'शक्तिशाली कंप्यूटिंग सिस्टम्स',
-      desc: 'नवीनतम प्रोसेसर, तेज एसएसडी (SSD) और हाई-रेज़ोल्यूशन मॉनिटर्स से सुसज्जित आधुनिक वर्कस्टेशन।'
+      title: isEn ? 'High-Performance Computing Systems' : 'शक्तिशाली कंप्यूटिंग सिस्टम्स',
+      desc: isEn 
+        ? 'Modern workstations equipped with fast SSD storage, multi-core processors, and high-resolution displays.'
+        : 'नवीनतम प्रोसेसर, तेज एसएसडी (SSD) और हाई-रेज़ोल्यूशन मॉनिटर्स से सुसज्जित आधुनिक वर्कस्टेशन।'
     },
     {
       icon: Zap,
-      title: 'निर्बाध ऑनलाइन यूपीएस बैकअप',
-      desc: 'कक्षाओं व प्रैक्टिकल सत्रों में बिना किसी रुकावट के अध्ययन हेतु 24x7 पावर बैकअप सुविधा।'
+      title: isEn ? 'Uninterrupted Online UPS Power Backup' : 'निर्बाध ऑनलाइन यूपीएस बैकअप',
+      desc: isEn 
+        ? '24x7 heavy-duty power backup ensuring continuous, glitch-free practical learning sessions.'
+        : 'कक्षाओं व प्रैक्टिकल सत्रों में बिना किसी रुकावट के अध्ययन हेतु 24x7 पावर बैकअप सुविधा।'
     },
     {
       icon: Wifi,
-      title: 'उच्च गति सुरक्षित ब्रॉडबैंड',
-      desc: 'शैक्षणिक शोध व अध्ययन के लिए सुरक्षित, फ़िल्टर्ड हाई-स्पीड वाई-फाई एवं लैन कनेक्टिविटी।'
+      title: isEn ? 'High-Speed Secure Broadband' : 'उच्च गति सुरक्षित ब्रॉडबैंड',
+      desc: isEn 
+        ? 'Safe, filtered, high-speed fiber internet and LAN connectivity dedicated to academic learning.'
+        : 'शैक्षणिक शोध व अध्ययन के लिए सुरक्षित, फ़िल्टर्ड हाई-स्पीड वाई-फाई एवं लैन कनेक्टिविटी।'
     },
     {
       icon: GraduationCap,
-      title: 'योग्य एवं समर्पित आईटी प्रशिक्षक',
-      desc: 'अनुभवी कंप्यूटर शिक्षकों द्वारा प्रत्येक विद्यार्थी पर व्यक्तिगत ध्यान व प्रायोगिक मार्गदर्शन।'
+      title: isEn ? 'Expert & Dedicated IT Instructors' : 'योग्य एवं समर्पित आईटी प्रशिक्षक',
+      desc: isEn 
+        ? 'Experienced computer faculties delivering personalized attention and individual mentor support.'
+        : 'अनुभवी कंप्यूटर शिक्षकों द्वारा प्रत्येक विद्यार्थी पर व्यक्तिगत ध्यान व प्रायोगिक मार्गदर्शन।'
     },
     {
       icon: Award,
-      title: 'प्रैक्टिकल व प्रोजेक्ट आधारित शिक्षा',
-      desc: 'केवल थ्योरी नहीं, बल्कि दैनिक हैंड्स-ऑन प्रैक्टिकल और रियल-वर्ल्ड प्रोजेक्ट्स पर विशेष बल।'
+      title: isEn ? 'Practical & Project-Based Curriculum' : 'प्रैक्टिकल व प्रोजेक्ट आधारित शिक्षा',
+      desc: isEn 
+        ? 'Strong focus on hands-on daily practicals, coding assignments, and real-world problem solving.'
+        : 'केवल थ्योरी नहीं, बल्कि दैनिक हैंड्स-ऑन प्रैक्टिकल और रियल-वर्ल्ड प्रोजेक्ट्स पर विशेष बल।'
     },
     {
       icon: ShieldCheck,
-      title: 'वातानुकूलित एवं सुरक्षित वातावरण',
-      desc: 'छात्रों के स्वास्थ्य एवं एकाग्रता हेतु शांत, स्वच्छ, आधुनिक व पूर्णतः वातानुकूलित कंप्यूटर लैब।'
+      title: isEn ? 'Air-Conditioned & Serene Ambience' : 'वातानुकूलित एवं सुरक्षित वातावरण',
+      desc: isEn 
+        ? 'Clean, climate-controlled, ergonomically designed lab fostering optimal focus and health.'
+        : 'छात्रों के स्वास्थ्य एवं एकाग्रता हेतु शांत, स्वच्छ, आधुनिक व पूर्णतः वातानुकूलित कंप्यूटर लैब।'
     }
   ];
 
   return (
     <>
       <SEO
-        title="Adani Computer Lab - आधुनिक कंप्यूटर प्रयोगशाला"
-        description="श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या की अत्याधुनिक Adani Computer Lab - अप्रैल 2026 में अडानी फाउंडेशन (Adani Foundation) द्वारा स्थापित। जहाँ वैदिक संस्कृति के साथ आधुनिक कंप्यूटर, कोडिंग एवं डिजिटल साक्षरता की निःशुल्क शिक्षा दी जाती है।"
+        title={isEn ? "Adani Computer Lab - Modern IT Facility" : "Adani Computer Lab - आधुनिक कंप्यूटर प्रयोगशाला"}
+        description={isEn 
+          ? "State-of-the-art Adani Computer Lab at Shri Nishulk Gurukul Mahavidyalaya Ayodhya, inaugurated by Adani Foundation in April 2026 for free digital education, coding, and Sanskrit research."
+          : "श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या की अत्याधुनिक Adani Computer Lab - अप्रैल 2026 में अडानी फाउंडेशन (Adani Foundation) द्वारा स्थापित। जहाँ वैदिक संस्कृति के साथ आधुनिक कंप्यूटर, कोडिंग एवं डिजिटल साक्षरता की निःशुल्क शिक्षा दी जाती है।"
+        }
       />
 
-      {/* 1. HERO BANNER WITH USER'S SPECIFIED IMAGE */}
+      {/* 1. HERO BANNER */}
       <section className="relative min-h-[440px] sm:min-h-[500px] flex items-center justify-center overflow-hidden bg-[#241B15] select-none">
         {/* Background Image with Light Warm Overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
           style={{ backgroundImage: `url("${bannerLabImage}")` }}
         />
-        {/* Light Warm Vedic Overlay - letting the lab image shine through */}
         <div
           className="absolute inset-0"
           style={{
@@ -271,7 +340,12 @@ export const AdaniComputerLab = () => {
             ॐ
           </div>
           <div className="inline-flex items-center px-4 py-1.5 rounded-none bg-transparent text-[#F8F4EA] text-xs sm:text-sm font-serif font-bold uppercase tracking-wider mb-4 border border-[#C68A32] shadow-sm">
-            <span>लोकार्पण: अप्रैल 2026 | अडानी फाउंडेशन (ADANI FOUNDATION) द्वारा स्थापित</span>
+            <span>
+              {isEn 
+                ? "INAUGURATED: APRIL 2026 | ESTABLISHED BY ADANI FOUNDATION" 
+                : "लोकार्पण: अप्रैल 2026 | अडानी फाउंडेशन (ADANI FOUNDATION) द्वारा स्थापित"
+              }
+            </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white mb-3 tracking-tight drop-shadow-md">
@@ -279,13 +353,16 @@ export const AdaniComputerLab = () => {
           </h1>
 
           <p className="text-lg sm:text-2xl text-[#C68A32] font-serif font-semibold mb-4 drop-shadow">
-            अडानी कंप्यूटर एवं डिजिटल साक्षरता प्रयोगशाला
+            {isEn ? "Advanced Digital Literacy & Computational Center" : "अडानी कंप्यूटर एवं डिजिटल साक्षरता प्रयोगशाला"}
           </p>
 
           <div className="h-0.5 w-24 bg-[#C68A32] mx-auto mb-5" />
 
           <p className="text-sm sm:text-base text-[#F8F4EA]/95 max-w-3xl mx-auto leading-relaxed font-sans drop-shadow-sm font-medium">
-            अप्रैल 2026 में <strong>अडानी फाउंडेशन (Adani Foundation)</strong> के पावन सहयोग से स्थापित यह अत्याधुनिक कंप्यूटर लैब, गुरुकुल के विद्यार्थियों को वैदिक ज्ञान के साथ 21वीं सदी के डिजिटल कौशल, कोडिंग व ई-रिसर्च से सुसज्जित कर रही है।
+            {isEn
+              ? "Inaugurated in April 2026 with the visionary support of the Adani Foundation, this state-of-the-art computer lab empowers Vedic scholars with 21st-century digital competencies, coding, AI research, and e-learning."
+              : "अप्रैल 2026 में अडानी फाउंडेशन (Adani Foundation) के पावन सहयोग से स्थापित यह अत्याधुनिक कंप्यूटर लैब, गुरुकुल के विद्यार्थियों को वैदिक ज्ञान के साथ 21वीं सदी के डिजिटल कौशल, कोडिंग व ई-रिसर्च से सुसज्जित कर रही है।"
+            }
           </p>
         </Container>
       </section>
@@ -306,16 +383,16 @@ export const AdaniComputerLab = () => {
               >
                 <img
                   src={showcaseImg}
-                  alt="Adani Computer Lab - Shri Nishulk Gurukul Ayodhya"
+                  alt={isEn ? "Adani Computer Lab - Shri Nishulk Gurukul Ayodhya" : "Adani Computer Lab - Shri Nishulk Gurukul Ayodhya"}
                   className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 sm:p-6 text-white">
                   <span className="inline-block px-2.5 py-1 bg-[#C96B25] text-white text-[11px] font-bold rounded-sm mb-1 uppercase tracking-wider">
-                    लोकार्पण: अप्रैल 2026 (अडानी फाउंडेशन)
+                    {isEn ? "INAUGURATED: APRIL 2026 (ADANI FOUNDATION)" : "लोकार्पण: अप्रैल 2026 (अडानी फाउंडेशन)"}
                   </span>
                   <h3 className="text-base sm:text-lg font-serif font-bold text-white">
-                    अडानी कंप्यूटर लैब - भव्य स्वागत कक्ष एवं आंतरिक स्वरूप
+                    {isEn ? "Adani Computer Lab - Modern Interior & Welcome Lounge" : "अडानी कंप्यूटर लैब - भव्य स्वागत कक्ष एवं आंतरिक स्वरूप"}
                   </h3>
                 </div>
               </div>
@@ -325,28 +402,41 @@ export const AdaniComputerLab = () => {
             <div className="lg:col-span-6 space-y-5">
               <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-none text-xs font-serif font-bold uppercase tracking-wider bg-[#FFF2DE] text-[#B35614] border border-[#E9BF8C] shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-[#C96B25]" />
-                अडानी फाउंडेशन पहल — अप्रैल 2026
+                {isEn ? "ADANI FOUNDATION INITIATIVE — APRIL 2026" : "अडानी फाउंडेशन पहल — अप्रैल 2026"}
               </span>
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#241B15] leading-tight">
-                आधुनिक तकनीक से सशक्त बनते हमारे वैदिक विद्यार्थी
+                {isEn ? "Empowering Vedic Scholars with Modern Technology" : "आधुनिक तकनीक से सशक्त बनते हमारे वैदिक विद्यार्थी"}
               </h2>
 
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-sans">
-                <strong>अप्रैल 2026</strong> में <strong>अडानी फाउंडेशन (Adani Foundation)</strong> द्वारा श्री निःशुल्क गुरुकुल महाविद्यालय में अत्याधुनिक कंप्यूटर लैब का भव्य शुभारंभ किया गया।
+                {isEn ? (
+                  <>In <strong>April 2026</strong>, the <strong>Adani Foundation</strong> inaugurated a high-tech computer laboratory at Shri Nishulk Gurukul Mahavidyalaya, Ayodhya.</>
+                ) : (
+                  <><strong>अप्रैल 2026</strong> में <strong>अडानी फाउंडेशन (Adani Foundation)</strong> द्वारा श्री निःशुल्क गुरुकुल महाविद्यालय में अत्याधुनिक कंप्यूटर लैब का भव्य शुभारंभ किया गया।</>
+                )}
               </p>
 
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-sans">
-                यहाँ छात्र वेद और व्याकरण की प्राचीन विद्या के साथ-साथ आधुनिक डिजिटल टूल्स, प्रोग्रामिंग लॉजिक (Python, Web Basics), ई-रिसर्च और कंप्यूटर अनुप्रयोगों का व्यावहारिक ज्ञान पूर्णतः निःशुल्क प्राप्त कर रहे हैं।
+                {isEn ? (
+                  <>Here, students learn ancient Vedic scriptures and Paninian grammar alongside practical modern computing (Python, Web Basics, Unicode Typing, and E-Research) completely free of cost.</>
+                ) : (
+                  <>यहाँ छात्र वेद और व्याकरण की प्राचीन विद्या के साथ-साथ आधुनिक डिजिटल टूल्स, प्रोग्रामिंग लॉजिक (Python, Web Basics), ई-रिसर्च और कंप्यूटर अनुप्रयोगों का व्यावहारिक ज्ञान पूर्णतः निःशुल्क प्राप्त कर रहे हैं।</>
+                )}
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                {[
+                {(isEn ? [
+                  '100% Hands-on Practical Training',
+                  'Sanskrit Digitization & Research',
+                  'Smart Audio-Visual E-Learning',
+                  'Dedicated Workstation for Every Student'
+                ] : [
                   '100% हैंड्स-ऑन प्रैक्टिकल ट्रेनिंग',
                   'संस्कृत डिजिटलीकरण व शोध कार्य',
                   'स्मार्ट ऑडियो-विजुअल लर्निंग',
                   'प्रत्येक छात्र को व्यक्तिगत कंप्यूटर'
-                ].map((item, idx) => (
+                ]).map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-gray-800">
                     <CheckCircle2 className="w-4 h-4 text-[#C96B25] flex-shrink-0" />
                     <span>{item}</span>
@@ -363,22 +453,34 @@ export const AdaniComputerLab = () => {
         <Container>
           <div className="max-w-6xl mx-auto">
             <SectionHeading
-              badge="प्रेरणादायी पहल"
-              title="अडानी परिवार का अयोध्या प्रवास एवं गुरुकुल को अनुपम उपहार"
-              subtitle="विद्यार्थियों की अभिलाषा और अडानी फाउंडेशन का पावन संकल्प"
+              badge={isEn ? "INSPIRATIONAL INITIATIVE" : "प्रेरणादायी पहल"}
+              title={isEn ? "Adani Family's Ayodhya Visit & Gift to Gurukul" : "अडानी परिवार का अयोध्या प्रवास एवं गुरुकुल को अनुपम उपहार"}
+              subtitle={isEn ? "Students' aspirations met with immediate action by Adani Foundation" : "विद्यार्थियों की अभिलाषा और अडानी फाउंडेशन का पावन संकल्प"}
             />
 
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Story narrative */}
               <div className="lg:col-span-7 space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed font-sans">
                 <p>
-                  <strong>अप्रैल 2026</strong> में प्रसिद्ध उद्योगपति <strong>श्री गौतम अडानी</strong>, अपनी धर्मपत्नी एवं अडानी फाउंडेशन की अध्यक्षा <strong>डॉ. प्रीति अडानी</strong>, सुपुत्र <strong>श्री करण अडानी</strong> तथा पुत्रवधू <strong>श्रीमती परिधि अडानी</strong> के साथ अयोध्या धाम पधारे।
+                  {isEn ? (
+                    <>In <strong>April 2026</strong>, renowned industrialist <strong>Shri Gautam Adani</strong> visited Ayodhya Dham accompanied by his wife and Chairperson of Adani Foundation <strong>Dr. Priti Adani</strong>, son <strong>Shri Karan Adani</strong>, and daughter-in-law <strong>Smt. Paridhi Adani</strong>.</>
+                  ) : (
+                    <><strong>अप्रैल 2026</strong> में प्रसिद्ध उद्योगपति <strong>श्री गौतम अडानी</strong>, अपनी धर्मपत्नी एवं अडानी फाउंडेशन की अध्यक्षा <strong>डॉ. प्रीति अडानी</strong>, सुपुत्र <strong>श्री करण अडानी</strong> तथा पुत्रवधू <strong>श्रीमती परिधि अडानी</strong> के साथ अयोध्या धाम पधारे।</>
+                  )}
                 </p>
                 <p>
-                  श्रीराम जन्मभूमि मंदिर में रामलला के दर्शन एवं पूजन के उपरांत अडानी परिवार ने <strong>श्री निःशुल्क गुरुकुल महाविद्यालय</strong> का अवलोकन किया तथा यहाँ अध्ययनरत आचार्यों एवं ब्रह्मचारियों से आत्मीय संवाद स्थापित किया।
+                  {isEn ? (
+                    <>Following prayers at the Shri Ram Janmabhoomi temple, the Adani family toured <strong>Shri Nishulk Gurukul Mahavidyalaya</strong> and interacted warmly with resident Acharyas and students.</>
+                  ) : (
+                    <>श्रीराम जन्मभूमि मंदिर में रामलला के दर्शन एवं पूजन के उपरांत अडानी परिवार ने <strong>श्री निःशुल्क गुरुकुल महाविद्यालय</strong> का अवलोकन किया तथा यहाँ अध्ययनरत आचार्यों एवं ब्रह्मचारियों से आत्मीय संवाद स्थापित किया।</>
+                  )}
                 </p>
                 <p>
-                  संवाद के दौरान जब गुरुकुल के नन्हे विद्यार्थियों ने आधुनिक कंप्यूटर सीखने की इच्छा व्यक्त की, तो इस विनम्र आग्रह को सम्मान देते हुए <strong>अडानी फाउंडेशन (Adani Foundation)</strong> ने तत्परता से गुरुकुल परिसर में इस सर्वसुविधायुक्त स्टेट-ऑफ-द-आर्ट कंप्यूटर लैब की स्थापना की।
+                  {isEn ? (
+                    <>When young students expressed their keen desire to learn modern computer science, the <strong>Adani Foundation</strong> promptly established this world-class, fully equipped computer lab within the Gurukul campus.</>
+                  ) : (
+                    <>संवाद के दौरान जब गुरुकुल के नन्हे विद्यार्थियों ने आधुनिक कंप्यूटर सीखने की इच्छा व्यक्त की, तो इस विनम्र आग्रह को सम्मान देते हुए <strong>अडानी फाउंडेशन (Adani Foundation)</strong> ने तत्परता से गुरुकुल परिसर में इस सर्वसुविधायुक्त स्टेट-ऑफ-द-आर्ट कंप्यूटर लैब की स्थापना की।</>
+                  )}
                 </p>
               </div>
 
@@ -394,19 +496,25 @@ export const AdaniComputerLab = () => {
                 
                 <div className="text-3xl text-[#C68A32] font-serif mb-2">“</div>
                 <p className="text-xs sm:text-sm text-[#F8F4EA] leading-relaxed italic font-serif relative z-10">
-                  श्री निःशुल्क गुरुकुल महाविद्यालय के विद्यार्थियों को आधुनिक कंप्यूटर लैब के माध्यम से तकनीक से जुड़ते देखना अत्यंत सुखद व संतोषप्रद है। विद्यार्थियों की एक छोटी सी इच्छा को पूरा कर पाना मेरे लिए असीम आनंद का विषय है।
+                  {isEn 
+                    ? "It is immensely gratifying to witness students of Shri Nishulk Gurukul Mahavidyalaya connect with modern technology through this lab. Fulfilling the simple aspiration of these young scholars gives me profound joy."
+                    : "श्री निःशुल्क गुरुकुल महाविद्यालय के विद्यार्थियों को आधुनिक कंप्यूटर लैब के माध्यम से तकनीक से जुड़ते देखना अत्यंत सुखद व संतोषप्रद है। विद्यार्थियों की एक छोटी सी इच्छा को पूरा कर पाना मेरे लिए असीम आनंद का विषय है।"
+                  }
                 </p>
                 <p className="text-xs text-[#EDE7D4] leading-relaxed mt-3 pt-3 border-t border-[#C68A32]/30 relative z-10 font-sans">
-                  यह पहल भारत की प्राचीन ज्ञान परंपरा और डिजिटल युग के बीच एक सुदृढ़ सेतु निर्माण का प्रयास है, जिससे युवा पीढ़ी अपनी सांस्कृतिक जड़ों से जुड़े रहकर ज्ञान के नए अवसरों से समृद्ध हो सके।
+                  {isEn
+                    ? "This initiative builds a robust bridge between India's ancient knowledge tradition and the digital era, ensuring the new generation stays anchored in its roots while flourishing with modern opportunities."
+                    : "यह पहल भारत की प्राचीन ज्ञान परंपरा और डिजिटल युग के बीच एक सुदृढ़ सेतु निर्माण का प्रयास है, जिससे युवा पीढ़ी अपनी सांस्कृतिक जड़ों से जुड़े रहकर ज्ञान के नए अवसरों से समृद्ध हो सके।"
+                  }
                 </p>
 
                 <div className="mt-4 pt-3 flex items-center justify-between gap-3 text-left relative z-10">
                   <div>
                     <h4 className="font-serif font-bold text-sm sm:text-base text-[#C68A32]">
-                      श्री गौतम अडानी
+                      {isEn ? "Shri Gautam Adani" : "श्री गौतम अडानी"}
                     </h4>
                     <span className="text-[11px] text-[#D4C4A0]">
-                      सोशल मीडिया मंच 'X' पर व्यक्त उद्गार
+                      {isEn ? "Expressed on Social Media platform 'X'" : "सोशल मीडिया मंच 'X' पर व्यक्त उद्गार"}
                     </span>
                   </div>
                   <span className="px-2.5 py-1 bg-[#2E221B] border border-[#C68A32]/40 text-[#C68A32] text-[10px] font-bold rounded uppercase">
@@ -432,7 +540,7 @@ export const AdaniComputerLab = () => {
                     Adani Foundation sets up modern computer lab at Ayodhya Gurukul
                   </h4>
                   <p className="text-xs text-gray-600 mt-1 font-sans">
-                    टाइम्स ऑफ इंडिया में प्रकाशित विशेष समाचार रिपोर्ट (TNN Coverage)
+                    {isEn ? "Special news coverage published in The Times of India (TNN)" : "टाइम्स ऑफ इंडिया में प्रकाशित विशेष समाचार रिपोर्ट (TNN Coverage)"}
                   </p>
                 </div>
               </div>
@@ -445,7 +553,7 @@ export const AdaniComputerLab = () => {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded bg-[#D32F2F] hover:bg-[#b71c1c] text-white text-xs sm:text-sm font-semibold shadow-md transition-all"
                 >
                   <Download className="w-4 h-4" />
-                  <span>द टाइम्स ऑफ इंडिया PDF देखें</span>
+                  <span>{isEn ? "Download TOI News PDF" : "द टाइम्स ऑफ इंडिया PDF देखें"}</span>
                 </a>
                 <a
                   href="https://timesofindia.indiatimes.com/city/lucknow/adani-foundation-sets-up-modern-computer-lab-at-ayodhya-gurukul/articleshow/133548689.cms"
@@ -468,13 +576,16 @@ export const AdaniComputerLab = () => {
           <div className="mb-10">
             <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-none text-xs font-serif font-bold uppercase tracking-wider mb-2 bg-[#FFF2DE] text-[#B35614] border border-[#E9BF8C] shadow-sm">
               <Camera className="w-3.5 h-3.5 text-[#C96B25]" />
-              चित्र वीथिका (Photo Gallery)
+              {isEn ? "PHOTO GALLERY" : "चित्र वीथिका (Photo Gallery)"}
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#241B15]">
-              Adani Computer Lab के सजीव छायाचित्र
+              {isEn ? "Authentic Photos of Adani Computer Lab" : "Adani Computer Lab के सजीव छायाचित्र"}
             </h2>
             <p className="text-xs sm:text-sm text-gray-600 mt-1 font-sans">
-              कंप्यूटर लैब के लोकार्पण, विद्यार्थियों के अध्ययन एवं प्रायोगिक प्रशिक्षण के दुर्लभ चित्र (क्लिक करके बड़े आकार में देखें)
+              {isEn 
+                ? "Glimpses of the lab inauguration, student training sessions, and workstations (Click to enlarge in full resolution)"
+                : "कंप्यूटर लैब के लोकार्पण, विद्यार्थियों के अध्ययन एवं प्रायोगिक प्रशिक्षण के दुर्लभ चित्र (क्लिक करके बड़े आकार में देखें)"
+              }
             </p>
           </div>
 
@@ -513,9 +624,12 @@ export const AdaniComputerLab = () => {
       <section className="py-16 sm:py-20 bg-white border-t border-[#C68A32]/20">
         <Container>
           <SectionHeading
-            badge="प्रशिक्षण पाठ्यक्रम"
-            title="कंप्यूटर लैब में सिखाए जाने वाले मुख्य विषय"
-            subtitle="कक्षा 6 से आचार्य स्तर तक क्रमिक एवं व्यवस्थित डिजिटल शिक्षा पाठ्यक्रम"
+            badge={isEn ? "TRAINING MODULES" : "प्रशिक्षण पाठ्यक्रम"}
+            title={isEn ? "Core Disciplines Taught in the Lab" : "कंप्यूटर लैब में सिखाए जाने वाले मुख्य विषय"}
+            subtitle={isEn 
+              ? "Systematic digital curriculum structured for students from Class 6 up to Acharya"
+              : "कक्षा 6 से आचार्य स्तर तक क्रमिक एवं व्यवस्थित डिजिटल शिक्षा पाठ्यक्रम"
+            }
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
@@ -563,16 +677,19 @@ export const AdaniComputerLab = () => {
         </Container>
       </section>
 
-      {/* 7. INFRASTRUCTURE & FACILITIES */}
+      {/* 7. INFRASTRUCTURE & FEATURES */}
       <section className="py-16 sm:py-20 bg-[#241B15] text-[#F8F4EA] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#C68A32]/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#C96B25]/10 rounded-full blur-3xl pointer-events-none" />
 
         <Container className="relative z-10">
           <SectionHeading
-            badge="प्रयोगशाला सुविधाएँ"
-            title="Adani Computer Lab की मुख्य विशेषताएँ"
-            subtitle="अत्याधुनिक तकनीकी अवसंरचना जो विद्यार्थियों को देती है विश्वस्तरीय सीखने का माहौल"
+            badge={isEn ? "LAB SPECIFICATIONS" : "प्रयोगशाला सुविधाएँ"}
+            title={isEn ? "Key Features of Adani Computer Lab" : "Adani Computer Lab की मुख्य विशेषताएँ"}
+            subtitle={isEn 
+              ? "World-class technical infrastructure providing students with an inspiring learning environment"
+              : "अत्याधुनिक तकनीकी अवसंरचना जो विद्यार्थियों को देती है विश्वस्तरीय सीखने का माहौल"
+            }
             light={true}
           />
 
@@ -611,16 +728,19 @@ export const AdaniComputerLab = () => {
             }}
           >
             <p className="text-base sm:text-xl font-serif font-bold text-[#F8F4EA] leading-relaxed">
-              "प्राचीन ऋषि परम्परा और 21वीं सदी की अत्याधुनिक तकनीक — दोनों के समन्वय से ही एक प्रबुद्ध एवं आत्मनिर्भर भारत का निर्माण सम्भव है।"
+              {isEn 
+                ? '"Only through the harmonious union of ancient Rishi wisdom and 21st-century modern technology can we build an enlightened and self-reliant Bharat."'
+                : '"प्राचीन ऋषि परम्परा और 21वीं सदी की अत्याधुनिक तकनीक — दोनों के समन्वय से ही एक प्रबुद्ध एवं आत्मनिर्भर भारत का निर्माण सम्भव है।"'
+              }
             </p>
             <p className="text-xs sm:text-sm text-[#C68A32] mt-2 font-serif font-semibold">
-              — श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या
+              {isEn ? "— Shri Nishulk Gurukul Mahavidyalaya, Ayodhya" : "— श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या"}
             </p>
           </div>
         </Container>
       </section>
 
-      {/* 8. INTERACTIVE LIGHTBOX POPUP FOR FULLSCREEN VIEW */}
+      {/* 8. INTERACTIVE LIGHTBOX */}
       <Lightbox
         isOpen={lightboxOpen}
         images={labGallery}
@@ -637,3 +757,4 @@ export const AdaniComputerLab = () => {
 };
 
 export default AdaniComputerLab;
+

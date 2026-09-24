@@ -43,15 +43,15 @@ export const LanguageToggle = ({ variant = 'default', className = '' }) => {
 
   // Variant 2: Navbar / Drawer Button (Sleek badge with globe)
   return (
-    <div className={`relative inline-block text-left ${className}`}>
+    <div className={`relative inline-flex items-center ${className}`}>
       <button
         type="button"
         onClick={toggleLanguage}
-        className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-none border border-[#C68A32]/40 bg-[#F8F4EA] text-[#241B15] hover:bg-[#C96B25] hover:text-white transition-all shadow-sm group"
+        className="inline-flex items-center justify-center gap-1.5 px-3 h-8 sm:h-9 text-xs sm:text-sm font-bold rounded border border-[#C68A32]/50 bg-[#F8F4EA] text-[#241B15] hover:bg-[#C96B25] hover:text-white transition-all shadow-sm group"
         title={language === 'hi' ? 'Switch entire website to English' : 'वेबसाइट को हिन्दी में बदलें'}
       >
-        <Globe className="w-3.5 h-3.5 text-[#C96B25] group-hover:text-white transition-colors" />
-        <span>{language === 'hi' ? 'English' : 'हिन्दी'}</span>
+        <Globe className="w-3.5 h-3.5 text-[#C96B25] group-hover:text-white transition-colors flex-shrink-0" />
+        <span className="whitespace-nowrap">{language === 'hi' ? 'English' : 'हिन्दी'}</span>
       </button>
     </div>
   );

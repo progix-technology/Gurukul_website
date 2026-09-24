@@ -6,13 +6,19 @@ import GalleryGrid from '../components/gallery/GalleryGrid';
 import CallToAction from '../components/home/CallToAction';
 import { Camera, Sparkles } from 'lucide-react';
 import bannerBgImg from '../assets/img_2.jpeg';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Gallery = () => {
+  const { language } = useLanguage();
+  const isEn = language === 'en';
+
   return (
     <>
       <SEO
-        title="छायाचित्र एवं वीडियो"
-        description="श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या के छायाचित्र एवं वीडियो: यज्ञशाला, कंप्यूटर लैब, कक्षाएं, योगाभ्यास, वार्षिकोत्सव एवं परिसर दृश्य।"
+        title={isEn ? "Photo & Video Gallery" : "छायाचित्र एवं वीडियो"}
+        description={isEn
+          ? "Photos and videos of Shri Nishulk Gurukul Mahavidyalaya Ayodhya: Yajnashala, Computer Lab, Classrooms, Yoga, Annual Day & Campus Views."
+          : "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या के छायाचित्र एवं वीडियो: यज्ञशाला, कंप्यूटर लैब, कक्षाएं, योगाभ्यास, वार्षिकोत्सव एवं परिसर दृश्य।"}
       />
 
       {/* Header Banner */}
@@ -20,7 +26,7 @@ export const Gallery = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={bannerBgImg}
-            alt="श्री निःशुल्क गुरुकुल महाविद्यालय छायाचित्र"
+            alt={isEn ? "Shri Nishulk Gurukul Mahavidyalaya Gallery" : "श्री निःशुल्क गुरुकुल महाविद्यालय छायाचित्र"}
             className="w-full h-full object-cover object-center"
             loading="lazy"
           />
@@ -39,13 +45,15 @@ export const Gallery = () => {
             ॐ
           </div>
           <div className="inline-flex items-center px-4 py-1 rounded-none text-xs sm:text-sm font-serif font-bold uppercase tracking-wider mb-4 bg-transparent text-[#F8F4EA] border border-[#C68A32] shadow-sm">
-            <span>गुरुकुल पावन दर्शन</span>
+            <span>{isEn ? "Sacred Campus Darshan" : "गुरुकुल पावन दर्शन"}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-3 drop-shadow-md">
-            छायाचित्र एवं वीडियो वीथिका
+            {isEn ? "Photo & Video Gallery" : "छायाचित्र एवं वीडियो वीथिका"}
           </h1>
           <p className="text-sm sm:text-base text-[#F8F4EA]/90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm font-medium">
-            गुरुकुल परिसर, आधुनिक कंप्यूटर लैब, दैनिक देवयज्ञ, शास्त्र अध्ययन, योग एवं मीडिया वीडियो कवरेज
+            {isEn
+              ? "Gurukul campus life, modern Adani Computer Lab, daily Devayajna, Vedic scripture study, Yoga, and media coverage."
+              : "गुरुकुल परिसर, आधुनिक कंप्यूटर लैब, दैनिक देवयज्ञ, शास्त्र अध्ययन, योग एवं मीडिया वीडियो कवरेज"}
           </p>
         </Container>
       </section>
@@ -54,9 +62,9 @@ export const Gallery = () => {
       <section className="py-20 bg-white">
         <Container>
           <SectionHeading
-            badge="दृश्यावली एवं वीडियो"
-            title="गुरुकुल जीवन के विविध आयाम"
-            subtitle="चित्रों व वीडियो पर क्लिक करके उच्च गुणवत्ता में विवरण सहित देखें"
+            badge={isEn ? "Visuals & Videos" : "दृश्यावली एवं वीडियो"}
+            title={isEn ? "Dimensions of Gurukul Life" : "गुरुकुल जीवन के विविध आयाम"}
+            subtitle={isEn ? "Click on images or videos to view high-resolution details" : "चित्रों व वीडियो पर क्लिक करके उच्च गुणवत्ता में विवरण सहित देखें"}
           />
 
           <GalleryGrid />

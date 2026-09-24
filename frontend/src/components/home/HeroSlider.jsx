@@ -27,7 +27,7 @@ const slides = [
     description: 'सन् 1925 से वेद, संस्कृत एवं आधुनिक शिक्षा का अद्वितीय केंद्र — जहाँ प्राचीन ज्ञान और नई पीढ़ी का समागम होता है।',
     description_en: 'A unique centre of Vedic, Sanskrit and modern education since 1925 – where ancient wisdom meets the new generation.',
     primaryBtn: { text: 'प्रवेश की जानकारी', text_en: 'Admission Info', link: '/admission' },
-    secondaryBtn: { text: 'गुरुकुल के बारे में', text_en: 'About Gurukul', link: '/about' }
+    secondaryBtn: { text: 'गुरुकुल परिचय', text_en: 'Gurukul Introduction', link: '/about' }
   },
   {
     id: 2,
@@ -59,7 +59,7 @@ const slides = [
     description: 'अडानी फाउंडेशन द्वारा स्थापित अत्याधुनिक कंप्यूटर लैब से ब्रह्मचारियों को कोडिंग, टाइपिंग और डिजिटल शिक्षा।',
     description_en: 'State-of-the-art computer lab powered by Adani Foundation equipping Brahmacharis with coding and digital skills.',
     primaryBtn: { text: 'Adani Computer Lab', text_en: 'Adani Computer Lab', link: '/adani-computer-lab' },
-    secondaryBtn: { text: 'प्रयोगशाला चित्र', text_en: 'Lab Gallery', link: '/adani-computer-lab' }
+    secondaryBtn: { text: 'Lab Facilities', text_en: 'Lab Facilities', link: '/adani-computer-lab' }
   },
   {
     id: 4,

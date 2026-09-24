@@ -28,7 +28,7 @@ export const HeaderTopBar = () => {
 
   return (
     <div className="bg-[#FFCD33] text-gray-900 text-xs py-1.5 px-3 sm:px-4 border-b border-amber-400 font-medium">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div className="w-full max-w-[1750px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex flex-col sm:flex-row items-center justify-between gap-2">
         {/* Left Side: Social Media Icons */}
         <div className="flex items-center gap-3">
           <span className="text-[11px] font-bold text-gray-800 hidden md:inline">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const Lightbox = ({
   isOpen,
@@ -13,6 +14,8 @@ export const Lightbox = ({
   const [isImageLoading, setIsImageLoading] = useState(true);
   const touchStartX = React.useRef(0);
   const touchEndX = React.useRef(0);
+  const { language } = useLanguage();
+  const isEn = language === 'en';
 
   useEffect(() => {
     setIsImageLoading(true);
@@ -54,6 +57,7 @@ export const Lightbox = ({
   if (!isOpen || !images.length) return null;
 
   const currentItem = images[currentIndex] || {};
+  const itemTitle = isEn ? (currentItem.title_en || currentItem.title) : currentItem.title;
 
   const lightboxContent = (
     <div
@@ -61,7 +65,7 @@ export const Lightbox = ({
       style={{ margin: 0, padding: 0 }}
       role="dialog"
       aria-modal="true"
-      aria-label="चित्र दर्शक (Lightbox)"
+      aria-label={isEn ? "Photo Viewer (Lightbox)" : "चित्र दर्शक (Lightbox)"}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -73,7 +77,7 @@ export const Lightbox = ({
       <button
         onClick={onClose}
         className="fixed top-5 right-5 sm:top-7 sm:right-7 z-[1000000] p-3 rounded-full bg-white/15 hover:bg-[#C96B25] text-white transition-all border border-white/30 shadow-2xl focus:outline-none"
-        aria-label="बंद करें"
+        aria-label={isEn ? "Close" : "बंद करें"}
       >
         <X className="w-6 h-6 sm:w-8 sm:h-8" />
       </button>
@@ -86,7 +90,7 @@ export const Lightbox = ({
             onPrev();
           }}
           className="fixed left-3 sm:left-8 top-1/2 -translate-y-1/2 z-[1000000] p-3.5 sm:p-4 rounded-full bg-black/70 hover:bg-[#C96B25] text-white transition-all border border-white/20 shadow-2xl focus:outline-none"
-          aria-label="पिछला चित्र"
+          aria-label={isEn ? "Previous image" : "पिछला चित्र"}
         >
           <ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9" />
         </button>
@@ -100,7 +104,7 @@ export const Lightbox = ({
             onNext();
           }}
           className="fixed right-3 sm:right-8 top-1/2 -translate-y-1/2 z-[1000000] p-3.5 sm:p-4 rounded-full bg-black/70 hover:bg-[#C96B25] text-white transition-all border border-white/20 shadow-2xl focus:outline-none"
-          aria-label="अगला चित्र"
+          aria-label={isEn ? "Next image" : "अगला चित्र"}
         >
           <ChevronRight className="w-7 h-7 sm:w-9 sm:h-9" />
         </button>
@@ -112,13 +116,15 @@ export const Lightbox = ({
         {isImageLoading && (
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-20">
             <Loader2 className="w-12 h-12 text-[#C68A32] animate-spin mb-3 drop-shadow-lg" />
-            <span className="text-sm font-medium text-amber-200 animate-pulse">चित्र लोड हो रहा है...</span>
+            <span className="text-sm font-medium text-amber-200 animate-pulse">
+              {isEn ? "Loading high resolution photo..." : "चित्र लोड हो रहा है..."}
+            </span>
           </div>
         )}
 
         <img
           src={currentItem.fullImage || currentItem.thumbnail}
-          alt={currentItem.title || 'गुरुकुल छायाचित्र'}
+          alt={itemTitle || (isEn ? 'Gurukul Photo' : 'गुरुकुल छायाचित्र')}
           loading="lazy"
           onLoad={() => setIsImageLoading(false)}
           className={`max-h-[94vh] max-w-[94vw] w-auto h-auto object-contain rounded-lg shadow-2xl pointer-events-auto select-none transition-all duration-300 ${
@@ -136,7 +142,7 @@ export const Lightbox = ({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gurukul-saffron hover:bg-orange-600 text-white font-bold text-sm shadow-2xl transition-all transform hover:scale-105"
             >
-              <span>{currentItem.platformName || 'वीडियो'} पर देखें</span>
+              <span>{isEn ? `Watch on ${currentItem.platformName || 'Video'}` : `${currentItem.platformName || 'वीडियो'} पर देखें`}</span>
               <span>↗</span>
             </a>
           </div>

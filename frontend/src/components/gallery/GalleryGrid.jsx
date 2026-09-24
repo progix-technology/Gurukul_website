@@ -3,11 +3,14 @@ import { GALLERY_CATEGORIES, GALLERY_ITEMS } from '../../data/galleryData';
 import GalleryCard from './GalleryCard';
 import Lightbox from '../common/Lightbox';
 import EmptyState from '../common/EmptyState';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const GalleryGrid = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { language } = useLanguage();
+  const isEn = language === 'en';
 
   const [isFilterChanging, setIsFilterChanging] = useState(false);
 
@@ -52,7 +55,7 @@ export const GalleryGrid = () => {
                 : 'bg-white text-gray-700 hover:bg-orange-50 border border-orange-100 hover:text-gurukul-saffron'
             }`}
           >
-            {cat.label}
+            {isEn ? (cat.label_en || cat.label) : cat.label}
           </button>
         ))}
       </div>
@@ -60,8 +63,8 @@ export const GalleryGrid = () => {
       {/* Grid of Images */}
       {filteredItems.length === 0 ? (
         <EmptyState
-          title="कोई चित्र नहीं मिला"
-          message="इस श्रेणी में वर्तमान में कोई चित्र उपलब्ध नहीं है।"
+          title={isEn ? "No Images Found" : "कोई चित्र नहीं मिला"}
+          message={isEn ? "No images are currently available in this category." : "इस श्रेणी में वर्तमान में कोई चित्र उपलब्ध नहीं है।"}
         />
       ) : (
         <div className={`grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 transition-all duration-300 ${
