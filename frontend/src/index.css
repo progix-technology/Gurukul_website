@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    background-color: #F8F4EA;
+    color: #241B15;
+    @apply antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-gurukul-brown tracking-normal;
+  }
+}
+
+@layer components {
+  /* Container */
+  .vedic-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
+  }
+
+  /* Rectangular Vedic Cards */
+  .vedic-card {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(198, 138, 50, 0.25);
+    box-shadow: 0 4px 15px 0 rgba(36, 27, 21, 0.06);
+    @apply rounded-none transition-all duration-300 hover:shadow-vedic;
+  }
+
+  /* Badges */
+  .vedic-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-none text-xs font-bold uppercase tracking-wider bg-gurukul-cream-200 text-gurukul-brown border border-gurukul-gold/40;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F4EA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E5832E;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D97724;
+}
+
+/* Smooth Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
