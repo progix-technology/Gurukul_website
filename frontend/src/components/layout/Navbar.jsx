@@ -112,7 +112,7 @@ export default function Navbar() {
 
           {/* CTA + Language + Hamburger */}
           <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 ml-auto z-10">
-            <LanguageToggle className="hidden sm:inline-flex" />
+            <LanguageToggle className="inline-flex" />
 
             <Link
               to="/admission"
@@ -168,12 +168,6 @@ export default function Navbar() {
               >
                 <X size={24} />
               </button>
-            </div>
-
-            {/* Mobile Language Switcher */}
-            <div className="px-4 py-2.5 bg-[#1D1510] border-b border-[#8B4513]/40 flex items-center justify-between">
-              <span className="text-xs font-medium text-[#C68A32]">{t('nav.langLabel', 'भाषा / Language:')}</span>
-              <LanguageToggle variant="topbar" />
             </div>
 
             <ul className="flex-1 overflow-y-auto py-4 flex flex-col gap-1 px-3">

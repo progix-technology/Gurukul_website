@@ -108,8 +108,8 @@ export default function Home() {
 
       {/* 2. TRUST STRIP */}
       <section className="py-14" style={{ backgroundColor: "#EDE7D4" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {[
               {
                 icon: <Star size={28} color="#C96B25" />,
@@ -134,22 +134,22 @@ export default function Home() {
             ].map(({ icon, stat, label }) => (
               <div
                 key={label}
-                className="p-6 rounded-lg text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                className="p-4 sm:p-6 rounded-lg text-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col items-center justify-center overflow-hidden"
                 style={{
                   backgroundColor: "#F8F4EA",
                   border: "1px solid #C68A32",
                   boxShadow: "0 2px 12px rgba(198,138,50,0.12)",
                 }}
               >
-                <div className="flex justify-center mb-3">{icon}</div>
+                <div className="flex justify-center mb-2.5 sm:mb-3">{icon}</div>
                 <div
-                  className="text-2xl font-bold mb-1"
+                  className="text-base sm:text-xl md:text-2xl font-bold mb-1 max-w-full leading-tight tracking-tight"
                   style={{ ...serifFont, color: "#241B15" }}
                 >
                   {stat}
                 </div>
                 <div
-                  className="text-sm"
+                  className="text-xs sm:text-sm"
                   style={{ ...sansFont, color: "#8B4513" }}
                 >
                   {label}
