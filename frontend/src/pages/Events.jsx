@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SEO from '../components/common/SEO';
 import Container from '../components/common/Container';
 import SectionHeading from '../components/common/SectionHeading';
-import EventCard from '../components/events/EventCard';
+import EventCard, { EventCardSkeleton } from '../components/events/EventCard';
 import EventDetailModal from '../components/events/EventDetailModal';
 import CallToAction from '../components/home/CallToAction';
 import { EVENTS_DATA } from '../data/eventsData';
@@ -13,6 +13,7 @@ import { useLanguage } from '../context/LanguageContext';
 export const Events = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isFiltering, setIsFiltering] = useState(false);
   const { language } = useLanguage();
   const isEn = language === 'en';
 
@@ -26,6 +27,15 @@ export const Events = () => {
     { id: 'rishi-bodhotsav', label: isEn ? 'Rishi Bodhotsav' : 'ऋषि बोधोत्सव' },
     { id: 'shastrartha', label: isEn ? 'Shastrartha Contest' : 'शास्त्रार्थ प्रतियोगिता' },
   ];
+
+  const handleCategorySelect = (catId) => {
+    if (catId === activeCategory) return;
+    setIsFiltering(true);
+    setActiveCategory(catId);
+    setTimeout(() => {
+      setIsFiltering(false);
+    }, 200);
+  };
 
   const filteredEvents = activeCategory === 'all'
     ? EVENTS_DATA
@@ -86,7 +96,7 @@ export const Events = () => {
               <button
                 key={cat.id}
                 type="button"
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => handleCategorySelect(cat.id)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   activeCategory === cat.id
                     ? 'bg-gurukul-saffron text-white shadow-md'
@@ -100,13 +110,23 @@ export const Events = () => {
 
           {/* Events Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredEvents.map((event) => (
-              <EventCard
-                key={event.id}
-                event={event}
-                onOpenDetails={setSelectedEvent}
-              />
-            ))}
+            {isFiltering ? (
+              [1, 2, 3, 4, 5, 6].map((n) => (
+                <EventCardSkeleton key={n} />
+              ))
+            ) : filteredEvents.length > 0 ? (
+              filteredEvents.map((event) => (
+                <EventCard
+                  key={event.id}
+                  event={event}
+                  onOpenDetails={setSelectedEvent}
+                />
+              ))
+            ) : (
+              <div className="col-span-full py-12 text-center text-gray-500 font-medium">
+                {isEn ? 'No events found in this category.' : 'इस श्रेणी में कोई कार्यक्रम उपलब्ध नहीं है।'}
+              </div>
+            )}
           </div>
         </Container>
       </section>

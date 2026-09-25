@@ -86,5 +86,4 @@ export const PencilLoader = ({ fullScreen = false, size = '160px', className = '
   );
 };
 
-export const LoadingSpinner = PencilLoader;
-export default LoadingSpinner;
+export default PencilLoader;

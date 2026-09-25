@@ -13,9 +13,9 @@ const Contact = lazy(() => import('../pages/Contact'));
 const AdaniComputerLab = lazy(() => import('../pages/AdaniComputerLab'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
-// Hindi loading fallback for Suspense
+// Modern Light Skeleton Loading fallback for Suspense
 const PageLoader = () => (
-  <LoadingSpinner fullScreen message="पृष्ठ लोड हो रहा है, कृपया प्रतीक्षा करें..." />
+  <LoadingSpinner fullScreen />
 );
 
 export const AppRoutes = () => {

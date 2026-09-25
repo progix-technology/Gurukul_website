@@ -83,5 +83,68 @@ export const EventCard = ({ event, onOpenDetails }) => {
   );
 };
 
+export const EventCardSkeleton = () => {
+  return (
+    <div className="bg-white rounded-none border border-[#C68A32]/40 shadow-sm flex flex-col justify-between animate-pulse select-none">
+      <div>
+        {/* Top Image Banner Skeleton */}
+        <div className="relative aspect-[16/10] bg-[#F8F5EE] border-b border-[#EFE9DC] flex items-center justify-center overflow-hidden">
+          <svg
+            className="w-10 h-10 text-[#DCD4C4]"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 18"
+          >
+            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.175 2.899 1.35-1.8a1 1 0 0 1 1.622-.056l3.5 4.5a1 1 0 0 1 .129.938Z" />
+          </svg>
+          <div className="absolute top-3 right-3 h-5 w-20 bg-[#E8DFC8]/70" />
+          <div className="absolute top-3 left-3 h-4 w-16 bg-[#E8DFC8]/50" />
+        </div>
+
+        {/* Card Content Skeleton */}
+        <div className="p-6">
+          {/* Date row */}
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-3.5 h-3.5 bg-[#E8DFC8] rounded-sm flex-shrink-0" />
+            <div className="h-3.5 bg-[#EDE5D6] w-28 rounded-sm" />
+          </div>
+
+          {/* Title lines */}
+          <div className="h-5 bg-[#E2D8C3] w-5/6 mb-2 rounded-sm" />
+          <div className="h-5 bg-[#E2D8C3] w-3/5 mb-4 rounded-sm" />
+
+          {/* Description lines */}
+          <div className="space-y-2 mb-5">
+            <div className="h-3 bg-[#EDE5D6] w-full rounded-sm" />
+            <div className="h-3 bg-[#EDE5D6] w-11/12 rounded-sm" />
+            <div className="h-3 bg-[#EDE5D6] w-3/4 rounded-sm" />
+          </div>
+
+          {/* Location & Chief Guest Info */}
+          <div className="pt-3 border-t border-[#C68A32]/20 space-y-2.5">
+            <div className="flex items-center gap-2">
+              <div className="w-3.5 h-3.5 bg-[#E8DFC8] rounded-full flex-shrink-0" />
+              <div className="h-3 bg-[#EDE5D6] w-1/2 rounded-sm" />
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3.5 h-3.5 bg-[#E8DFC8] rounded-full flex-shrink-0" />
+              <div className="h-3 bg-[#EDE5D6] w-2/3 rounded-sm" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Button Skeleton */}
+      <div className="p-6 pt-0">
+        <div className="w-full h-9 bg-[#F4EFE5] border border-[#E5DAC8] rounded-none flex items-center justify-center">
+          <div className="h-3 bg-[#DCD4C4] w-32 rounded-sm" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default EventCard;
+
 

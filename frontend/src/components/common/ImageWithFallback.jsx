@@ -39,17 +39,25 @@ export const ImageWithFallback = ({
   };
 
   return (
-    <div className={`relative overflow-hidden bg-[#F2EBDA] ${aspectRatio} ${className}`}>
-      {/* Lightweight Non-blocking Shimmer Skeleton */}
+    <div className={`relative overflow-hidden bg-[#F8F5EE] ${aspectRatio} ${className}`}>
+      {/* Light Elegant Image Skeleton Placeholder */}
       {!isLoaded && !hasError && (
-        <div className="absolute inset-0 z-0 flex items-center justify-center bg-gradient-to-r from-[#EDE7D4] via-[#F8F4EA] to-[#EDE7D4] animate-pulse">
-          <Loader2 className="w-6 h-6 text-[#C96B25]/60 animate-spin" />
+        <div className="absolute inset-0 z-0 flex items-center justify-center bg-[#F8F5EE] animate-pulse">
+          <svg
+            className="w-9 h-9 sm:w-11 sm:h-11 text-[#DCD4C4]"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 18"
+          >
+            <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.175 2.899 1.35-1.8a1 1 0 0 1 1.622-.056l3.5 4.5a1 1 0 0 1 .129.938Z" />
+          </svg>
         </div>
       )}
 
       {hasError ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-orange-50/90 text-orange-400 p-4 text-center z-10">
-          <ImageOff className="w-7 h-7 mb-1 text-orange-300" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#F8F5EE] text-[#C96B25]/60 p-4 text-center z-10">
+          <ImageOff className="w-7 h-7 mb-1 text-[#DCD4C4]" />
           <span className="text-[11px] font-medium text-gray-500">चित्र उपलब्ध नहीं है</span>
         </div>
       ) : (
