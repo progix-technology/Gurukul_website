@@ -1,17 +1,16 @@
 import React from 'react';
 
-export const PencilLoader = ({ fullScreen = false, size = '160px', className = '' }) => {
+export const PencilLoader = ({ fullScreen = false, className = '' }) => {
   return (
     <div
-      className={`w-full flex flex-col items-center justify-center ${
-        fullScreen ? 'min-h-[70vh] py-16' : 'py-8'
-      } select-none ${className}`}
+      className={`w-full flex flex-col items-center justify-center select-none ${
+        fullScreen ? 'min-h-[100dvh] -mt-16 sm:-mt-20 pt-16 sm:pt-20 pb-16' : 'py-8 sm:py-12'
+      } ${className}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 200 200"
-        className="pencil"
-        style={{ width: size, height: size }}
+        className="pencil w-28 h-28 sm:w-36 sm:h-36 max-w-full"
       >
         <defs>
           <clipPath id="pencil-eraser">

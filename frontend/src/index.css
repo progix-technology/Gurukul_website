@@ -78,8 +78,15 @@
    ========================================================================== */
 .pencil {
   display: block;
-  width: 10em;
-  height: 10em;
+  width: 6.5em;
+  height: 6.5em;
+}
+
+@media (min-width: 640px) {
+  .pencil {
+    width: 9.5em;
+    height: 9.5em;
+  }
 }
 
 .pencil__body1,
