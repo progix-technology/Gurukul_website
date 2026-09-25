@@ -18,9 +18,9 @@ export const AdmissionRules = () => {
           {/* 100% Free Amenities Section */}
           <div className="lg:col-span-6 space-y-6">
             <SectionHeading
-              badge={isEn ? "COMPLIMENTARY AMENITIES" : "निःशुल्क सुविधाएँ"}
-              title={isEn ? "100% Free Amenities Provided" : "गुरुकुल द्वारा प्रदत्त निःशुल्क सुविधाएँ"}
-              subtitle={isEn ? "All essential facilities provided free of charge for holistic student development" : "विद्यार्थी के सर्वांगीण विकास हेतु आवश्यक प्रत्येक सुविधा पूर्णतः निःशुल्क"}
+              badge={isEn ? "STUDENT AMENITIES" : "प्रदत्त सुविधाएँ"}
+              title={isEn ? "Student Amenities & Facilities" : "गुरुकुल द्वारा प्रदत्त सुविधाएँ"}
+              subtitle={isEn ? "All essential facilities provided for holistic student development" : "विद्यार्थी के सर्वांगीण विकास हेतु आवश्यक प्रत्येक व्यवस्था"}
               align="left"
               className="mb-6"
             />

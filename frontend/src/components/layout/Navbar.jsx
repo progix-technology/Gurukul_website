@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Heart } from 'lucide-react'
 import LanguageToggle from '../common/LanguageToggle'
 import { useLanguage } from '../../context/LanguageContext'
 
@@ -115,15 +115,16 @@ export default function Navbar() {
             <LanguageToggle className="inline-flex" />
 
             <Link
-              to="/admission"
-              className="hidden sm:inline-flex items-center justify-center px-3.5 xl:px-4 h-8 sm:h-9 rounded text-xs xl:text-sm font-semibold transition-all duration-200 hover:opacity-90 shadow-sm whitespace-nowrap shrink-0"
+              to="/donate"
+              className="hidden sm:inline-flex items-center justify-center gap-1.5 px-3.5 xl:px-4 h-8 sm:h-9 rounded text-xs xl:text-sm font-semibold transition-all duration-200 hover:opacity-90 shadow-sm whitespace-nowrap shrink-0"
               style={{
                 backgroundColor: '#C96B25',
                 color: '#F8F4EA',
                 fontFamily: "'Noto Sans Devanagari', sans-serif",
               }}
             >
-              {t('btn.admissionInfo', 'प्रवेश संबंधी जानकारी')}
+              <Heart className="w-3.5 h-3.5 fill-current text-[#FFCD33]" />
+              <span>{t('btn.donate', 'दान / सहयोग')}</span>
             </Link>
 
             <button
@@ -175,6 +176,7 @@ export default function Navbar() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
+                    onClick={() => setDrawerOpen(false)}
                     className="block px-4 py-3 rounded-lg text-sm sm:text-base font-medium transition-colors duration-200 touch-manipulation"
                     style={{
                       fontFamily: "'Noto Sans Devanagari', sans-serif",
@@ -193,15 +195,17 @@ export default function Navbar() {
             </ul>
             <div className="p-4 sm:p-5 border-t border-[#8B4513]/60 bg-[#1D1510]">
               <Link
-                to="/admission"
-                className="block w-full text-center py-3 rounded-xl font-bold text-sm shadow-md"
+                to="/donate"
+                onClick={() => setDrawerOpen(false)}
+                className="flex items-center justify-center gap-2 w-full text-center py-3 rounded-xl font-bold text-sm shadow-md"
                 style={{
                   backgroundColor: '#C96B25',
                   color: '#F8F4EA',
                   fontFamily: "'Noto Sans Devanagari', sans-serif",
                 }}
               >
-                {t('btn.admissionInfo', 'प्रवेश संबंधी जानकारी')}
+                <Heart className="w-4 h-4 fill-current text-[#FFCD33]" />
+                <span>{t('btn.donate', 'दान / सहयोग')}</span>
               </Link>
             </div>
           </div>

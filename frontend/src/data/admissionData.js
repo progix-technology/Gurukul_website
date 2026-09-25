@@ -1,7 +1,7 @@
 export const ADMISSION_DATA = {
   timeline: {
-    startDate: "1 जुलाई",
-    startDate_en: "1 July",
+    startDate: "1 अप्रैल",
+    startDate_en: "1 April",
     endDate: "31 जुलाई",
     endDate_en: "31 July",
     session: "2026 - 2027",
@@ -37,10 +37,10 @@ export const ADMISSION_DATA = {
     },
     {
       stepNumber: 4,
-      title: "निःशुल्क छात्रावास आवंटन व किट वितरण",
+      title: "छात्रावास आवंटन व किट वितरण",
       title_en: "Hostel Allocation & Academic Kit Distribution",
-      description: "प्रवेश उपरांत विद्यार्थी को आवास, बिस्तर, आवश्यक वस्त्र, पाठ्य पुस्तकें व भोजन पास निःशुल्क प्रदान किया जाता है।",
-      description_en: "Allocation of hostel room, study books, stationery, uniforms and mess access free of cost.",
+      description: "प्रवेश उपरांत विद्यार्थी को आवास, बिस्तर, आवश्यक वस्त्र, पाठ्य पुस्तकें व भोजन पास प्रदान किया जाता है।",
+      description_en: "Allocation of hostel room, study books, stationery, uniforms and mess access.",
       icon: "Home"
     }
   ],
@@ -54,8 +54,8 @@ export const ADMISSION_DATA = {
       icon: "GraduationCap"
     },
     {
-      title: "निःशुल्क आवास (छात्रावास)",
-      title_en: "Free Residential Boarding",
+      title: "आवास (छात्रावास)",
+      title_en: "Residential Boarding (Hostel)",
       desc: "हवादार, स्वच्छ एवं अनुशासित आवासीय परिसर जिसमें 24 घंटे विद्युत व स्वच्छ पेयजल की व्यवस्था है।",
       desc_en: "Hygienic, disciplined hostel accommodation with 24/7 electricity and purified drinking water.",
       icon: "Bed"
@@ -68,23 +68,23 @@ export const ADMISSION_DATA = {
       icon: "Utensils"
     },
     {
-      title: "निःशुल्क पाठ्य पुस्तकें व वस्त्र",
-      title_en: "Free Books & Vedic Attire",
-      desc: "सभी विद्यार्थियों को विश्वविद्यालय अनुमोदित पुस्तकें, कॉपियां तथा गुरुकुलीय वेशभूषा निःशुल्क दी जाती है।",
-      desc_en: "Syllabus-approved books, study stationery, notebooks and traditional clothing provided free.",
+      title: "पाठ्य पुस्तकें व वस्त्र",
+      title_en: "Books & Vedic Attire",
+      desc: "सभी विद्यार्थियों को विश्वविद्यालय अनुमोदित पुस्तकें, कॉपियां तथा गुरुकुलीय वेशभूषा प्रदान की जाती है।",
+      desc_en: "Syllabus-approved books, study stationery, notebooks and traditional clothing provided.",
       icon: "BookOpen"
     },
     {
       title: "प्राथमिक चिकित्सा सुविधा",
-      title_en: "Free Primary Healthcare",
-      desc: "आयुर्वेदिक व प्राथमिक एलोपैथिक उपचार की निःशुल्क व्यवस्था गुरुकुल परिसर में उपलब्ध है।",
+      title_en: "Primary Healthcare Facility",
+      desc: "आयुर्वेदिक व प्राथमिक एलोपैथिक उपचार की व्यवस्था गुरुकुल परिसर में उपलब्ध है।",
       desc_en: "On-campus Ayurvedic and first-aid medical facilities for the wellbeing of all students.",
       icon: "HeartPulse"
     },
     {
       title: "कंप्यूटर व योग प्रशिक्षण",
-      title_en: "Computer Lab & Yoga",
-      desc: "दैनिक योगाभ्यास, खेलकूद मैदान एवं आधुनिक कंप्यूटर लैब का निःशुल्क उपयोग।",
+      title_en: "Computer Lab & Yoga Training",
+      desc: "दैनिक योगाभ्यास, खेलकूद मैदान एवं आधुनिक कंप्यूटर लैब का उपयोग।",
       desc_en: "Daily Pranayama, traditional physical sports and access to high-tech Adani Computer Lab.",
       icon: "Laptop"
     }
@@ -130,8 +130,8 @@ export const ADMISSION_DATA = {
     {
       question: "गुरुकुल में प्रवेश एवं शिक्षण का क्या शुल्क (Fees) है?",
       question_en: "What is the fee structure for admission and tuition at Gurukul?",
-      answer: "श्री निःशुल्क गुरुकुल महाविद्यालय में पारंपरिक शिक्षण पूर्णतः निःशुल्क (Free) है। प्रवेश के समय केवल ₹500 एकमुश्त (One-time) नामांकन शुल्क तथा सात्विक त्रिकाल भोजन व्यवस्था हेतु ₹500 प्रति माह नाममात्र सहयोग लिया जाता है। इसके अतिरिक्त वार्षिक विकास शुल्क ₹60 तथा शिक्षण संवर्धन शुल्क ₹24 प्रति वर्ष है।",
-      answer_en: "Academic tuition at Shri Nishulk Gurukul Mahavidyalaya is 100% Free. Only a nominal one-time admission processing contribution of ₹500 and a mess support contribution of ₹500/month is taken. Annual development fund is ₹60 and educational enrichment fee is ₹24 per year."
+      answer: "श्री निःशुल्क गुरुकुल महाविद्यालय में पारंपरिक शिक्षण, आवास एवं प्राथमिक सुविधाएं पूर्णतः निःशुल्क (100% Free) हैं। किसी भी छात्र से कोई शिक्षण शुल्क (Tuition Fee) नहीं लिया जाता है।",
+      answer_en: "Academic tuition, residential hostel, and core facilities at Shri Nishulk Gurukul Mahavidyalaya are 100% Free. No tuition fees are charged from any student."
     },
     {
       question: "विद्यार्थियों को अपने साथ क्या सामग्री लानी होती है?",
@@ -160,8 +160,8 @@ export const ADMISSION_DATA = {
     {
       question: "प्रवेश के लिए आवेदन कब कर सकते हैं?",
       question_en: "When can parents apply for new admissions?",
-      answer: "प्रत्येक वर्ष 1 जुलाई से 31 जुलाई तक नवीन प्रवेश प्रक्रिया संचालित होती है।",
-      answer_en: "New admissions are officially conducted annually from 1st July to 31st July."
+      answer: "प्रत्येक वर्ष 1 अप्रैल से 31 जुलाई तक नवीन प्रवेश प्रक्रिया संचालित होती है।",
+      answer_en: "New admissions are officially conducted annually from 1st April to 31st July."
     }
   ]
 };

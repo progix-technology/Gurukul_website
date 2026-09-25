@@ -3,7 +3,6 @@ import SEO from '../components/common/SEO';
 import Container from '../components/common/Container';
 import AdmissionProcess from '../components/admission/AdmissionProcess';
 import EligibilityTable from '../components/admission/EligibilityTable';
-import FeeStructure from '../components/admission/FeeStructure';
 import AdmissionRules from '../components/admission/AdmissionRules';
 import QuickInquiryForm from '../components/admission/QuickInquiryForm';
 import AdmissionFAQ from '../components/admission/AdmissionFAQ';
@@ -17,10 +16,10 @@ export const Admission = () => {
   return (
     <>
       <SEO
-        title={isEn ? "Admission Process & Fee Structure" : "प्रवेश प्रक्रिया एवं शुल्क संरचना"}
+        title={isEn ? "Admission Process & Guidelines" : "प्रवेश प्रक्रिया एवं नियम"}
         description={isEn 
-          ? "Admission process, zero tuition fee structure, eligibility criteria, required documents, rules and online inquiry form for Shri Nishulk Gurukul Mahavidyalaya Ayodhya."
-          : "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या में प्रवेश प्रक्रिया, शुल्क संरचना, पात्रता, आवश्यक दस्तावेज़, नियम एवं ऑनलाइन पूछताछ फॉर्म।"
+          ? "Admission process, 100% free education, eligibility criteria, required documents, rules and online inquiry form for Shri Nishulk Gurukul Mahavidyalaya Ayodhya."
+          : "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या में प्रवेश प्रक्रिया, 100% निःशुल्क शिक्षा, पात्रता, आवश्यक दस्तावेज़, नियम एवं ऑनलाइन पूछताछ फॉर्म।"
         }
       />
 
@@ -51,12 +50,12 @@ export const Admission = () => {
             <span>{isEn ? "SESSION 2026-27 ADMISSION OPEN" : "सत्र 2026-27 प्रवेश खुला है"}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-3 drop-shadow-md">
-            {isEn ? "Admission Process & Fee Structure" : "प्रवेश प्रक्रिया एवं शुल्क संरचना"}
+            {isEn ? "Admission Process & Guidelines" : "प्रवेश प्रक्रिया एवं नियम"}
           </h1>
           <p className="text-sm sm:text-base text-[#F8F4EA]/90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm font-medium">
             {isEn 
-              ? "Embrace sacred Rishikul education with free tuition, residential boarding, Satvik meals, books, and uniforms"
-              : "निःशुल्क शिक्षा, आवास, भोजन, वस्त्र एवं पुस्तकों के साथ गौरवशाली ऋषिकुल जीवन में प्रवेश प्राप्त करें"
+              ? "Embrace sacred Rishikul education with 100% free tuition, residential boarding, Satvik meals, books, and uniforms."
+              : "100% निःशुल्क शिक्षा, आवास, भोजन, वस्त्र एवं पुस्तकों के साथ गौरवशाली ऋषिकुल जीवन में प्रवेश प्राप्त करें।"
             }
           </p>
         </Container>
@@ -67,9 +66,6 @@ export const Admission = () => {
 
       {/* Eligibility & Documents */}
       <EligibilityTable />
-
-      {/* Fee Structure & Parent Guidelines */}
-      <FeeStructure />
 
       {/* Free Facilities & Rules */}
       <AdmissionRules />

@@ -18,17 +18,17 @@ import SEO from "../components/common/SEO"
 import HeroSlider from "../components/home/HeroSlider"
 import { useLanguage } from "../context/LanguageContext"
 
-import heroBgImage from "../assets/img_1.png"
-import schoolImage_1 from "../assets/IMG_1968.jpg"
-import schoolImage_2 from "../assets/swami_dayanand.jpg"
-import img_1 from "../assets/img_1.png"
-import img_2 from "../assets/img_2.jpeg"
-import img_3 from "../assets/img_3.jpeg"
-import img_4 from "../assets/img_4.jpeg"
-import img_5 from "../assets/img_5.jpeg"
-import img_6 from "../assets/img_6.jpeg"
-import img_7 from "../assets/img_7.png"
-import img_11 from "../assets/11.jpg"
+import heroBgImage from "../assets/img_8.jpeg";
+import schoolImage_1 from "../assets/IMG_1968.jpg";
+import schoolImage_2 from "../assets/swami_dayanand.jpg";
+import img_8 from "../assets/img_8.jpeg";
+import img_2 from "../assets/img_2.jpeg";
+import img_3 from "../assets/img_3.jpeg";
+import img_4 from "../assets/img_4.jpeg";
+import img_5 from "../assets/img_5.jpeg";
+import img_6 from "../assets/img_6.jpeg";
+import img_7 from "../assets/img_7.png";
+import img_11 from "../assets/11.jpg";
 
 const serifFont = { fontFamily: "'Noto Serif Devanagari', serif" }
 const sansFont = { fontFamily: "'Noto Sans Devanagari', sans-serif" }
@@ -86,14 +86,14 @@ export default function Home() {
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="flex items-center gap-6 text-sm sm:text-base font-bold text-[#241B15]" style={serifFont}>
               <span className="tracking-wide">
-                {isEn 
-                  ? "Shri Nishulk Gurukul Mahavidyalaya Ayodhya warmly welcomes you." 
+                {isEn
+                  ? "Shri Nishulk Gurukul Mahavidyalaya Ayodhya warmly welcomes you."
                   : "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या आपका हार्दिक स्वागत करता है।"}
               </span>
               <span className="text-[#F8F4EA] text-xs">✦</span>
               <span style={sansFont} className="text-[#241B15]/90 font-medium text-xs sm:text-sm">
-                {isEn 
-                  ? "Harmonious blend of Tradition, Moral Values & Modern Knowledge" 
+                {isEn
+                  ? "Harmonious blend of Tradition, Moral Values & Modern Knowledge"
                   : "परंपरा, संस्कार और ज्ञान की समन्वित शिक्षा"}
               </span>
               <span className="text-[#F8F4EA] text-xs">✦</span>
@@ -575,9 +575,8 @@ export default function Home() {
             ].map(({ year, event, detail, side }) => (
               <div
                 key={year}
-                className={`relative flex items-start gap-8 mb-12 ${
-                  side === "right" ? "flex-row-reverse text-right" : ""
-                }`}
+                className={`relative flex items-start gap-8 mb-12 ${side === "right" ? "flex-row-reverse text-right" : ""
+                  }`}
               >
                 <div className="flex-1">
                   <div
@@ -734,7 +733,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <SectionTitle>{isEn ? "Campus Gallery" : "छायाचित्र"}</SectionTitle>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
-            {[img_2, img_7, img_4, img_1, img_6, img_3].map((src, i) => (
+            {[img_2, img_7, img_4, img_8, img_6, img_3].map((src, i) => (
               <div
                 key={i}
                 className="overflow-hidden rounded-xl shadow-sm hover:shadow-md border border-amber-200/60 transition-all duration-300 hover:scale-[1.03]"

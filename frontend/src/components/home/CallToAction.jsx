@@ -40,8 +40,8 @@ export const CallToAction = () => {
 
             <p className="text-sm sm:text-base text-[#EDE7D4] leading-relaxed max-w-3xl mx-auto font-sans">
               {isEn
-                ? "From Class 6 to Acharya (M.A.) level - entire boarding, lodging, sattvic meals, and textbooks are completely free. Admission timeline: 1 July to 31 July."
-                : "कक्षा 6 से आचार्य (M.A.) स्तर तक संपूर्ण आवासीय शिक्षा, भोजन, आवास एवं पाठ्य पुस्तकें निःशुल्क। प्रवेश अवधि: 1 जुलाई से 31 जुलाई।"}
+                ? "From Class 6 to Acharya (M.A.) level - entire boarding, lodging, sattvic meals, and textbooks are completely free. Admission timeline: 1 April to 31 July."
+                : "कक्षा 6 से आचार्य (M.A.) स्तर तक संपूर्ण आवासीय शिक्षा, भोजन, आवास एवं पाठ्य पुस्तकें निःशुल्क। प्रवेश अवधि: 1 अप्रैल से 31 जुलाई।"}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">

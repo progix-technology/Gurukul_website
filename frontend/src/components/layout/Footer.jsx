@@ -30,9 +30,9 @@ export default function Footer() {
     { label: t('nav.about', 'गुरुकुल परिचय'), path: '/about' },
     { label: t('nav.courses', 'पाठ्यक्रम'), path: '/courses' },
     { label: t('nav.admission', 'प्रवेश प्रक्रिया'), path: '/admission' },
-    { label: 'Adani Computer Lab', path: '/adani-computer-lab' },
     { label: t('nav.events', 'कार्यक्रम'), path: '/events' },
     { label: t('nav.gallery', 'छायाचित्र'), path: '/gallery' },
+    { label: t('nav.donate', 'दान एवं सहयोग'), path: '/donate' },
     { label: t('nav.contact', 'संपर्क'), path: '/contact' },
   ]
 

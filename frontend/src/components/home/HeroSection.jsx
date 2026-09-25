@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import heroBgImage from '../../assets/img_1.png';
+import heroBgImage from '../../assets/img_8.jpeg';
 
 export const HeroSection = () => {
   const scrollToContent = () => {

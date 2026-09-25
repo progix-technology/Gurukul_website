@@ -13,7 +13,8 @@ export const translations = {
     'nav.events': 'कार्यक्रम',
     'nav.gallery': 'छायाचित्र',
     'nav.contact': 'संपर्क',
-    'nav.admissionCta': 'प्रवेश संबंधी जानकारी',
+    'nav.donate': 'दान / सहयोग',
+    'nav.admissionCta': 'दान / सहयोग',
     'nav.gurukulName': 'गुरुकुल महाविद्यालय',
     'nav.brandSub': 'अयोध्या धाम (उ.प्र.)',
     'nav.openMenu': 'मेनू खोलें',
@@ -24,7 +25,9 @@ export const translations = {
     'topbar.followUs': 'अनुसरण करें:',
 
     // Common Buttons & Labels
-    'btn.admissionInfo': 'प्रवेश संबंधी जानकारी',
+    'btn.donate': 'दान / सहयोग',
+    'btn.donateNow': 'सहयोग करें',
+    'btn.admissionInfo': 'दान / सहयोग',
     'btn.aboutGurukul': 'गुरुकुल परिचय',
     'btn.viewCourses': 'सभी पाठ्यक्रम देखें',
     'btn.contactUs': 'संपर्क करें',
@@ -79,7 +82,8 @@ export const translations = {
     'nav.events': 'Events',
     'nav.gallery': 'Gallery',
     'nav.contact': 'Contact',
-    'nav.admissionCta': 'Admission Info',
+    'nav.donate': 'Donate / Support',
+    'nav.admissionCta': 'Donate / Support',
     'nav.gurukulName': 'Gurukul Mahavidyalaya',
     'nav.brandSub': 'Ayodhya Dham (U.P.)',
     'nav.openMenu': 'Open Menu',
@@ -90,7 +94,9 @@ export const translations = {
     'topbar.followUs': 'Follow Us:',
 
     // Common Buttons & Labels
-    'btn.admissionInfo': 'Admission Info',
+    'btn.donate': 'Donate / Support',
+    'btn.donateNow': 'Support Us',
+    'btn.admissionInfo': 'Donate / Support',
     'btn.aboutGurukul': 'About Gurukul',
     'btn.viewCourses': 'View All Courses',
     'btn.contactUs': 'Contact Us',

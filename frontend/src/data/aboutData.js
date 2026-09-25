@@ -15,10 +15,10 @@ export const ABOUT_DATA = {
   principalMessage: {
     title: "प्राचार्य संदेश",
     title_en: "Principal's Message",
-    principalName: "आचार्य डॉ. वेदप्रकाश शास्त्री",
-    principalName_en: "Acharya Dr. Ved Prakash Shastri",
-    qualification: "प्राचार्य, सम्पूर्णानन्द संस्कृत वि.वि. से सम्बद्ध",
-    qualification_en: "Principal, Affiliated to Sampurnanand Sanskrit Univ.",
+    principalName: "आचार्य वीरेन्द्र कुमार पाण्डेय",
+    principalName_en: "Acharya Veerendra Kumar Pandey",
+    qualification: "",
+    qualification_en: "",
     message: `प्रातः स्मरणीय त्यागमूर्ति स्वामी त्यागानन्द सरस्वती द्वारा वर्ष 1925 के बसंत पंचमी की शुभ बेला में संस्थापित श्री निःशुल्क गुरुकुल महाविद्यालय अपने चिरगौरव को संजोए अहर्निश प्रगति के पथ पर अग्रसर है।
 
 वेद आधारित शिक्षा का यह प्रगतिशील शिक्षा केन्द्र अपने स्थापना काल से ही वेद विद्या के प्रचार-प्रसार, वैदिक धर्म की स्थापना एवं प्राचीन संस्कृति के संरक्षण के गुरुतर दायित्व का निर्वहन पूर्ण निष्ठा एवं सजगता से कर रहा है। जिसका ज्वलन्त उदाहरण देश के प्रत्येक क्षेत्र भू-भाग में स्नातक न केवल शिक्षा, स्वास्थ्य एवं विज्ञान के क्षेत्र में वरन् देश के स्वाभिमान की रक्षा में अपने को उदाहरण स्वरूप प्रस्तुत करते रहे हैं।
@@ -53,12 +53,12 @@ May this sacred sanctuary continue to nurture exemplary scholars, uphold timeles
       description_en: "Author of Satyarth Prakash and pioneer of the modern Vedic Gurukul educational revival."
     },
     {
-      name: "आचार्य डॉ. वेदप्रकाश शास्त्री",
-      name_en: "Acharya Dr. Ved Prakash Shastri",
-      role: "प्राचार्य (Principal)",
-      role_en: "Principal & Head of Institution",
-      description: "सम्पूर्णानन्द संस्कृत विश्वविद्यालय से गोल्ड मेडलिस्ट एवं संस्कृत शास्त्रों के मूर्धन्य विद्वान।",
-      description_en: "Eminent Sanskrit scholar and Gold Medalist from Sampurnanand Sanskrit University, Varanasi."
+      name: "आचार्य वीरेन्द्र कुमार पाण्डेय",
+      name_en: "Acharya Veerendra Kumar Pandey",
+      role: "वर्तमान प्रधानाचार्य",
+      role_en: "Current Principal",
+      description: "गुरुकुल के शैक्षिक संचालन एवं अनुशासन के मार्गदर्शक।",
+      description_en: "Principal of the institution guiding academic disciplines and character education."
     },
     {
       name: "पं. विद्याधर त्रिपाठी",

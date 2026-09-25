@@ -4,14 +4,20 @@ import videoThumbFb2 from '../assets/video_thumb_fb2.jpg';
 import videoThumbX1 from '../assets/video_thumb_x1.jpg';
 
 // Core Gurukul Campus Images
-import img1 from '../assets/img_1.png';
+import img1 from '../assets/img_8.jpeg';
 import img2 from '../assets/img_2.jpeg';
 import img3 from '../assets/img_3.jpeg';
 import img4 from '../assets/img_4.jpeg';
 import img5 from '../assets/img_5.jpeg';
 import img6 from '../assets/img_6.jpeg';
 import img7 from '../assets/img_7.png';
-import img11 from '../assets/11.jpg';
+import img11_old from '../assets/11.jpg';
+
+// Yajna & Havan Authentic Images
+import yajnaImg9 from '../assets/img_9.jpeg';
+import yajnaImg10 from '../assets/img_10.jpeg';
+import yajnaImg11 from '../assets/img_11.jpeg';
+import yajnaImg12 from '../assets/img_12.jpeg';
 
 // Adani Computer Lab Authentic Images Folder
 import labImg1 from '../assets/Images/WhatsApp Image 2026-09-24 at 11.10.55 AM.jpeg';
@@ -29,11 +35,12 @@ import labImg12 from '../assets/Images/WhatsApp Image 2026-09-24 at 11.11.04 AM.
 import labImg13 from '../assets/Images/WhatsApp Image 2026-09-24 at 11.11.06 AM.jpeg';
 
 export const GALLERY_CATEGORIES = [
-  { id: 'all', label: 'सभी', label_en: 'All Photos & Videos' },
+  { id: 'all', label: 'सभी (All)', label_en: 'All Photos & Videos' },
+  { id: 'yajna', label: 'दैनिक देवयज्ञ एवं हवन (Yajna)', label_en: 'Yajna & Devayajna' },
   { id: 'videos', label: 'वीडियो (Videos)', label_en: 'Videos & Media' },
   { id: 'campus', label: 'गुरुकुल परिसर', label_en: 'Gurukul Campus' },
   { id: 'adani_lab', label: 'अडानी कंप्यूटर लैब', label_en: 'Adani Computer Lab' },
-  { id: 'events', label: 'उत्सव एवं कार्यक्रम', label_en: 'Events & Yajna' },
+  { id: 'events', label: 'उत्सव एवं कार्यक्रम', label_en: 'Events & Mahotsav' },
 ];
 
 export const GALLERY_VIDEOS = [
@@ -90,18 +97,20 @@ export const GALLERY_VIDEOS = [
 export const GALLERY_ITEMS = [
   ...GALLERY_VIDEOS,
 
-  // Authentic Campus & Heritage Images
+  // 1st Photo: Authentic Yajna
   {
-    id: 'events-51-annual',
-    title: "51वाँ भव्य वार्षिकोत्सव एवं चतुर्वेद महायज्ञ",
-    title_en: "51st Grand Annual Celebration & 4-Veda Maha Yajna",
-    category: "events",
-    categories: ["events", "campus"],
-    thumbnail: img7,
-    fullImage: img7,
-    caption: "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या का 51वाँ भव्य वार्षिकोत्सव एवं चतुर्वेद महायज्ञ में आहुति देते यज्ञाचार्य एवं ब्रह्मचारी।",
-    caption_en: "Acharyas and Brahmacharis performing sacred Vedic oblations during the 51st Annual Mahotsav."
+    id: 'yajna-img-9',
+    title: "गुरुकुल यज्ञशाला में दैनिक देवयज्ञ एवं अग्निहोत्र",
+    title_en: "Daily Vedic Devayajna & Agnihotra at Gurukul Yajnashala",
+    category: "yajna",
+    categories: ["yajna", "events"],
+    thumbnail: yajnaImg9,
+    fullImage: yajnaImg9,
+    caption: "प्रातः एवं सायं काल में वेद मंत्रोच्चार के साथ दैनिक देवयज्ञ में आहुति देते ब्रह्मचारी एवं यज्ञाचार्य।",
+    caption_en: "Brahmacharis and Acharyas performing sacred Agnihotra and Vedic Havana oblations with Vedic mantras."
   },
+
+  // Campus & Heritage
   {
     id: 'campus-1',
     title: "गुरुकुल मुख्य भवन एवं पावन प्रांगण",
@@ -113,29 +122,6 @@ export const GALLERY_ITEMS = [
     caption_en: "Historic main academic building and lush green campus of Shri Nishulk Gurukul Mahavidyalaya, Ayodhya."
   },
   {
-    id: 'campus-2',
-    title: "गुरुकुल परिसर में ब्रह्मचारी विद्यार्थी",
-    title_en: "Disciplined Brahmachari Students",
-    category: "campus",
-    thumbnail: img6,
-    fullImage: img6,
-    caption: "गुरुकुल प्रांगण में अनुशासित ब्रह्मचारी छात्र वैदिक मर्यादा एवं संस्कारों का पालन करते हुए।",
-    caption_en: "Young students embracing traditional values, self-discipline, and Vedic living in the campus courtyard."
-  },
-  {
-    id: 'campus-3',
-    title: "गुरुकुल सभा एवं वार्षिकोत्सव मंडप",
-    title_en: "Gurukul Congregation & Celebration Pavilion",
-    category: "events",
-    categories: ["events", "campus"],
-    thumbnail: img11,
-    fullImage: img11,
-    caption: "गुरुकुल परिसर में आयोजित सांस्कृतिक उत्सव, सभा एवं वैदिक प्रवचन कार्यक्रम।",
-    caption_en: "Spiritual gatherings, Vedic discourses, and cultural programs at the Gurukul pavilion."
-  },
-
-  // Adani Computer Lab Images (100% Authentic Photos)
-  {
     id: 'lab-1',
     title: "Adani Computer Lab — आधुनिक कंप्यूटर लैब",
     title_en: "Adani Computer Lab — Modern IT Facility",
@@ -144,6 +130,41 @@ export const GALLERY_ITEMS = [
     fullImage: labImg13,
     caption: "अडानी फाउंडेशन के सहयोग से स्थापित आधुनिक कंप्यूटर लैब का विहंगम दृश्य।",
     caption_en: "Panoramic view of the state-of-the-art computer lab supported by the Adani Foundation."
+  },
+  {
+    id: 'events-51-annual',
+    title: "51वाँ भव्य वार्षिकोत्सव एवं चतुर्वेद महायज्ञ",
+    title_en: "51st Grand Annual Celebration & 4-Veda Maha Yajna",
+    category: "events",
+    categories: ["events", "yajna", "campus"],
+    thumbnail: img7,
+    fullImage: img7,
+    caption: "श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या का 51वाँ भव्य वार्षिकोत्सव एवं चतुर्वेद महायज्ञ में आहुति देते यज्ञाचार्य एवं ब्रह्मचारी।",
+    caption_en: "Acharyas and Brahmacharis performing sacred Vedic oblations during the 51st Annual Mahotsav."
+  },
+
+  // 2nd Yajna Image (around 5th photo)
+  {
+    id: 'yajna-img-10',
+    title: "वैदिक मंत्रोच्चार एवं सामूहिक हवन अनुष्ठान",
+    title_en: "Collective Vedic Mantras & Havana Rituals",
+    category: "yajna",
+    categories: ["yajna", "events"],
+    thumbnail: yajnaImg10,
+    fullImage: yajnaImg10,
+    caption: "गुरुकुल की पावन यज्ञशाला में देवयज्ञ करते हुए विद्यार्थी, पर्यावरण शुद्धि एवं विश्व शांति हेतु आहुति।",
+    caption_en: "Students chanting Vedic suktas and performing collective oblation for universal peace."
+  },
+
+  {
+    id: 'campus-2',
+    title: "गुरुकुल परिसर में ब्रह्मचारी विद्यार्थी",
+    title_en: "Disciplined Brahmachari Students",
+    category: "campus",
+    thumbnail: img6,
+    fullImage: img6,
+    caption: "गुरुकुल प्रांगण में अनुशासित ब्रह्मचारी छात्र वैदिक मर्यादा एवं संस्कारों का पालन करते हुए।",
+    caption_en: "Young students embracing traditional values, self-discipline, and Vedic living in the campus courtyard."
   },
   {
     id: 'lab-2',
@@ -167,6 +188,31 @@ export const GALLERY_ITEMS = [
     caption: "हाई-स्पीड सिस्टम्स और आधुनिक सॉफ्टवेयर से सुसज्जित कंप्यूटर लैब।",
     caption_en: "Computer workstations equipped with high-speed internet and modern learning tools."
   },
+
+  // 3rd Yajna Image (in mid section)
+  {
+    id: 'yajna-img-11',
+    title: "गुरुकुल यज्ञ मंडप एवं पावन आहुति दृश्य",
+    title_en: "Gurukul Yajna Mandap & Sacred Fire Offering",
+    category: "yajna",
+    categories: ["yajna", "events"],
+    thumbnail: yajnaImg11,
+    fullImage: yajnaImg11,
+    caption: "ऋषि परंपरा के अनुसार वैदिक विधिविधान से संपन्न दैनिक हवन एवं आहुति का दृश्य।",
+    caption_en: "Auspicious Havana rituals performed strictly according to ancient Vedic traditions."
+  },
+
+  {
+    id: 'campus-3',
+    title: "गुरुकुल सभा एवं वार्षिकोत्सव मंडप",
+    title_en: "Gurukul Congregation & Celebration Pavilion",
+    category: "events",
+    categories: ["events", "campus"],
+    thumbnail: img11_old,
+    fullImage: img11_old,
+    caption: "गुरुकुल परिसर में आयोजित सांस्कृतिक उत्सव, सभा एवं वैदिक प्रवचन कार्यक्रम।",
+    caption_en: "Spiritual gatherings, Vedic discourses, and cultural programs at the Gurukul pavilion."
+  },
   {
     id: 'lab-4',
     title: "ब्रह्मचारियों का डिजिटल व कोडिंग प्रशिक्षण",
@@ -178,6 +224,36 @@ export const GALLERY_ITEMS = [
     caption: "संस्कृत ग्रंथों के डिजिटल अध्ययन के साथ 21वीं सदी के तकनीकी कौशल सीखते छात्र।",
     caption_en: "Equipping youth with modern digital skills alongside ancient philosophical wisdom."
   },
+  {
+    id: 'lab-7',
+    title: "आधुनिक कंप्यूटर डेस्क एवं उपकरण",
+    category: "adani_lab",
+    thumbnail: labImg2,
+    fullImage: labImg2,
+    caption: "अत्याधुनिक मॉनिटर, कीबोर्ड और आरामदायक वातावरण में अध्ययनरत विद्यार्थी।"
+  },
+  {
+    id: 'lab-8',
+    title: "सॉफ्टवेयर एवं टाइपिंग अभ्यास सत्र",
+    category: "adani_lab",
+    thumbnail: labImg3,
+    fullImage: labImg3,
+    caption: "ब्रह्मचारी विद्यार्थी कंप्यूटर पर वर्ड प्रोसेसिंग एवं डिजिटल टूल्स का अभ्यास करते हुए।"
+  },
+
+  // 4th Yajna Image (in latter section)
+  {
+    id: 'yajna-img-12',
+    title: "यज्ञशाला में समिधा एवं आहुति अर्पण",
+    title_en: "Samidha & Ghee Offerings in Sacred Yajna",
+    category: "yajna",
+    categories: ["yajna", "events"],
+    thumbnail: yajnaImg12,
+    fullImage: yajnaImg12,
+    caption: "यज्ञ वेदी के सम्मुख ब्रह्मचारी छात्र नित्य देवयज्ञ एवं वैदिक संस्कारों का अभ्यास करते हुए।",
+    caption_en: "Devout students learning and practicing daily Agnihotra and Vedic rituals in the ashram."
+  },
+
   {
     id: 'lab-5',
     title: "डिजिटल क्लासरूम एवं ई-लर्निंग सत्र",
@@ -196,22 +272,6 @@ export const GALLERY_ITEMS = [
     thumbnail: labImg1,
     fullImage: labImg1,
     caption: "कंप्यूटर लैब में प्रत्येक विद्यार्थी के लिए समर्पित कंप्यूटर एवं इंटरनेट कनेक्टिविटी।"
-  },
-  {
-    id: 'lab-7',
-    title: "आधुनिक कंप्यूटर डेस्क एवं उपकरण",
-    category: "adani_lab",
-    thumbnail: labImg2,
-    fullImage: labImg2,
-    caption: "अत्याधुनिक मॉनिटर, कीबोर्ड और आरामदायक वातावरण में अध्ययनरत विद्यार्थी।"
-  },
-  {
-    id: 'lab-8',
-    title: "सॉफ्टवेयर एवं टाइपिंग अभ्यास सत्र",
-    category: "adani_lab",
-    thumbnail: labImg3,
-    fullImage: labImg3,
-    caption: "ब्रह्मचारी विद्यार्थी कंप्यूटर पर वर्ड प्रोसेसिंग एवं डिजिटल टूल्स का अभ्यास करते हुए।"
   },
   {
     id: 'lab-9',

@@ -3,6 +3,7 @@ import { Quote, Award, ArrowRight } from 'lucide-react';
 import Container from '../common/Container';
 import Button from '../common/Button';
 import { ABOUT_DATA } from '../../data/aboutData';
+import principalImg from '../../assets/principle.jpeg';
 
 export const PrincipalSnippet = () => {
   const { principalMessage } = ABOUT_DATA;
@@ -16,7 +17,7 @@ export const PrincipalSnippet = () => {
             <div className="lg:col-span-4 text-center flex flex-col items-center">
               <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-none overflow-hidden border-2 border-[#C68A32] shadow-xl p-1 bg-[#2E221B] mb-4">
                 <img
-                  src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
+                  src={principalImg}
                   alt={principalMessage.principalName}
                   className="w-full h-full object-cover rounded-none"
                   loading="lazy"
@@ -25,9 +26,11 @@ export const PrincipalSnippet = () => {
               <h3 className="font-serif font-bold text-xl text-[#C68A32]">
                 {principalMessage.principalName}
               </h3>
-              <p className="text-xs text-[#F8F4EA]/90 mt-1">
-                {principalMessage.qualification}
-              </p>
+              {principalMessage.qualification && (
+                <p className="text-xs text-[#F8F4EA]/90 mt-1">
+                  {principalMessage.qualification}
+                </p>
+              )}
               <span className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-none bg-[#C96B25] text-white text-xs font-semibold shadow-sm border border-amber-300/30">
                 <Award className="w-3.5 h-3.5 text-amber-200" />
                 प्राचार्य (Principal)

@@ -11,7 +11,8 @@ import { ABOUT_DATA } from '../data/aboutData';
 import { Award } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
-import formerPrincipalImg from '../assets/IMG_1968.jpg';
+import founderImg from '../assets/IMG_1968.jpg';
+import principalImg from '../assets/principle.jpeg';
 import bannerBgImg from '../assets/img_2.jpeg';
 
 export const About = () => {
@@ -95,18 +96,18 @@ export const About = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* 1. Left: पूर्व प्रधानाचार्य */}
+            {/* 1. Left: संस्थापक */}
             <div className="lg:col-span-3 flex flex-col items-center text-center order-2 lg:order-1">
-              <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-[#C68A32] shadow-lg p-1 bg-[#F8F4EA] mb-3 transition-transform duration-300 hover:scale-105">
+              <div className="w-40 sm:w-48 aspect-[3/4] rounded-2xl overflow-hidden border-4 border-[#C68A32] shadow-xl p-1 bg-[#F8F4EA] mb-3 transition-transform duration-300 hover:scale-105">
                 <img
-                  src={formerPrincipalImg}
-                  alt={isEn ? "Former Principal Swami Tyaganand Saraswati" : "पूर्व प्रधानाचार्य स्वामी त्यागानन्द सरस्वती"}
-                  className="w-full h-full object-cover rounded-full object-top"
+                  src={founderImg}
+                  alt={isEn ? "Founder Swami Tyaganand Saraswati Ji" : "संस्थापक स्वामी त्यागानन्द सरस्वती जी"}
+                  className="w-full h-full object-cover rounded-xl object-top"
                   loading="lazy"
                 />
               </div>
-              <span className="px-3 py-0.5 rounded-full bg-[#241B15] text-[#C68A32] text-xs font-bold mb-1 shadow-sm">
-                {isEn ? "Founder Principal" : "पूर्व प्रधानाचार्य"}
+              <span className="px-3.5 py-1 rounded-full bg-[#241B15] text-[#C68A32] text-xs font-bold mb-1 shadow-sm">
+                {isEn ? "Founder" : "संस्थापक"}
               </span>
               <h3 className="font-serif font-bold text-base sm:text-lg text-[#241B15]">
                 {isEn ? "Swami Tyaganand Saraswati Ji" : "स्वामी त्यागानन्द सरस्वती जी"}
@@ -133,24 +134,26 @@ export const About = () => {
 
             {/* 3. Right: वर्तमान प्रधानाचार्य */}
             <div className="lg:col-span-3 flex flex-col items-center text-center order-3">
-              <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-[#C68A32] shadow-lg p-1 bg-[#F8F4EA] mb-3 transition-transform duration-300 hover:scale-105">
+              <div className="w-40 sm:w-48 aspect-[3/4] rounded-2xl overflow-hidden border-4 border-[#C68A32] shadow-xl p-1 bg-[#F8F4EA] mb-3 transition-transform duration-300 hover:scale-105">
                 <img
-                  src={formerPrincipalImg}
-                  alt={isEn ? "Current Principal" : "वर्तमान प्रधानाचार्य"}
-                  className="w-full h-full object-cover rounded-full object-top"
+                  src={principalImg}
+                  alt={isEn ? "Current Principal Acharya Veerendra Kumar Pandey" : "वर्तमान प्रधानाचार्य आचार्य वीरेन्द्र कुमार पाण्डेय"}
+                  className="w-full h-full object-cover rounded-xl object-top"
                   loading="lazy"
                 />
               </div>
-              <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#C96B25] text-[#F8F4EA] text-xs font-bold mb-1 shadow-sm">
+              <span className="inline-flex items-center gap-1 px-3.5 py-1 rounded-full bg-[#C96B25] text-[#F8F4EA] text-xs font-bold mb-1 shadow-sm">
                 <Award className="w-3.5 h-3.5 text-white" />
                 {isEn ? "Current Principal" : "वर्तमान प्रधानाचार्य"}
               </span>
               <h3 className="font-serif font-bold text-base sm:text-lg text-[#241B15]">
                 {currentPrincipalName}
               </h3>
-              <p className="text-xs text-[#8B4513] font-semibold mt-0.5">
-                {currentQual}
-              </p>
+              {currentQual && (
+                <p className="text-xs text-[#8B4513] font-semibold mt-0.5">
+                  {currentQual}
+                </p>
+              )}
             </div>
           </div>
         </Container>

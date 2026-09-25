@@ -11,6 +11,7 @@ const Events = lazy(() => import('../pages/Events'));
 const Gallery = lazy(() => import('../pages/Gallery'));
 const Contact = lazy(() => import('../pages/Contact'));
 const AdaniComputerLab = lazy(() => import('../pages/AdaniComputerLab'));
+const Donate = lazy(() => import('../pages/Donate'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Modern Light Skeleton Loading fallback for Suspense
@@ -30,6 +31,7 @@ export const AppRoutes = () => {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/adani-computer-lab" element={<AdaniComputerLab />} />
+        <Route path="/donate" element={<Donate />} />
         
         {/* Catch-all 404 Route */}
         <Route path="/404" element={<NotFound />} />

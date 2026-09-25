@@ -24,8 +24,8 @@ export const INSTITUTION_INFO = {
     email: "gurukulayodhya@gmail.com",
     officeHours: "प्रातः 8:00 से सायं 5:00 बजे तक (सोमवार - शनिवार)",
     officeHours_en: "8:00 AM to 5:00 PM (Monday - Saturday)",
-    admissionPeriod: "1 जुलाई से 31 जुलाई (वार्षिक प्रवेश)",
-    admissionPeriod_en: "1 July to 31 July (Annual Admissions)",
+    admissionPeriod: "1 अप्रैल से 31 जुलाई (वार्षिक प्रवेश)",
+    admissionPeriod_en: "1 April to 31 July (Annual Admissions)",
   },
 
   portalUrl: "https://www.gurukulayodhya.com",
@@ -110,13 +110,13 @@ export const INSTITUTION_INFO = {
   ],
 
   notices: [
-    "सत्र 2026-27 हेतु नवीन प्रवेश 1 जुलाई से 31 जुलाई तक प्रारम्भ। सीमित सीटें उपलब्ध।",
+    "सत्र 2026-27 हेतु नवीन प्रवेश 1 अप्रैल से 31 जुलाई तक प्रारम्भ। सीमित सीटें उपलब्ध।",
     "आगामी श्रावण पूर्णिमा पर 51वां वार्षिकोत्सव एवं विशाल वैदिक महायज्ञ का भव्य आयोजन।",
     "सम्पूर्णानन्द संस्कृत विश्वविद्यालय परीक्षा परिणाम में गुरुकुल के विद्यार्थियों ने सर्वोच्च अंक प्राप्त किए।",
     "अप्रैल 2026: अडानी फाउंडेशन (Adani Foundation) द्वारा स्थापित अत्याधुनिक Adani Computer Lab का लोकार्पण संपन्न।"
   ],
   notices_en: [
-    "Admissions open for Academic Session 2026-27 from 1st July to 31st July. Limited seats available.",
+    "Admissions open for Academic Session 2026-27 from 1st April to 31st July. Limited seats available.",
     "Grand 51st Annual Mahotsav & 4-Veda Maha Yajna on upcoming Shravana Purnima.",
     "Gurukul students achieve 100% distinction in Sampurnanand Sanskrit University board examinations.",
     "April 2026: High-tech Adani Computer Lab inaugurated by Adani Foundation for digital excellence."

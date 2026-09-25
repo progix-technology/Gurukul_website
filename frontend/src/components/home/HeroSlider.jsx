@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
-import heroSlide1 from '../../assets/img_2.jpeg';
+import heroSlide1 from '../../assets/img_8.jpeg';
 import heroSlide2 from '../../assets/img_3.jpeg';
 import heroSlide3 from '../../assets/img_4.jpeg';
 import heroSlide4 from '../../assets/img_6.jpeg';
-import heroSlide5 from '../../assets/img_1.png';
 
 const serifFont = { fontFamily: "'Noto Serif Devanagari', serif" };
 const sansFont = { fontFamily: "'Noto Sans Devanagari', sans-serif" };
@@ -76,28 +75,12 @@ const slides = [
     description_en: 'Spiritual, intellectual and physical upliftment of students in the sacred land of Ayodhya.',
     primaryBtn: { text: 'आयोजन एवं गतिविधियाँ', text_en: 'Events & Activities', link: '/events' },
     secondaryBtn: { text: 'चित्र दीर्घा', text_en: 'Photo Gallery', link: '/gallery' }
-  },
-  {
-    id: 5,
-    image: heroSlide5,
-    tag: 'पूर्णतः निःशुल्क आवासीय शिक्षा',
-    tag_en: '100% FREE RESIDENTIAL EDUCATION',
-    title: 'श्री निःशुल्क गुरुकुल महाविद्यालय',
-    title_en: 'Shri Nishulk Gurukul Mahavidyalaya',
-    subtitle: 'अयोध्या, उत्तर प्रदेश',
-    subtitle_en: 'Ayodhya, Uttar Pradesh',
-    tagline: 'ऋषिकुल मर्यादा एवं आधुनिक डिजिटल शिक्षा',
-    tagline_en: 'Vedic Ethos & Contemporary Education',
-    description: 'कक्षा 6 (प्रथमा) से आचार्य (M.A.) स्तर तक संपूर्ण निःशुल्क आवासीय शिक्षा, भोजन, आवास, वस्त्र एवं Adani Computer Lab।',
-    description_en: 'Complete free boarding, meals, uniforms & digital computer education from Class 6 to Acharya (M.A.).',
-    primaryBtn: { text: 'प्रवेश आवेदन करें', text_en: 'Apply for Admission', link: '/admission' },
-    secondaryBtn: { text: 'संपर्क सूत्र', text_en: 'Contact Us', link: '/contact' }
   }
 ];
 
 // Instant preloader for all Hero Banner images so they load before anything else
 if (typeof window !== 'undefined') {
-  [heroSlide1, heroSlide2, heroSlide3, heroSlide4, heroSlide5].forEach((src) => {
+  [heroSlide1, heroSlide2, heroSlide3, heroSlide4].forEach((src) => {
     const preloader = new Image();
 
     preloader.src = src;

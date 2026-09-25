@@ -10,7 +10,7 @@ export const NoticeTicker = () => {
               <span>श्री निःशुल्क गुरुकुल महाविद्यालय अयोध्या आपका स्वागत करता है।</span>
             </span>
             <span className="inline-flex items-center mx-8">
-              <span>★ सत्र 2026-27 प्रवेश प्रारम्भ (1 जुलाई से 31 जुलाई)</span>
+              <span>★ सत्र 2026-27 प्रवेश प्रारम्भ (1 अप्रैल से 31 जुलाई)</span>
             </span>
             <span className="inline-flex items-center mx-8">
               <span>★ सम्पूर्णानन्द संस्कृत विश्वविद्यालय वाराणसी से "क-वर्ग" प्रथम श्रेणी में मान्यता प्राप्त</span>
