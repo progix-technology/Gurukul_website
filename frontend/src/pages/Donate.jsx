@@ -172,50 +172,41 @@ export const Donate = () => {
             श्री निःशुल्क गुरुकुल महाविद्यालय, रामपथ, अयोध्या धाम
           </h1>
 
-          <p className="text-xs sm:text-sm text-[#F8F4EA]/90 max-w-2xl mx-auto leading-relaxed drop-shadow-sm font-medium mb-6">
-            {isEn
-              ? "Since 1925, providing 100% free residential education, meals, Gaushala, and Vedic culture on the sacred banks of Saryu in Ayodhya Dham."
-              : "पुण्य सलिला सरयू के पावन तट पर स्थित मर्यादा पुरुषोत्तम श्री राम की जन्मस्थली अयोध्या में 100 वर्षों से संचालित सनातन संस्कृति का पोषक आदर्श शिक्षा केन्द्र।"}
+          <p className="text-xs sm:text-sm text-[#F8F4EA]/90 max-w-2xl mx-auto leading-relaxed mb-8">
+            पुण्य सलिला सरयू के पावन तट पर स्थित मर्यादा पुरुषोत्तम श्री राम की जन्मस्थली अयोध्या में 100 वर्षों से संचालित सनातन संस्कृति का पोषक आदर्श शिक्षा केन्द्र।
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-4 mb-2">
             <a
               href="#bank-details"
-              className="px-6 py-2.5 rounded text-xs sm:text-sm font-bold bg-[#C96B25] hover:bg-[#B35818] text-white transition-all shadow-md flex items-center gap-2"
+              className="inline-flex items-center justify-center px-6 py-3 border border-[#FFCD33] text-sm font-semibold rounded-none text-[#241B15] bg-[#FFCD33] hover:bg-[#FFCD33]/90 shadow-md transition-all"
             >
-              <QrCode className="w-4 h-4" />
-              <span>{isEn ? "QR & Bank Details" : "क्यू.आर. एवं बैंक खाता"}</span>
+              {isEn ? "Direct Bank Transfer / QR" : "बैंक विवरण एवं क्यू.आर. कोड"}
             </a>
             <a
               href="#donation-form"
-              className="px-6 py-2.5 rounded text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 text-[#F8F4EA] border border-[#C68A32]/60 transition-all backdrop-blur-sm flex items-center gap-2"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white text-sm font-semibold rounded-none text-white hover:bg-white/10 transition-all"
             >
-              <FileText className="w-4 h-4" />
-              <span>{isEn ? "Donation Receipt Form" : "दान सूचना / रसीद फॉर्म"}</span>
+              {isEn ? "Submit Donation Intimation" : "दान सूचना प्रपत्र भरें"}
             </a>
           </div>
         </Container>
       </section>
 
-      {/* Main Official Poster Narrative Section */}
-      <section className="py-14 sm:py-20 bg-white border-b border-[#C68A32]/20">
+      {/* Official Poster Narrative & Founder Card */}
+      <section className="py-12 bg-[#FAF8F5] border-b border-[#C68A32]/20">
         <Container>
           <div className="max-w-4xl mx-auto">
-            {/* Header with Founder Photo & Shloka Card */}
-            <div className="bg-[#FAF8F5] border-2 border-[#C68A32]/50 p-6 sm:p-10 shadow-lg relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#C96B25] via-[#FFCD33] to-[#C96B25]" />
-              
-              {/* Founder Avatar & Invocation */}
+            {/* Header with Founder & Mantra */}
+            <div className="bg-[#FAF6EE] border-2 border-[#C68A32]/40 rounded-lg p-6 sm:p-8 shadow-sm">
               <div className="flex flex-col items-center text-center mb-6">
-                <div className="text-2xl sm:text-3xl font-serif text-[#C96B25] font-bold mb-3">
-                  ओ३म्
-                </div>
-
-                <div className="relative mb-3">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-3 border-[#C96B25] shadow-md overflow-hidden bg-white p-1">
+                <div className="mb-3">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-3 border-[#C68A32] shadow-md overflow-hidden bg-white p-1">
                     <img 
                       src={founderImg} 
                       alt="स्वामी त्यागानन्द सरस्वती - संस्थापक"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-top rounded-full"
                     />
                   </div>

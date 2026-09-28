@@ -209,9 +209,9 @@ export const HeroSlider = () => {
                 <img
                   src={slide.image}
                   alt={slideTitle}
-                  loading="eager"
+                  loading={idx === 0 ? "eager" : "lazy"}
                   fetchpriority={idx === 0 ? "high" : "auto"}
-                  decoding="sync"
+                  decoding={idx === 0 ? "sync" : "async"}
                   className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000"
                 />
               </div>
