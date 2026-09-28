@@ -1,0 +1,22 @@
+{
+  "short_name": "गुरुकुल अयोध्या",
+  "name": "श्री निःशुल्क गुरुकुल महाविद्यालय, अयोध्या",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    },
+    {
+      "src": "/favicon.jpeg",
+      "type": "image/jpeg",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FAF8F5",
+  "theme_color": "#C96B25",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "description": "सम्पूर्णानन्द संस्कृत विश्वविद्यालय से संबद्ध 100 वर्ष पुरातन निःशुल्क आवासीय गुरुकुल महाविद्यालय, अयोध्या।"
+}

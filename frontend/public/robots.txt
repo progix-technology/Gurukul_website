@@ -1,0 +1,12 @@
+# Robots.txt for Shri Nishulk Gurukul Mahavidyalaya Ayodhya
+# https://www.gurukulayodhya.com
+
+User-agent: *
+Allow: /
+
+# Disallow private/temporary paths
+Disallow: /admin
+Disallow: /api/
+
+# Sitemap Location
+Sitemap: https://www.gurukulayodhya.com/sitemap.xml
